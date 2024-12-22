@@ -233,6 +233,7 @@
     <Compile Include="BSMGR0WCMTEXT.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\BSMGR0GEN001DAL.cs" />
     <Compile Include="DAL\BSMGR0MAT001DAL.cs" />
     <Compile Include="DAL\BSMGR0MATHEADDAL.cs" />
     <Compile Include="DAL\BSMGR0MATTEXTDAL.cs" />
@@ -263,6 +264,12 @@
     </Compile>
     <Compile Include="Forms\deneme.Designer.cs">
       <DependentUpon>deneme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0GEN001Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0GEN001Form.Designer.cs">
+      <DependentUpon>BSMGR0GEN001Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Kontrol Tabloları\BSMGR0MAT001Form.cs">
       <SubType>Form</SubType>

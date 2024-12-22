@@ -103,7 +103,7 @@ namespace RubiconERPv1
             switch (selectedItem)
             {
                 case "Kontrol Tablo 1":
-                    var deneme = new deneme(); // MAT0001 formu açılıyor
+                    var deneme = new BSMGR0GEN001Form(); // MAT0001 formu açılıyor
                     deneme.Show();
                     break;
 

@@ -14,7 +14,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             InitializeComponent();
 
             // Bağlantı stringini veritabanınıza uygun olarak değiştirin
-            string connectionString = "Data Source=DESKTOP-BAP4RDU\\SQLEXPRESS02;Initial Catalog=RubiconDB;Integrated Security=True;";
+            string connectionString = "Data Source=EMRE;Initial Catalog=RubiconDB;Integrated Security=True;";
             _dal = new BSMGR0MATHEADDAL(connectionString);
 
             LoadData();
