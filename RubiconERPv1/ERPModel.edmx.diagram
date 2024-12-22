@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="abfbf5bd4e0b44848fba38813b9cf031" Name="Diagram1">
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0BOM001" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0BOMCONTENT" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0BOMHEAD" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0CCM001" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0CCMHEAD" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0CCMTEXT" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0GEN001" Width="1.5" PointX="0.75" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0GEN002" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0GEN003" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0GEN004" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0GEN005" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0MAT001" Width="1.5" PointX="3" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0MATHEAD" Width="1.5" PointX="3" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0MATTEXT" Width="1.5" PointX="3" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0ROT001" Width="1.5" PointX="3" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0ROT002" Width="1.5" PointX="3" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0ROT003" Width="1.5" PointX="3" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0ROTBOMCONTENT" Width="1.5" PointX="3" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0ROTHEAD" Width="1.5" PointX="3" PointY="45.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0ROTOPRCONTENT" Width="1.5" PointX="3" PointY="49.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0WCM001" Width="1.5" PointX="3" PointY="54.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0WCMHEAD" Width="1.5" PointX="3" PointY="56.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0WCMOPR" Width="1.5" PointX="3" PointY="61.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.BSMGR0WCMTEXT" Width="1.5" PointX="3" PointY="64.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RubiconDBModel.sysdiagrams" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0BOM__COMCO__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0BOMCONTENT__0E391C95" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0BOM__COMCO__00DF2177" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0CCM__COMCO__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0CCM__COMCO__4C6B5938" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0CCM__COMCO__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0MAT__COMCO__2645B050" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0MAT__COMCO__395884C4" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0MAT__COMCO__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0ROT__COMCO__14E61A24" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0ROT__COMCO__1E6F845E" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0ROT__COMCO__27F8EE98" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0ROT__COMCO__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0ROT__COMCO__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK__BSMGR0ROT__COMCO__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK_BSMGR0WCM001_COMCODE" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK_BSMGR0WCMHEAD_COMCODE" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK_BSMGR0WCMOPR_COMCODE" ManuallyRouted="false" />
+        <AssociationConnector Association="RubiconDBModel.FK_BSMGR0WCMTEXT_COMCODE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
