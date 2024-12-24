@@ -1,5 +1,4 @@
-﻿
-using RubiconERPv1.Forms;
+﻿using RubiconERPv1.Forms;
 using RubiconERPv1.Forms.Ana_Tablolar;
 using RubiconERPv1.Forms.Kontrol_Tabloları;
 using System;
@@ -36,7 +35,12 @@ namespace RubiconERPv1
             this.lstKontrolTablolari.ItemHeight = 16;
             this.lstKontrolTablolari.Items.AddRange(new object[] {
             "Kontrol Tablo 1",
-            "Kontrol Tablo 2",
+            "Dil Kontrol",
+            "Ülke Kontrol",
+            "Şehir Kontrol",
+            "Unit Kontrol",
+            "Maliyet Merkezi Kontrol",
+
             "Materyal Tablosu"});
             this.lstKontrolTablolari.Location = new System.Drawing.Point(10, 10);
             this.lstKontrolTablolari.Name = "lstKontrolTablolari";
@@ -70,6 +74,7 @@ namespace RubiconERPv1
             this.btnAnaTablo2.Size = new System.Drawing.Size(150, 40);
             this.btnAnaTablo2.TabIndex = 1;
             this.btnAnaTablo2.Text = "Ana Tablo 2";
+            this.btnAnaTablo2.Click += new System.EventHandler(this.BtnAnaTablo2_Click);
             // 
             // MainForm
             // 
@@ -85,7 +90,6 @@ namespace RubiconERPv1
         }
 
        
-      
 
         // Ana Tablo 2 Butonu Tıklama Olayı
         private void BtnAnaTablo2_Click(object sender, EventArgs e)
@@ -103,23 +107,43 @@ namespace RubiconERPv1
             switch (selectedItem)
             {
                 case "Kontrol Tablo 1":
-                    var deneme = new BSMGR0GEN001Form(); // MAT0001 formu açılıyor
-                    deneme.Show();
+                    MessageBox.Show("Firma Kontrol seçildi."); // Test için
+                    var form001 = new BSMGR0GEN001Form();
+                    form001.Show();
                     break;
 
-                case "Kontrol Tablo 2":
-                    MessageBox.Show("Kontrol Tablo 2 seçildi.");
+
+                case "Dil Kontrol":
+                    var form002 = new BSMGR0GEN002Form(); 
+                    form002.Show();
                     break;
+
+                case "Ülke Kontrol":
+                    var form003 = new BSMGR0GEN003Form(); 
+                    form003.Show();
+                    break;
+                case "Şehir Kontrol":
+                    var form004 = new BSMGR0GEN004Form();
+                    form004.Show();
+                    break;
+                case "Unit Kontrol":
+                    var form005 = new BSMGR0GEN005Form();
+                    form005.Show();
+                    break;
+
+                case "Maliyet Merkezi Kontrol":
+                    var form006= new BSMGR0CCM001Form();
+                    form006.Show();
+                    break;
+
 
                 case "Materyal Tablosu":
                     MessageBox.Show("Materyal Tablosu sayfasına yönlendiriliyorsunuz.");
-                    var materialForm = new BSMGR0MAT001Form(); // MAT0001 formu açılıyor
+                    var materialForm = new BSMGR0MAT001Form(); 
                     materialForm.Show();
                     break;
 
-                default:
-                    MessageBox.Show("Bilinmeyen seçim.");
-                    break;
+                
             }
         }
 
