@@ -233,6 +233,7 @@
     <Compile Include="BSMGR0WCMTEXT.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\BSMGR0BOM001DAL.cs" />
     <Compile Include="DAL\BSMGR0CCM001DAL.cs" />
     <Compile Include="DAL\BSMGR0GEN001DAL.cs" />
     <Compile Include="DAL\BSMGR0GEN002DAL.cs" />
@@ -242,6 +243,9 @@
     <Compile Include="DAL\BSMGR0MAT001DAL.cs" />
     <Compile Include="DAL\BSMGR0MATHEADDAL.cs" />
     <Compile Include="DAL\BSMGR0MATTEXTDAL.cs" />
+    <Compile Include="DAL\BSMGR0ROT001DAL.cs" />
+    <Compile Include="DAL\BSMGR0ROT002DAL..cs" />
+    <Compile Include="DAL\BSMGR0ROT003DAL.cs" />
     <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="ERPModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -269,6 +273,12 @@
     </Compile>
     <Compile Include="Forms\deneme.Designer.cs">
       <DependentUpon>deneme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0BOM001Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0BOM001Form.Designer.cs">
+      <DependentUpon>BSMGR0BOM001Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Kontrol Tabloları\BSMGR0CCM001Form.cs">
       <SubType>Form</SubType>
@@ -312,6 +322,24 @@
     <Compile Include="Forms\Kontrol Tabloları\BSMGR0MAT001Form.Designer.cs">
       <DependentUpon>BSMGR0MAT001Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0ROT003Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0ROT003Form.Designer.cs">
+      <DependentUpon>BSMGR0ROT003Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0ROT001Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0ROT001Form.Designer.cs">
+      <DependentUpon>BSMGR0ROT001Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0ROT002Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Kontrol Tabloları\BSMGR0ROT002Form.Designer.cs">
+      <DependentUpon>BSMGR0ROT002Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,9 +351,6 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Ana Tablolar\MalzemeBilgileriForm.resx">
-      <DependentUpon>MalzemeBilgileriForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\deneme.resx">
       <DependentUpon>deneme.cs</DependentUpon>
     </EmbeddedResource>

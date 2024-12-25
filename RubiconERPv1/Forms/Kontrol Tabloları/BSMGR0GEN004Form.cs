@@ -60,21 +60,33 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text;
-            string cityCode = txtCityCode.Text;
-            string cityText = txtCityText.Text;
+            string comCode = txtComCode.Text.Trim();       // Firma Kodu
+            string countryCode = txtCountryCode.Text.Trim(); // Ülke Kodu
+            string cityCode = txtCityCode.Text.Trim();     // Şehir Kodu
+            string cityText = txtCityText.Text.Trim();     // Şehir Adı
 
-            if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(cityCode))
+            // Gerekli alanların doldurulup doldurulmadığını kontrol edin
+            if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(countryCode) || string.IsNullOrEmpty(cityCode))
             {
-                MessageBox.Show("Firma Kodu ve Şehir Kodu zorunludur!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Firma Kodu, Ülke Kodu ve Şehir Kodu alanları doldurulmalıdır!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            _dataAccessLayer.AddRecord(comCode, cityCode, cityText);
-            MessageBox.Show("Kayıt başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadData();
-            ClearFields();
+            try
+            {
+                _dataAccessLayer.AddRecord(comCode, countryCode, cityCode, cityText);
+                MessageBox.Show("Kayıt başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData(); // Verileri yenileyin
+                ClearFields(); // Alanları temizleyin
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kayıt ekleme sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
+
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {

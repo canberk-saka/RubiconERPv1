@@ -1,6 +1,6 @@
 ﻿namespace RubiconERPv1.Forms.Kontrol_Tabloları
 {
-    partial class BSMGR0GEN004Form
+    partial class BSMGR0ROT003Form
     {
         private System.ComponentModel.IContainer components = null;
 
@@ -15,30 +15,31 @@
 
         private void InitializeComponent()
         {
-            this.dgvCities = new System.Windows.Forms.DataGridView();
+            this.dgvOperations = new System.Windows.Forms.DataGridView();
             this.txtComCode = new System.Windows.Forms.TextBox();
-            this.txtCountryCode = new System.Windows.Forms.TextBox();
-            this.txtCityCode = new System.Windows.Forms.TextBox();
-            this.txtCityText = new System.Windows.Forms.TextBox();
+            this.txtDocType = new System.Windows.Forms.TextBox();
+            this.txtDocTypeText = new System.Windows.Forms.TextBox();
+            this.chkIsPassive = new System.Windows.Forms.CheckBox();
             this.lblComCode = new System.Windows.Forms.Label();
-            this.lblCountryCode = new System.Windows.Forms.Label();
-            this.lblCityCode = new System.Windows.Forms.Label();
-            this.lblCityText = new System.Windows.Forms.Label();
+            this.lblDocType = new System.Windows.Forms.Label();
+            this.lblDocTypeText = new System.Windows.Forms.Label();
+            this.lblIsPassive = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
+
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOperations)).BeginInit();
             this.SuspendLayout();
 
             // 
-            // dgvCities
+            // dgvOperations
             // 
-            this.dgvCities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCities.Location = new System.Drawing.Point(12, 12);
-            this.dgvCities.Name = "dgvCities";
-            this.dgvCities.Size = new System.Drawing.Size(600, 200);
-            this.dgvCities.TabIndex = 0;
+            this.dgvOperations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOperations.Location = new System.Drawing.Point(12, 12);
+            this.dgvOperations.Name = "dgvOperations";
+            this.dgvOperations.Size = new System.Drawing.Size(600, 200);
+            this.dgvOperations.TabIndex = 0;
 
             // 
             // txtComCode
@@ -49,28 +50,31 @@
             this.txtComCode.TabIndex = 1;
 
             // 
-            // txtCountryCode
+            // txtDocType
             // 
-            this.txtCountryCode.Location = new System.Drawing.Point(120, 270);
-            this.txtCountryCode.Name = "txtCountryCode";
-            this.txtCountryCode.Size = new System.Drawing.Size(150, 22);
-            this.txtCountryCode.TabIndex = 2;
+            this.txtDocType.Location = new System.Drawing.Point(120, 270);
+            this.txtDocType.Name = "txtDocType";
+            this.txtDocType.Size = new System.Drawing.Size(150, 22);
+            this.txtDocType.TabIndex = 2;
 
             // 
-            // txtCityCode
+            // txtDocTypeText
             // 
-            this.txtCityCode.Location = new System.Drawing.Point(120, 310);
-            this.txtCityCode.Name = "txtCityCode";
-            this.txtCityCode.Size = new System.Drawing.Size(150, 22);
-            this.txtCityCode.TabIndex = 3;
+            this.txtDocTypeText.Location = new System.Drawing.Point(120, 310);
+            this.txtDocTypeText.Name = "txtDocTypeText";
+            this.txtDocTypeText.Size = new System.Drawing.Size(150, 22);
+            this.txtDocTypeText.TabIndex = 3;
 
             // 
-            // txtCityText
+            // chkIsPassive
             // 
-            this.txtCityText.Location = new System.Drawing.Point(120, 350);
-            this.txtCityText.Name = "txtCityText";
-            this.txtCityText.Size = new System.Drawing.Size(150, 22);
-            this.txtCityText.TabIndex = 4;
+            this.chkIsPassive.AutoSize = true;
+            this.chkIsPassive.Location = new System.Drawing.Point(120, 350);
+            this.chkIsPassive.Name = "chkIsPassive";
+            this.chkIsPassive.Size = new System.Drawing.Size(81, 20);
+            this.chkIsPassive.TabIndex = 4;
+            this.chkIsPassive.Text = "Pasif mi?";
+            this.chkIsPassive.UseVisualStyleBackColor = true;
 
             // 
             // lblComCode
@@ -83,34 +87,34 @@
             this.lblComCode.Text = "Firma Kodu:";
 
             // 
-            // lblCountryCode
+            // lblDocType
             // 
-            this.lblCountryCode.AutoSize = true;
-            this.lblCountryCode.Location = new System.Drawing.Point(12, 273);
-            this.lblCountryCode.Name = "lblCountryCode";
-            this.lblCountryCode.Size = new System.Drawing.Size(74, 16);
-            this.lblCountryCode.TabIndex = 6;
-            this.lblCountryCode.Text = "Ülke Kodu:";
+            this.lblDocType.AutoSize = true;
+            this.lblDocType.Location = new System.Drawing.Point(12, 273);
+            this.lblDocType.Name = "lblDocType";
+            this.lblDocType.Size = new System.Drawing.Size(96, 16);
+            this.lblDocType.TabIndex = 6;
+            this.lblDocType.Text = "Operasyon Tipi:";
 
             // 
-            // lblCityCode
+            // lblDocTypeText
             // 
-            this.lblCityCode.AutoSize = true;
-            this.lblCityCode.Location = new System.Drawing.Point(12, 313);
-            this.lblCityCode.Name = "lblCityCode";
-            this.lblCityCode.Size = new System.Drawing.Size(74, 16);
-            this.lblCityCode.TabIndex = 7;
-            this.lblCityCode.Text = "Şehir Kodu:";
+            this.lblDocTypeText.AutoSize = true;
+            this.lblDocTypeText.Location = new System.Drawing.Point(12, 313);
+            this.lblDocTypeText.Name = "lblDocTypeText";
+            this.lblDocTypeText.Size = new System.Drawing.Size(134, 16);
+            this.lblDocTypeText.TabIndex = 7;
+            this.lblDocTypeText.Text = "Operasyon Tipi Açıklaması:";
 
             // 
-            // lblCityText
+            // lblIsPassive
             // 
-            this.lblCityText.AutoSize = true;
-            this.lblCityText.Location = new System.Drawing.Point(12, 353);
-            this.lblCityText.Name = "lblCityText";
-            this.lblCityText.Size = new System.Drawing.Size(64, 16);
-            this.lblCityText.TabIndex = 8;
-            this.lblCityText.Text = "Şehir Adı:";
+            this.lblIsPassive.AutoSize = true;
+            this.lblIsPassive.Location = new System.Drawing.Point(12, 353);
+            this.lblIsPassive.Name = "lblIsPassive";
+            this.lblIsPassive.Size = new System.Drawing.Size(56, 16);
+            this.lblIsPassive.TabIndex = 8;
+            this.lblIsPassive.Text = "Pasif mi?";
 
             // 
             // btnSave
@@ -157,7 +161,7 @@
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 
             // 
-            // BSMGR0GEN004Form
+            // BSMGR0ROT003Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -166,31 +170,31 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.lblCityText);
-            this.Controls.Add(this.lblCityCode);
-            this.Controls.Add(this.lblCountryCode);
+            this.Controls.Add(this.lblIsPassive);
+            this.Controls.Add(this.lblDocTypeText);
+            this.Controls.Add(this.lblDocType);
             this.Controls.Add(this.lblComCode);
-            this.Controls.Add(this.txtCityText);
-            this.Controls.Add(this.txtCityCode);
-            this.Controls.Add(this.txtCountryCode);
+            this.Controls.Add(this.chkIsPassive);
+            this.Controls.Add(this.txtDocTypeText);
+            this.Controls.Add(this.txtDocType);
             this.Controls.Add(this.txtComCode);
-            this.Controls.Add(this.dgvCities);
-            this.Name = "BSMGR0GEN004Form";
-            this.Text = "BSMGR0GEN004 - Şehir Yönetimi";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).EndInit();
+            this.Controls.Add(this.dgvOperations);
+            this.Name = "BSMGR0ROT003Form";
+            this.Text = "BSMGR0ROT003 - Operasyon Tipi Yönetimi";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOperations)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.DataGridView dgvCities;
+        private System.Windows.Forms.DataGridView dgvOperations;
         private System.Windows.Forms.TextBox txtComCode;
-        private System.Windows.Forms.TextBox txtCountryCode;
-        private System.Windows.Forms.TextBox txtCityCode;
-        private System.Windows.Forms.TextBox txtCityText;
+        private System.Windows.Forms.TextBox txtDocType;
+        private System.Windows.Forms.TextBox txtDocTypeText;
+        private System.Windows.Forms.CheckBox chkIsPassive;
         private System.Windows.Forms.Label lblComCode;
-        private System.Windows.Forms.Label lblCountryCode;
-        private System.Windows.Forms.Label lblCityCode;
-        private System.Windows.Forms.Label lblCityText;
+        private System.Windows.Forms.Label lblDocType;
+        private System.Windows.Forms.Label lblDocTypeText;
+        private System.Windows.Forms.Label lblIsPassive;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;

@@ -27,20 +27,25 @@ namespace DataAccessLayer
         }
 
         // Yeni kayıt ekle
-        public void AddRecord(string comCode, string cityCode, string cityText)
+        public void AddRecord(string comCode, string countryCode, string cityCode, string cityText)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                string query = "INSERT INTO BSMGR0GEN004 (COMCODE, CITYCODE, CITYTEXT) VALUES (@ComCode, @CityCode, @CityText)";
+                string query = "INSERT INTO BSMGR0GEN004 (COMCODE, COUNTRYCODE, CITYCODE, CITYTEXT) VALUES (@ComCode, @CountryCode, @CityCode, @CityText)";
                 SqlCommand cmd = new SqlCommand(query, conn);
+
+                // Parametrelerin doğru şekilde eklendiğinden emin olun
                 cmd.Parameters.AddWithValue("@ComCode", comCode);
-                cmd.Parameters.AddWithValue("@CityCode", cityCode);
+                cmd.Parameters.AddWithValue("@CountryCode", countryCode ?? throw new ArgumentNullException(nameof(countryCode), "Ülke Kodu boş olamaz."));
+                cmd.Parameters.AddWithValue("@CityCode", cityCode ?? throw new ArgumentNullException(nameof(cityCode), "Şehir Kodu boş olamaz."));
                 cmd.Parameters.AddWithValue("@CityText", cityText ?? (object)DBNull.Value);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
+
+
 
         // Kayıt güncelle
         public bool UpdateRecord(string oldComCode, string oldCityCode, string newComCode, string newCityCode, string cityText)
