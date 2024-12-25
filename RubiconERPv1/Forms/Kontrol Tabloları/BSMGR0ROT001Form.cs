@@ -9,7 +9,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
     public partial class BSMGR0ROT001Form : Form
     {
         private BSMGR0ROT001DAL _dataAccessLayer;
-        private string _connectionString = "Data Source=localhost;Initial Catalog=RubiconDB;Integrated Security=True;";
+        string connectionString = DbConnection.GetConnectionString();
 
         public BSMGR0ROT001Form()
         {
@@ -19,8 +19,8 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             TestConnection();
 
             // Data Access Layer başlatma
-            _dataAccessLayer = new BSMGR0ROT001DAL(_connectionString);
-
+            _dataAccessLayer = new BSMGR0ROT001DAL(connectionString);
+                
             // DataGridView'e veri yükleme
             LoadData();
 
@@ -32,7 +32,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(_connectionString))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     MessageBox.Show("Bağlantı başarılı!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -1,16 +1,12 @@
-﻿
-using System;
+﻿using System;
 using System.Data.SqlClient;
-
-
 
 namespace DataAccessLayer
 {
     public class DbConnection
     {
-
-        // Veritabanı bağlantı dizesi (App.config veya Web.config'den alınır)
-        private static readonly string _connectionString = "Data Source=DESKTOP-BAP4RDU\\SQLEXPRESS02;Initial Catalog=RubiconDB;Integrated Security=True;Trust Server Certificate=True";
+        // Veritabanı bağlantı dizesi
+        private static readonly string _connectionString = "Data Source=DESKTOP-BAP4RDU\\SQLEXPRESS02;Initial Catalog=RubiconDB;Integrated Security=True;";
 
         // SqlConnection döndüren bir metot
         public static SqlConnection GetConnection()
@@ -29,5 +25,10 @@ namespace DataAccessLayer
             }
         }
 
+        // Bağlantı dizesini döndüren bir metot
+        public static string GetConnectionString()
+        {
+            return _connectionString;
+        }
     }
 }

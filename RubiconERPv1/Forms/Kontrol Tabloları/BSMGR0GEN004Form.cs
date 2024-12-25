@@ -12,7 +12,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
         public BSMGR0GEN004Form()
         {
             InitializeComponent();
-            string connectionString = "Data Source=EMRE;Initial Catalog=RubiconDB;Integrated Security=True;";
+            string connectionString = DbConnection.GetConnectionString();
             _dataAccessLayer = new BSMGR0GEN004DAL(connectionString);
             dgvCities.CellClick += dgvCities_CellClick;
             LoadData();
