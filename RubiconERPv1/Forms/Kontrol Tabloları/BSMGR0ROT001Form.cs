@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
 
@@ -23,9 +24,59 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             // DataGridView'e veri yükleme
             LoadData();
+            CustomizeDataGridView();
 
             dgvRoutes.CellClick += dgvRoutes_CellClick;
         }
+
+        private void CustomizeDataGridView()
+        {
+            dgvRoutes.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            dgvRoutes.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvRoutes.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F);
+            dgvRoutes.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvRoutes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRoutes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRoutes.MultiSelect = false;
+            dgvRoutes.AllowUserToAddRows = false;
+            dgvRoutes.AllowUserToDeleteRows = false;
+            dgvRoutes.ReadOnly = true;
+
+            // Alternating Row Colors
+            dgvRoutes.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            dgvRoutes.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvRoutes.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvRoutes.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Header Style
+            dgvRoutes.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold);
+            dgvRoutes.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+            dgvRoutes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvRoutes.EnableHeadersVisualStyles = false;
+
+            // Cell Alignment
+            foreach (DataGridViewColumn column in dgvRoutes.Columns)
+            {
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            // Grid Lines
+            dgvRoutes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvRoutes.GridColor = Color.DarkGray;
+
+            // Column Auto Resize
+            dgvRoutes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Row Height
+            dgvRoutes.RowTemplate.Height = 30;
+
+            // Background Color
+            dgvRoutes.BackgroundColor = Color.LightSteelBlue;
+
+            // Docking for full resize
+            dgvRoutes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+        }
+
 
         // Bağlantıyı test et
         private void TestConnection()
@@ -43,6 +94,8 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 MessageBox.Show($"Bağlantı sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
         // Verileri yükle
         private void LoadData()

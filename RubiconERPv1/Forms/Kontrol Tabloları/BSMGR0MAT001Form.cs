@@ -19,6 +19,55 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvMaterials.CellClick += dgvMaterials_CellClick;
             cbIsPassive.Items.AddRange(new string[] { "0 - Hayır", "1 - Evet" });
             LoadData();
+            CustomizeDataGridView();
+        }
+
+        private void CustomizeDataGridView()
+        {
+            dgvMaterials.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            dgvMaterials.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvMaterials.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F);
+            dgvMaterials.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvMaterials.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvMaterials.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvMaterials.MultiSelect = false;
+            dgvMaterials.AllowUserToAddRows = false;
+            dgvMaterials.AllowUserToDeleteRows = false;
+            dgvMaterials.ReadOnly = true;
+
+            // Alternating Row Colors
+            dgvMaterials.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            dgvMaterials.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvMaterials.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvMaterials.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Header Style
+            dgvMaterials.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold);
+            dgvMaterials.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+            dgvMaterials.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvMaterials.EnableHeadersVisualStyles = false;
+
+            // Cell Alignment
+            foreach (DataGridViewColumn column in dgvMaterials.Columns)
+            {
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            // Grid Lines
+            dgvMaterials.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvMaterials.GridColor = Color.DarkGray;
+
+            // Column Auto Resize
+            dgvMaterials.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Row Height
+            dgvMaterials.RowTemplate.Height = 30;
+
+            // Background Color
+            dgvMaterials.BackgroundColor = Color.LightSteelBlue;
+
+            // Docking for full resize
+            dgvMaterials.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
         }
         private void dgvMaterials_CellClick(object sender, DataGridViewCellEventArgs e)
         {

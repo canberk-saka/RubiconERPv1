@@ -34,11 +34,11 @@ namespace RubiconERPv1
             // 
             this.lstKontrolTablolari.ItemHeight = 16;
             this.lstKontrolTablolari.Items.AddRange(new object[] {
-            "Kontrol Tablo 1",
+            "Firma Kontrol",
             "Dil Kontrol",
             "Ülke Kontrol",
             "Şehir Kontrol",
-            "Unit Kontrol",
+            "Birim Kontrol",
             "Maliyet Merkezi Kontrol",
             "Rota Kontrol",
             "İş Merkezi Kontrol",
@@ -105,7 +105,7 @@ namespace RubiconERPv1
 
             switch (selectedItem)
             {
-                case "Kontrol Tablo 1":
+                case "Firma Kontrol":
                     var form001 = new BSMGR0GEN001Form();
                     form001.Show();
                     break;
@@ -125,7 +125,7 @@ namespace RubiconERPv1
                     form004.Show();
                     break;
 
-                case "Unit Kontrol":
+                case "Birim Kontrol":
                     var form005 = new BSMGR0GEN005Form();
                     form005.Show();
                     break;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
 
@@ -14,7 +15,13 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             InitializeComponent();
             string connectionString = "Data Source=EMRE;Initial Catalog=RubiconDB;Integrated Security=True;";
             _dataAccessLayer = new BSMGR0CCM001DAL(connectionString);
+
+            // Verileri yükle ve DataGridView'i özelleştir
             LoadData();
+            CustomizeDataGridView();
+
+            // DataGridView'e olay ekle
+            dgvCostCenters.CellClick += dgvCostCenters_CellClick;
         }
 
         private void LoadData()
@@ -30,6 +37,50 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
+        private void CustomizeDataGridView()
+        {
+            dgvCostCenters.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
+            dgvCostCenters.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCostCenters.DefaultCellStyle.Font = new Font("Arial", 10F);
+            dgvCostCenters.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvCostCenters.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCostCenters.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCostCenters.MultiSelect = false;
+            dgvCostCenters.AllowUserToAddRows = false;
+            dgvCostCenters.AllowUserToDeleteRows = false;
+            dgvCostCenters.ReadOnly = true;
+
+            // Alternating Row Colors
+            dgvCostCenters.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            dgvCostCenters.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvCostCenters.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvCostCenters.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Header Style
+            dgvCostCenters.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold);
+            dgvCostCenters.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+            dgvCostCenters.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvCostCenters.EnableHeadersVisualStyles = false;
+
+            // Cell Alignment
+            foreach (DataGridViewColumn column in dgvCostCenters.Columns)
+            {
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            // Grid Lines
+            dgvCostCenters.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCostCenters.GridColor = Color.DarkGray;
+
+            // Row Height
+            dgvCostCenters.RowTemplate.Height = 30;
+
+            // Background Color
+            dgvCostCenters.BackgroundColor = Color.LightSteelBlue;
+
+            
+        }
+
         private void ClearFields()
         {
             txtComCode.Clear();
@@ -40,9 +91,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text;
-            string docType = txtDocType.Text;
-            string docTypeText = txtDocTypeText.Text;
+            string comCode = txtComCode.Text.Trim();
+            string docType = txtDocType.Text.Trim();
+            string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
 
             if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(docType))
@@ -80,9 +131,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             string oldComCode = dgvCostCenters.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
             string oldDocType = dgvCostCenters.SelectedRows[0].Cells["DOCTYPE"].Value?.ToString();
-            string comCode = txtComCode.Text;
-            string docType = txtDocType.Text;
-            string docTypeText = txtDocTypeText.Text;
+            string comCode = txtComCode.Text.Trim();
+            string docType = txtDocType.Text.Trim();
+            string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
 
             try

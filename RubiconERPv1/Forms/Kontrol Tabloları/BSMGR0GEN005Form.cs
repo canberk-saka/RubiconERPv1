@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
 
@@ -15,7 +16,57 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             string connectionString = "Data Source=EMRE;Initial Catalog=RubiconDB;Integrated Security=True;";
             _dataAccessLayer = new BSMGR0GEN005DAL(connectionString);
             LoadData();
+            CustomizeDataGridView();
+            
         }
+        private void CustomizeDataGridView()
+        {
+            dgvUnits.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            dgvUnits.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvUnits.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F);
+            dgvUnits.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvUnits.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvUnits.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUnits.MultiSelect = false;
+            dgvUnits.AllowUserToAddRows = false;
+            dgvUnits.AllowUserToDeleteRows = false;
+            dgvUnits.ReadOnly = true;
+
+            // Alternating Row Colors
+            dgvUnits.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            dgvUnits.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvUnits.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvUnits.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Header Style
+            dgvUnits.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold);
+            dgvUnits.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+            dgvUnits.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvUnits.EnableHeadersVisualStyles = false;
+
+            // Cell Alignment
+            foreach (DataGridViewColumn column in dgvUnits.Columns)
+            {
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            // Grid Lines
+            dgvUnits.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvUnits.GridColor = Color.DarkGray;
+
+            // Column Auto Resize
+            dgvUnits.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Row Height
+            dgvUnits.RowTemplate.Height = 30;
+
+            // Background Color
+            dgvUnits.BackgroundColor = Color.LightSteelBlue;
+
+            // Docking for full resize
+            dgvUnits.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+        }
+
 
         private void LoadData()
         {
@@ -38,6 +89,8 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             chkIsMainUnit.Checked = false;
             txtMainUnitCode.Clear();
         }
+
+        
 
         private void btnSave_Click(object sender, EventArgs e)
         {

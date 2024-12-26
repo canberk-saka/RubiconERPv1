@@ -354,8 +354,38 @@
     <EmbeddedResource Include="Forms\deneme.resx">
       <DependentUpon>deneme.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0BOM001Form.resx">
+      <DependentUpon>BSMGR0BOM001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0CCM001Form.resx">
+      <DependentUpon>BSMGR0CCM001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN001Form.resx">
+      <DependentUpon>BSMGR0GEN001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN002Form.resx">
+      <DependentUpon>BSMGR0GEN002Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN003Form.resx">
+      <DependentUpon>BSMGR0GEN003Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN004Form.resx">
+      <DependentUpon>BSMGR0GEN004Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN005Form.resx">
+      <DependentUpon>BSMGR0GEN005Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0MAT001Form.resx">
       <DependentUpon>BSMGR0MAT001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0ROT001Form.resx">
+      <DependentUpon>BSMGR0ROT001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0ROT002Form.resx">
+      <DependentUpon>BSMGR0ROT002Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0ROT003Form.resx">
+      <DependentUpon>BSMGR0ROT003Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -41,127 +41,122 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostCenters)).BeginInit();
             this.SuspendLayout();
-
             // 
             // dgvCostCenters
             // 
+            this.dgvCostCenters.ColumnHeadersHeight = 29;
             this.dgvCostCenters.Location = new System.Drawing.Point(12, 12);
             this.dgvCostCenters.Name = "dgvCostCenters";
-            this.dgvCostCenters.Size = new System.Drawing.Size(760, 200);
+            this.dgvCostCenters.RowHeadersWidth = 51;
+            this.dgvCostCenters.Size = new System.Drawing.Size(1056, 255);
             this.dgvCostCenters.TabIndex = 0;
             this.dgvCostCenters.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCostCenters_CellClick);
-
+            // 
+            // txtComCode
+            // 
+            this.txtComCode.Location = new System.Drawing.Point(352, 300);
+            this.txtComCode.Name = "txtComCode";
+            this.txtComCode.Size = new System.Drawing.Size(200, 22);
+            this.txtComCode.TabIndex = 1;
+            // 
+            // txtDocType
+            // 
+            this.txtDocType.Location = new System.Drawing.Point(352, 341);
+            this.txtDocType.Name = "txtDocType";
+            this.txtDocType.Size = new System.Drawing.Size(200, 22);
+            this.txtDocType.TabIndex = 2;
+            // 
+            // txtDocTypeText
+            // 
+            this.txtDocTypeText.Location = new System.Drawing.Point(352, 383);
+            this.txtDocTypeText.Name = "txtDocTypeText";
+            this.txtDocTypeText.Size = new System.Drawing.Size(200, 22);
+            this.txtDocTypeText.TabIndex = 3;
+            // 
+            // chkIsPassive
+            // 
+            this.chkIsPassive.Location = new System.Drawing.Point(750, 304);
+            this.chkIsPassive.Name = "chkIsPassive";
+            this.chkIsPassive.Size = new System.Drawing.Size(200, 22);
+            this.chkIsPassive.TabIndex = 4;
             // 
             // lblComCode
             // 
             this.lblComCode.AutoSize = true;
-            this.lblComCode.Location = new System.Drawing.Point(12, 230);
+            this.lblComCode.Location = new System.Drawing.Point(217, 306);
             this.lblComCode.Name = "lblComCode";
-            this.lblComCode.Size = new System.Drawing.Size(74, 16);
+            this.lblComCode.Size = new System.Drawing.Size(78, 16);
+            this.lblComCode.TabIndex = 1;
             this.lblComCode.Text = "Firma Kodu:";
-
-            // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(120, 227);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(200, 22);
-            this.txtComCode.TabIndex = 1;
-
             // 
             // lblDocType
             // 
             this.lblDocType.AutoSize = true;
-            this.lblDocType.Location = new System.Drawing.Point(12, 265);
+            this.lblDocType.Location = new System.Drawing.Point(217, 347);
             this.lblDocType.Name = "lblDocType";
-            this.lblDocType.Size = new System.Drawing.Size(106, 16);
+            this.lblDocType.Size = new System.Drawing.Size(129, 16);
+            this.lblDocType.TabIndex = 2;
             this.lblDocType.Text = "Maliyet Merkezi Tipi:";
-
-            // 
-            // txtDocType
-            // 
-            this.txtDocType.Location = new System.Drawing.Point(120, 262);
-            this.txtDocType.Name = "txtDocType";
-            this.txtDocType.Size = new System.Drawing.Size(200, 22);
-            this.txtDocType.TabIndex = 2;
-
             // 
             // lblDocTypeText
             // 
             this.lblDocTypeText.AutoSize = true;
-            this.lblDocTypeText.Location = new System.Drawing.Point(12, 300);
+            this.lblDocTypeText.Location = new System.Drawing.Point(217, 391);
             this.lblDocTypeText.Name = "lblDocTypeText";
-            this.lblDocTypeText.Size = new System.Drawing.Size(106, 16);
+            this.lblDocTypeText.Size = new System.Drawing.Size(99, 16);
+            this.lblDocTypeText.TabIndex = 3;
             this.lblDocTypeText.Text = "Tip Açıklaması:";
-
-            // 
-            // txtDocTypeText
-            // 
-            this.txtDocTypeText.Location = new System.Drawing.Point(120, 297);
-            this.txtDocTypeText.Name = "txtDocTypeText";
-            this.txtDocTypeText.Size = new System.Drawing.Size(200, 22);
-            this.txtDocTypeText.TabIndex = 3;
-
             // 
             // lblIsPassive
             // 
             this.lblIsPassive.AutoSize = true;
-            this.lblIsPassive.Location = new System.Drawing.Point(12, 335);
+            this.lblIsPassive.Location = new System.Drawing.Point(624, 306);
             this.lblIsPassive.Name = "lblIsPassive";
-            this.lblIsPassive.Size = new System.Drawing.Size(50, 16);
+            this.lblIsPassive.Size = new System.Drawing.Size(61, 16);
+            this.lblIsPassive.TabIndex = 4;
             this.lblIsPassive.Text = "Pasif mi?";
-
-            // 
-            // chkIsPassive
-            // 
-            this.chkIsPassive.Location = new System.Drawing.Point(120, 332);
-            this.chkIsPassive.Name = "chkIsPassive";
-            this.chkIsPassive.Size = new System.Drawing.Size(200, 22);
-            this.chkIsPassive.TabIndex = 4;
-
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(400, 227);
+            this.btnSave.Location = new System.Drawing.Point(220, 445);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 30);
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Kaydet";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(400, 265);
+            this.btnUpdate.Location = new System.Drawing.Point(347, 445);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 30);
+            this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(400, 300);
+            this.btnDelete.Location = new System.Drawing.Point(493, 445);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 30);
+            this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Sil";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(400, 335);
+            this.btnClear.Location = new System.Drawing.Point(661, 445);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 30);
+            this.btnClear.TabIndex = 8;
             this.btnClear.Text = "Temizle";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-
             // 
             // BSMGR0CCM001Form
             // 
-            this.ClientSize = new System.Drawing.Size(784, 411);
+            this.ClientSize = new System.Drawing.Size(1080, 577);
             this.Controls.Add(this.dgvCostCenters);
             this.Controls.Add(this.lblComCode);
             this.Controls.Add(this.txtComCode);
@@ -181,6 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostCenters)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
     }
 }

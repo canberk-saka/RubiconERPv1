@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
@@ -18,6 +17,52 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             _dataAccessLayer = new BSMGR0GEN002DAL(connectionString);
             dgvLanguages.CellClick += dgvLanguages_CellClick;
             LoadData();
+            CustomizeDataGridView();
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                DataTable dtLanguages = _dataAccessLayer.GetAllRecords();
+                dgvLanguages.DataSource = dtLanguages;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Veriler yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CustomizeDataGridView()
+        {
+            dgvLanguages.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
+            dgvLanguages.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvLanguages.DefaultCellStyle.Font = new Font("Arial", 10F);
+            dgvLanguages.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvLanguages.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvLanguages.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvLanguages.MultiSelect = false;
+            dgvLanguages.AllowUserToAddRows = false;
+            dgvLanguages.AllowUserToDeleteRows = false;
+            dgvLanguages.ReadOnly = true;
+
+            dgvLanguages.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            dgvLanguages.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvLanguages.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvLanguages.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+
+            dgvLanguages.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+            dgvLanguages.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvLanguages.EnableHeadersVisualStyles = false;
+
+            dgvLanguages.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvLanguages.GridColor = Color.DarkGray;
+            dgvLanguages.BackgroundColor = Color.LightSteelBlue;
+
+            dgvLanguages.RowTemplate.Height = 30;
+
+            dgvLanguages.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+            
         }
 
         private void dgvLanguages_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -47,19 +92,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             txtLanText.Clear();
         }
 
-        private void LoadData()
-        {
-            try
-            {
-                DataTable dtLanguages = _dataAccessLayer.GetAllRecords();
-                dgvLanguages.DataSource = dtLanguages;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Veriler yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             string comCode = txtComCode.Text;
@@ -72,13 +104,19 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 return;
             }
 
-            _dataAccessLayer.AddRecord(comCode, lanCode, lanText);
-            MessageBox.Show("Kıyayt başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadData();
-            ClearFields();
+            try
+            {
+                _dataAccessLayer.AddRecord(comCode, lanCode, lanText);
+                MessageBox.Show("Kayıt başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
+                ClearFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kayıt ekleme sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // btnUpdate_Click metodu düzenlendi
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtLanCode.Text) || string.IsNullOrEmpty(txtLanText.Text))
@@ -89,19 +127,18 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             if (dgvLanguages.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Lütfen güncellemek için bir satır seçin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Lütfen güncellemek için bir kayıt seçin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                string oldLanCode = dgvLanguages.SelectedRows[0].Cells["LANCODE"].Value?.ToString(); // Eski dil kodu
-                string oldComCode = dgvLanguages.SelectedRows[0].Cells["COMCODE"].Value?.ToString(); // Eski firma kodu
-                string newComCode = txtComCode.Text;  // Yeni firma kodu
-                string newLanCode = txtLanCode.Text;  // Yeni dil kodu
-                string lanText = txtLanText.Text;     // Dil metni
+                string oldLanCode = dgvLanguages.SelectedRows[0].Cells["LANCODE"].Value?.ToString();
+                string oldComCode = dgvLanguages.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
+                string newComCode = txtComCode.Text;
+                string newLanCode = txtLanCode.Text;
+                string lanText = txtLanText.Text;
 
-                // UpdateRecord metodu eksiksiz parametrelerle çağrılıyor
                 bool result = _dataAccessLayer.UpdateRecord(oldComCode, oldLanCode, newComCode, newLanCode, lanText);
 
                 if (result)
@@ -112,7 +149,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 }
                 else
                 {
-                    MessageBox.Show("Güncelleme işlemi başarısız oldu. Kayıt bulunamamış olabilir.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Güncelleme işlemi başarısız oldu.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -120,7 +157,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 MessageBox.Show($"Güncelleme sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -133,7 +169,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             try
             {
                 string comCode = dgvLanguages.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
-                string lanCode = dgvLanguages.SelectedRows[0].Cells["LANGCODE"].Value?.ToString();
+                string lanCode = dgvLanguages.SelectedRows[0].Cells["LANCODE"].Value?.ToString();
 
                 if (!string.IsNullOrEmpty(comCode) && !string.IsNullOrEmpty(lanCode))
                 {
@@ -145,7 +181,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 {
                     MessageBox.Show("Geçersiz kayıt seçildi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
             catch (Exception ex)
             {
@@ -156,6 +191,12 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
+        }
+
+        private void lblLanCode_Click(object sender, EventArgs e)
+        {
+            // Bu alana etiket tıklandığında yapılacak işlemleri yazabilirsiniz.
+            MessageBox.Show("Dil Kodu etiketi tıklandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

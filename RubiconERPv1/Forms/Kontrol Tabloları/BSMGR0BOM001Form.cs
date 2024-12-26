@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
 
@@ -21,14 +22,14 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             // Data Access Layer başlatma
             _dataAccessLayer = new BSMGR0BOM001DAL(_connectionString);
 
-            // Verileri yükle
+            // Verileri yükle ve DataGridView'i özelleştir
             LoadData();
+            CustomizeDataGridView();
 
             // DataGridView'e satır seçme olayı ekle
             dgvBomTypes.CellClick += dgvBomTypes_CellClick;
         }
 
-        // Bağlantıyı test et
         private void TestConnection()
         {
             try
@@ -45,7 +46,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Verileri yükle
         private void LoadData()
         {
             try
@@ -59,7 +59,57 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Alanları temizle
+        private void CustomizeDataGridView()
+        {
+            dgvBomTypes.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            dgvBomTypes.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvBomTypes.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F);
+            dgvBomTypes.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvBomTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvBomTypes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBomTypes.MultiSelect = false;
+            dgvBomTypes.AllowUserToAddRows = false;
+            dgvBomTypes.AllowUserToDeleteRows = false;
+            dgvBomTypes.ReadOnly = true;
+
+            // Alternating Row Colors
+            dgvBomTypes.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            dgvBomTypes.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvBomTypes.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvBomTypes.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Header Style
+            dgvBomTypes.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold);
+            dgvBomTypes.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+            dgvBomTypes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvBomTypes.EnableHeadersVisualStyles = false;
+
+            // Cell Alignment
+            foreach (DataGridViewColumn column in dgvBomTypes.Columns)
+            {
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            // Grid Lines
+            dgvBomTypes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvBomTypes.GridColor = Color.DarkGray;
+
+            // Column Auto Resize
+            dgvBomTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Row Height
+            dgvBomTypes.RowTemplate.Height = 30;
+
+            // Selection Mode
+            dgvBomTypes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBomTypes.MultiSelect = false;
+
+            dgvBomTypes.BackgroundColor = Color.LightSteelBlue;
+
+            dgvBomTypes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+             // DataGridView tüm formu kaplayacak şekilde genişler.
+        }
+
         private void ClearFields()
         {
             txtComCode.Clear();
@@ -68,7 +118,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             chkIsPassive.Checked = false;
         }
 
-        // DataGridView'den satır seçme
         private void dgvBomTypes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || dgvBomTypes.Rows.Count <= e.RowIndex)
@@ -90,7 +139,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Kaydet butonu
         private void btnSave_Click(object sender, EventArgs e)
         {
             string comCode = txtComCode.Text.Trim();
@@ -117,7 +165,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Güncelle butonu
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvBomTypes.SelectedRows.Count == 0)
@@ -153,7 +200,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Sil butonu
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvBomTypes.SelectedRows.Count == 0)
@@ -177,7 +223,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Temizle butonu
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();

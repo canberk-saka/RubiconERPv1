@@ -28,96 +28,109 @@
             this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCountries)).BeginInit();
             this.SuspendLayout();
-
+            // 
             // dgvCountries
+            // 
             this.dgvCountries.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCountries.Location = new System.Drawing.Point(12, 12);
             this.dgvCountries.Name = "dgvCountries";
-            this.dgvCountries.Size = new System.Drawing.Size(600, 200);
+            this.dgvCountries.RowHeadersWidth = 51;
+            this.dgvCountries.Size = new System.Drawing.Size(968, 270);
             this.dgvCountries.TabIndex = 0;
-
+            // 
             // txtComCode
-            this.txtComCode.Location = new System.Drawing.Point(120, 230);
+            // 
+            this.txtComCode.Location = new System.Drawing.Point(134, 463);
             this.txtComCode.Name = "txtComCode";
             this.txtComCode.Size = new System.Drawing.Size(150, 22);
             this.txtComCode.TabIndex = 1;
-
+            // 
             // txtCountryCode
-            this.txtCountryCode.Location = new System.Drawing.Point(120, 270);
+            // 
+            this.txtCountryCode.Location = new System.Drawing.Point(384, 463);
             this.txtCountryCode.Name = "txtCountryCode";
             this.txtCountryCode.Size = new System.Drawing.Size(150, 22);
             this.txtCountryCode.TabIndex = 2;
-
+            // 
             // txtCountryText
-            this.txtCountryText.Location = new System.Drawing.Point(120, 310);
+            // 
+            this.txtCountryText.Location = new System.Drawing.Point(621, 463);
             this.txtCountryText.Name = "txtCountryText";
             this.txtCountryText.Size = new System.Drawing.Size(150, 22);
             this.txtCountryText.TabIndex = 3;
-
+            // 
             // lblComCode
+            // 
             this.lblComCode.AutoSize = true;
-            this.lblComCode.Location = new System.Drawing.Point(12, 233);
+            this.lblComCode.Location = new System.Drawing.Point(40, 463);
             this.lblComCode.Name = "lblComCode";
-            this.lblComCode.Size = new System.Drawing.Size(83, 16);
+            this.lblComCode.Size = new System.Drawing.Size(78, 16);
             this.lblComCode.TabIndex = 4;
             this.lblComCode.Text = "Firma Kodu:";
-
+            // 
             // lblCountryCode
+            // 
             this.lblCountryCode.AutoSize = true;
-            this.lblCountryCode.Location = new System.Drawing.Point(12, 273);
+            this.lblCountryCode.Location = new System.Drawing.Point(290, 466);
             this.lblCountryCode.Name = "lblCountryCode";
-            this.lblCountryCode.Size = new System.Drawing.Size(74, 16);
+            this.lblCountryCode.Size = new System.Drawing.Size(72, 16);
             this.lblCountryCode.TabIndex = 5;
             this.lblCountryCode.Text = "Ülke Kodu:";
-
+            // 
             // lblCountryText
+            // 
             this.lblCountryText.AutoSize = true;
-            this.lblCountryText.Location = new System.Drawing.Point(12, 313);
+            this.lblCountryText.Location = new System.Drawing.Point(540, 469);
             this.lblCountryText.Name = "lblCountryText";
-            this.lblCountryText.Size = new System.Drawing.Size(64, 16);
+            this.lblCountryText.Size = new System.Drawing.Size(61, 16);
             this.lblCountryText.TabIndex = 6;
             this.lblCountryText.Text = "Ülke Adı:";
-
+            // 
             // btnSave
-            this.btnSave.Location = new System.Drawing.Point(300, 230);
+            // 
+            this.btnSave.Location = new System.Drawing.Point(120, 546);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 30);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Kaydet";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-
+            // 
             // btnUpdate
-            this.btnUpdate.Location = new System.Drawing.Point(300, 270);
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(251, 546);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 30);
             this.btnUpdate.TabIndex = 8;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-
+            // 
             // btnDelete
-            this.btnDelete.Location = new System.Drawing.Point(300, 310);
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(388, 546);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 30);
             this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-
+            // 
             // btnClear
-            this.btnClear.Location = new System.Drawing.Point(420, 230);
+            // 
+            this.btnClear.Location = new System.Drawing.Point(532, 546);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 30);
             this.btnClear.TabIndex = 10;
             this.btnClear.Text = "Temizle";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-
+            // 
             // BSMGR0GEN003Form
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(992, 618);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -134,6 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCountries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.DataGridView dgvCountries;

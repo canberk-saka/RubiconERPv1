@@ -17,7 +17,45 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             string connectionString = "Data Source=EMRE;Initial Catalog=RubiconDB;Integrated Security=True;";
             _dataAccessLayer = new BSMGR0GEN003DAL(connectionString);
             dgvCountries.CellClick += dgvCountries_CellClick;
+            CustomizeDataGridView();
             LoadData();
+        }
+
+        private void CustomizeDataGridView()
+        {
+            // Genel tasarım
+            dgvCountries.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
+            dgvCountries.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCountries.DefaultCellStyle.Font = new Font("Arial", 10F);
+            dgvCountries.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvCountries.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCountries.MultiSelect = false;
+            dgvCountries.AllowUserToAddRows = false;
+            dgvCountries.AllowUserToDeleteRows = false;
+            dgvCountries.ReadOnly = true;
+
+            // Arka plan rengi ve grid stili
+            dgvCountries.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+            dgvCountries.BackgroundColor = Color.LightSteelBlue; // Açık mavi arka plan
+            dgvCountries.RowsDefaultCellStyle.BackColor = Color.White;
+            dgvCountries.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
+            dgvCountries.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Başlık stili
+            dgvCountries.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
+            dgvCountries.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvCountries.EnableHeadersVisualStyles = false;
+
+            // Grid ayarları
+            dgvCountries.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCountries.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvCountries.GridColor = Color.DarkGray;
+            dgvCountries.RowTemplate.Height = 30;
+
+            // DataGridView'in ekranı kaplamamasını sağlar
+            dgvCountries.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dgvCountries.Size = new Size(750, 250); // Boyutu ayarla
+            dgvCountries.Location = new Point(20, 20); // Formdaki konumu ayarla
         }
 
         private void dgvCountries_CellClick(object sender, DataGridViewCellEventArgs e)
