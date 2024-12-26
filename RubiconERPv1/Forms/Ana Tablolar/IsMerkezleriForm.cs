@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace RubiconERPv1.Forms.Ana_Tablolar
 {
-    public partial class MalzemeBilgileriForm : Form
+    public partial class IsMerkezleriForm : Form
     {
-        public MalzemeBilgileriForm()
+        public IsMerkezleriForm()
         {
             InitializeComponent();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -27,36 +32,18 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void MalzemeBilgileriForm2_Load(object sender, EventArgs e)
+        private void IsMerkezleriForm_Load(object sender, EventArgs e)
         {
             // Ekran boyutlarını al
             this.Size = Screen.PrimaryScreen.Bounds.Size;
 
             // Formun konumunu ekranın köşesine ayarla
             this.Location = Screen.PrimaryScreen.Bounds.Location;
-
-            // Formun ortasına yerleştirmek için hesaplama yap
-            int x = (this.ClientSize.Width - dataGridView1.Width) / 2;
-            int y = ((this.ClientSize.Height - dataGridView1.Height) / 2) + 100;
-
-            // Konumu ayarla
-            dataGridView1.Location = new Point(x, y);
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

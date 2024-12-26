@@ -169,7 +169,7 @@ namespace RubiconERPv1
         private void btnAnaTablo1_Click_1(object sender, EventArgs e)
         {
             // Ana Tablo 1'e tıklandığında MalzemeBilgileriForm'u aç
-            var malzemeBilgileriForm = new MalzemeBilgileriForm();
+            var malzemeBilgileriForm = new UrunAgaciForm();
             malzemeBilgileriForm.Show();
         }
     }

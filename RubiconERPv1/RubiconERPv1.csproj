@@ -262,11 +262,53 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ERPModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Alt Tablolar\IsMerkezleriTumBilgilerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\IsMerkezleriTumBilgilerForm.Designer.cs">
+      <DependentUpon>IsMerkezleriTumBilgilerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\MaliyetMerkezleriTumBilgilerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\MaliyetMerkezleriTumBilgilerForm.Designer.cs">
+      <DependentUpon>MaliyetMerkezleriTumBilgilerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.Designer.cs">
+      <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\UrunAgaclariTumBilgilerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\UrunAgaclariTumBilgilerForm.Designer.cs">
+      <DependentUpon>UrunAgaclariTumBilgilerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ana Tablolar\IsMerkezleriForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ana Tablolar\IsMerkezleriForm.Designer.cs">
+      <DependentUpon>IsMerkezleriForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ana Tablolar\MaliyetMerkezleriForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ana Tablolar\MaliyetMerkezleriForm.Designer.cs">
+      <DependentUpon>MaliyetMerkezleriForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Ana Tablolar\MalzemeBilgileriForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Ana Tablolar\MalzemeBilgileriForm.Designer.cs">
       <DependentUpon>MalzemeBilgileriForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ana Tablolar\UrunAgaciForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ana Tablolar\UrunAgaciForm.Designer.cs">
+      <DependentUpon>UrunAgaciForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\deneme.cs">
       <SubType>Form</SubType>
@@ -351,6 +393,9 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Ana Tablolar\MalzemeBilgileriForm.resx">
+      <DependentUpon>MalzemeBilgileriForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\deneme.resx">
       <DependentUpon>deneme.cs</DependentUpon>
     </EmbeddedResource>
