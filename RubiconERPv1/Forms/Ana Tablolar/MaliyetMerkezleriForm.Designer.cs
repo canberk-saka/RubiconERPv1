@@ -36,15 +36,15 @@
             this.cbSilindiMi = new System.Windows.Forms.ComboBox();
             this.lblPasifMi = new System.Windows.Forms.Label();
             this.cbPasifMi = new System.Windows.Forms.ComboBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnEkle = new System.Windows.Forms.Button();
+            this.btnTumunuGoster = new System.Windows.Forms.Button();
+            this.btnDuzenle = new System.Windows.Forms.Button();
+            this.btnIncele = new System.Windows.Forms.Button();
+            this.btnBul = new System.Windows.Forms.Button();
+            this.dgwMaliyetMerkezi = new System.Windows.Forms.DataGridView();
             this.groupBoxMaliyetMerkezi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwMaliyetMerkezi)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMaliyetMerkezi
@@ -251,86 +251,86 @@
             this.cbPasifMi.Size = new System.Drawing.Size(78, 24);
             this.cbPasifMi.TabIndex = 17;
             // 
-            // button6
+            // btnSil
             // 
-            this.button6.Location = new System.Drawing.Point(750, 330);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(126, 34);
-            this.button6.TabIndex = 31;
-            this.button6.Text = "Sil";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnSil.Location = new System.Drawing.Point(750, 330);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(126, 34);
+            this.btnSil.TabIndex = 31;
+            this.btnSil.Text = "Sil";
+            this.btnSil.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnEkle
             // 
-            this.button5.Location = new System.Drawing.Point(591, 330);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(126, 34);
-            this.button5.TabIndex = 30;
-            this.button5.Text = "Ekle";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnEkle.Location = new System.Drawing.Point(591, 330);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(126, 34);
+            this.btnEkle.TabIndex = 30;
+            this.btnEkle.Text = "Ekle";
+            this.btnEkle.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnTumunuGoster
             // 
-            this.button4.Location = new System.Drawing.Point(1281, 330);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(126, 34);
-            this.button4.TabIndex = 29;
-            this.button4.Text = "Tümünü Göster";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnTumunuGoster.Location = new System.Drawing.Point(1281, 330);
+            this.btnTumunuGoster.Name = "btnTumunuGoster";
+            this.btnTumunuGoster.Size = new System.Drawing.Size(126, 34);
+            this.btnTumunuGoster.TabIndex = 29;
+            this.btnTumunuGoster.Text = "Tümünü Göster";
+            this.btnTumunuGoster.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDuzenle
             // 
-            this.button3.Location = new System.Drawing.Point(427, 330);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 34);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "Düzenle";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDuzenle.Location = new System.Drawing.Point(427, 330);
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Size = new System.Drawing.Size(126, 34);
+            this.btnDuzenle.TabIndex = 28;
+            this.btnDuzenle.Text = "Düzenle";
+            this.btnDuzenle.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnIncele
             // 
-            this.button2.Location = new System.Drawing.Point(276, 330);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 34);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "İncele";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnIncele.Location = new System.Drawing.Point(276, 330);
+            this.btnIncele.Name = "btnIncele";
+            this.btnIncele.Size = new System.Drawing.Size(126, 34);
+            this.btnIncele.TabIndex = 27;
+            this.btnIncele.Text = "İncele";
+            this.btnIncele.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnBul
             // 
-            this.button1.Location = new System.Drawing.Point(125, 330);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 34);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Bul";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBul.Location = new System.Drawing.Point(125, 330);
+            this.btnBul.Name = "btnBul";
+            this.btnBul.Size = new System.Drawing.Size(126, 34);
+            this.btnBul.TabIndex = 26;
+            this.btnBul.Text = "Bul";
+            this.btnBul.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgwMaliyetMerkezi
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(125, 388);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1282, 286);
-            this.dataGridView1.TabIndex = 32;
+            this.dgwMaliyetMerkezi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwMaliyetMerkezi.Location = new System.Drawing.Point(125, 388);
+            this.dgwMaliyetMerkezi.Name = "dgwMaliyetMerkezi";
+            this.dgwMaliyetMerkezi.RowHeadersWidth = 51;
+            this.dgwMaliyetMerkezi.Size = new System.Drawing.Size(1282, 286);
+            this.dgwMaliyetMerkezi.TabIndex = 32;
             // 
             // MaliyetMerkezleriForm
             // 
             this.ClientSize = new System.Drawing.Size(1540, 845);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dgwMaliyetMerkezi);
+            this.Controls.Add(this.btnSil);
+            this.Controls.Add(this.btnEkle);
+            this.Controls.Add(this.btnTumunuGoster);
+            this.Controls.Add(this.btnDuzenle);
+            this.Controls.Add(this.btnIncele);
+            this.Controls.Add(this.btnBul);
             this.Controls.Add(this.groupBoxMaliyetMerkezi);
             this.Name = "MaliyetMerkezleriForm";
             this.Text = "Maliyet Merkezi Bilgileri";
             this.Load += new System.EventHandler(this.MaliyetMerkezleriForm_Load_1);
             this.groupBoxMaliyetMerkezi.ResumeLayout(false);
             this.groupBoxMaliyetMerkezi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwMaliyetMerkezi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -356,12 +356,12 @@
         private System.Windows.Forms.ComboBox cbPasifMi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnSil;
+        private System.Windows.Forms.Button btnEkle;
+        private System.Windows.Forms.Button btnTumunuGoster;
+        private System.Windows.Forms.Button btnDuzenle;
+        private System.Windows.Forms.Button btnIncele;
+        private System.Windows.Forms.Button btnBul;
+        private System.Windows.Forms.DataGridView dgwMaliyetMerkezi;
     }
 }

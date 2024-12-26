@@ -241,6 +241,7 @@
     <Compile Include="DAL\BSMGR0GEN004DAL.cs" />
     <Compile Include="DAL\BSMGR0GEN005DAL.cs" />
     <Compile Include="DAL\BSMGR0MAT001DAL.cs" />
+    <Compile Include="DAL\BSMGR0MATDAL.cs" />
     <Compile Include="DAL\BSMGR0MATHEADDAL.cs" />
     <Compile Include="DAL\BSMGR0MATTEXTDAL.cs" />
     <Compile Include="DAL\BSMGR0ROT001DAL.cs" />
@@ -393,6 +394,9 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Ana Tablolar\MaliyetMerkezleriForm.resx">
+      <DependentUpon>MaliyetMerkezleriForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ana Tablolar\MalzemeBilgileriForm.resx">
       <DependentUpon>MalzemeBilgileriForm.cs</DependentUpon>
     </EmbeddedResource>
