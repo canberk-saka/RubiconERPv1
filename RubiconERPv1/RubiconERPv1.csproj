@@ -394,6 +394,18 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Alt Tablolar\IsMerkezleriTumBilgilerForm.resx">
+      <DependentUpon>IsMerkezleriTumBilgilerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\MaliyetMerkezleriTumBilgilerForm.resx">
+      <DependentUpon>MaliyetMerkezleriTumBilgilerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.resx">
+      <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\UrunAgaclariTumBilgilerForm.resx">
+      <DependentUpon>UrunAgaclariTumBilgilerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ana Tablolar\MaliyetMerkezleriForm.resx">
       <DependentUpon>MaliyetMerkezleriForm.cs</DependentUpon>
     </EmbeddedResource>

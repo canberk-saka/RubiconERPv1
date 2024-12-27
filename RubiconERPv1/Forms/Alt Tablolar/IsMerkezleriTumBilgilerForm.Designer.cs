@@ -50,17 +50,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -289,64 +290,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "İş Merkezi Bilgileri";
             // 
-            // textBox9
+            // textBox5
             // 
-            this.textBox9.Location = new System.Drawing.Point(506, 109);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(108, 20);
-            this.textBox9.TabIndex = 33;
+            this.textBox5.Location = new System.Drawing.Point(802, 322);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(108, 20);
+            this.textBox5.TabIndex = 43;
             // 
-            // comboBox3
+            // label13
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(1215, 279);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(82, 21);
-            this.comboBox3.TabIndex = 34;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(1118, 280);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 16);
-            this.label12.TabIndex = 35;
-            this.label12.Text = "Pasif Mi?";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(243, 276);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(161, 20);
-            this.textBox10.TabIndex = 37;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label18.Location = new System.Drawing.Point(82, 279);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(155, 16);
-            this.label18.TabIndex = 36;
-            this.label18.Text = "İş Merkezi Kısa Açıklama";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(247, 319);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(358, 20);
-            this.textBox11.TabIndex = 39;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label19.Location = new System.Drawing.Point(82, 320);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(159, 16);
-            this.label19.TabIndex = 38;
-            this.label19.Text = "İş Merkezi Uzun Açıklama";
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label13.Location = new System.Drawing.Point(677, 323);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 16);
+            this.label13.TabIndex = 42;
+            this.label13.Text = "Operasyon Kodu";
             // 
             // comboBox7
             // 
@@ -366,30 +325,82 @@
             this.label20.TabIndex = 40;
             this.label20.Text = "Dil Kodu";
             // 
-            // label13
+            // textBox11
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label13.Location = new System.Drawing.Point(677, 323);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(108, 16);
-            this.label13.TabIndex = 42;
-            this.label13.Text = "Operasyon Kodu";
+            this.textBox11.Location = new System.Drawing.Point(247, 319);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(358, 20);
+            this.textBox11.TabIndex = 39;
             // 
-            // textBox5
+            // label19
             // 
-            this.textBox5.Location = new System.Drawing.Point(802, 322);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(108, 20);
-            this.textBox5.TabIndex = 43;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label19.Location = new System.Drawing.Point(82, 320);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(159, 16);
+            this.label19.TabIndex = 38;
+            this.label19.Text = "İş Merkezi Uzun Açıklama";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(243, 276);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(161, 20);
+            this.textBox10.TabIndex = 37;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label18.Location = new System.Drawing.Point(82, 279);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(155, 16);
+            this.label18.TabIndex = 36;
+            this.label18.Text = "İş Merkezi Kısa Açıklama";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label12.Location = new System.Drawing.Point(1118, 280);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(61, 16);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "Pasif Mi?";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(1215, 279);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(82, 21);
+            this.comboBox3.TabIndex = 34;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(506, 109);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(108, 20);
+            this.textBox9.TabIndex = 33;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1304, 640);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 45);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "Kaydet";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // IsMerkezleriTumBilgilerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1540, 845);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "IsMerkezleriTumBilgilerForm";
             this.Text = "IsMerkezleriTumBilgilerForm";
             this.Load += new System.EventHandler(this.IsMerkezleriTumBilgilerForm_Load);
@@ -433,5 +444,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button1;
     }
 }
