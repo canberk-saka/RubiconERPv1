@@ -79,6 +79,7 @@ namespace RubiconERPv1
             this.btnAnaTablo2.TabIndex = 1;
             this.btnAnaTablo2.Text = "Ana Tablo 2";
             this.btnAnaTablo2.UseVisualStyleBackColor = true;
+            this.btnAnaTablo2.Click += new System.EventHandler(this.btnAnaTablo2_Click_1);
             // 
             // MainForm
             // 
@@ -171,6 +172,11 @@ namespace RubiconERPv1
             // Ana Tablo 1'e tıklandığında MalzemeBilgileriForm'u aç
             var malzemeBilgileriForm = new MalzemeBilgileriForm();
             malzemeBilgileriForm.Show();
+        }
+
+        private void btnAnaTablo2_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
