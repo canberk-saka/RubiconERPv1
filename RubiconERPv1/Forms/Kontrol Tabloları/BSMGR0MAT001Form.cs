@@ -14,7 +14,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
         public BSMGR0MAT001Form()
         {
             InitializeComponent();
-            string connectionString = "Data Source=EMRE;Initial Catalog=RubiconDB;Integrated Security=True;";
+            string connectionString = DbConnection.GetConnectionString();
             _dataAccessLayer = new BSMGR0MAT001DAL(connectionString);
             dgvMaterials.CellClick += dgvMaterials_CellClick;
             cbIsPassive.Items.AddRange(new string[] { "0 - Hayır", "1 - Evet" });
