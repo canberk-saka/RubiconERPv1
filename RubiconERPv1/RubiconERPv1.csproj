@@ -394,6 +394,9 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Alt Tablolar\MaliyetMerkezleriTumBilgilerForm.resx">
+      <DependentUpon>MaliyetMerkezleriTumBilgilerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.resx">
       <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
     </EmbeddedResource>

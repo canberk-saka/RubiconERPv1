@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
+using RubiconERPv1.Forms.Alt_Tablolar;
 
 namespace RubiconERPv1.Forms.Ana_Tablolar
 {
@@ -78,6 +79,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                 comboBox.DataSource = newData;
                 comboBox.DisplayMember = displayMember; // Görüntülenecek sütun
                 comboBox.ValueMember = valueMember; // Değer sütunu
+                comboBox.SelectedIndex = 0; // İlk seçeneği göster
             }
             catch (Exception ex)
             {
@@ -198,8 +200,38 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
 
         private void btnIncele_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                // Seçilen satırdan malzeme kodunu al
+                if (dgvMalzemeBilgileri.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dgvMalzemeBilgileri.SelectedRows[0];
+                    string malzemeKodu = selectedRow.Cells["Malzeme Kodu"].Value.ToString();  // Bu satırdaki "Malzeme Kodu" doğru olduğundan emin olun
+
+                    // Malzeme detaylarını al
+                    DataTable materialDetails = _dataAccessLayer.GetMaterialDetails(malzemeKodu);
+
+                    // Yeni formu oluştur
+                    MalzemeTumBilgilerForm tumBilgilerForm = new MalzemeTumBilgilerForm();
+
+                    // Formu verilerle doldur
+                    tumBilgilerForm.LoadMaterialDetails(materialDetails);
+
+                    // Formu göster
+                    tumBilgilerForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir malzeme seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
 
         private void txtMalzemeUzunAciklama_TextChanged(object sender, EventArgs e)
         {

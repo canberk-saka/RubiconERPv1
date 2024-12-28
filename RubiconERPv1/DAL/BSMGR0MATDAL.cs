@@ -140,6 +140,56 @@ WHERE
             }
         }
 
+        public DataTable GetMaterialDetails(string malzemeKodu)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"
+            SELECT 
+                h.MATDOCNUM AS 'Malzeme Kodu',
+                h.COMCODE AS 'Firma Kodu',
+                h.MATDOCTYPE AS 'Malzeme Tipi',
+                h.MATDOCFROM AS 'Geçerlilik Başlangıç',
+                h.MATDOCUNTIL AS 'Geçerlilik Bitiş',
+                t.MATSTEXT AS 'Malzeme Kısa Açıklama',
+                t.MATLTEXT AS 'Malzeme Uzun Açıklama',
+                t.LANCODE AS 'Dil Kodu',
+                h.SUPPLYTYPE AS 'Tedarik Tipi',
+                h.STUNIT AS 'Malzeme Stok Birimi',
+                h.NETWEIGHT AS 'Net Ağırlık',
+                h.NWUNIT AS 'Net Ağırlık Birimi',
+                h.BRUTWEIGHT AS 'Brüt Ağırlık',
+                h.BWUNIT AS 'Brüt Ağırlık Birimi',
+                h.ISBOM AS 'Ürün Ağacı Var Mı?',
+                h.BOMDOCTYPE AS 'Ürün Ağacı Tipi',
+                h.BOMDOCNUM AS 'Ürün Ağacı Kodu',
+                h.ISROUTE AS 'Rota Var Mı?',
+                h.ROTDOCNUM AS 'Rota Numarası',
+                h.ROTDOCTYPE AS 'Rota Tipi',
+                h.ISDELETED AS 'Silindi Mi?',
+                h.ISPASSIVE AS 'Pasif Mi?'
+            FROM 
+                BSMGR0MATHEAD h
+            INNER JOIN 
+                BSMGR0MATTEXT t ON h.MATDOCNUM = t.MATDOCNUM
+            WHERE 
+                h.MATDOCNUM = @malzemeKodu";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@malzemeKodu", malzemeKodu);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+
+                connection.Open();
+                adapter.Fill(dataTable);
+                connection.Close();
+
+                return dataTable;
+            }
+        }
+
+
 
     }
 }

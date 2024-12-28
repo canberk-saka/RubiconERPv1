@@ -31,7 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpGecerlilikBitisTarihi = new System.Windows.Forms.DateTimePicker();
             this.dtpGecerlilikBaslangicTarihi = new System.Windows.Forms.DateTimePicker();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
+            this.cmbPasifMi = new System.Windows.Forms.ComboBox();
             this.cmbSilindiMi = new System.Windows.Forms.ComboBox();
             this.cmbDilKodu = new System.Windows.Forms.ComboBox();
             this.cmbMalzemeStokBirimi = new System.Windows.Forms.ComboBox();
@@ -44,7 +44,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.cmbPasifMi = new System.Windows.Forms.Label();
+            this.lblPasifMi = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dtp = new System.Windows.Forms.Label();
@@ -85,7 +85,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dtpGecerlilikBitisTarihi);
             this.groupBox1.Controls.Add(this.dtpGecerlilikBaslangicTarihi);
-            this.groupBox1.Controls.Add(this.comboBox13);
+            this.groupBox1.Controls.Add(this.cmbPasifMi);
             this.groupBox1.Controls.Add(this.cmbSilindiMi);
             this.groupBox1.Controls.Add(this.cmbDilKodu);
             this.groupBox1.Controls.Add(this.cmbMalzemeStokBirimi);
@@ -98,7 +98,7 @@
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.cmbPasifMi);
+            this.groupBox1.Controls.Add(this.lblPasifMi);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.dtp);
@@ -115,7 +115,7 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Malzeme Temel Bilgileri";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            //this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // dtpGecerlilikBitisTarihi
             // 
@@ -133,14 +133,14 @@
             this.dtpGecerlilikBaslangicTarihi.Size = new System.Drawing.Size(224, 22);
             this.dtpGecerlilikBaslangicTarihi.TabIndex = 44;
             // 
-            // comboBox13
+            // cmbPasifMi
             // 
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Location = new System.Drawing.Point(1161, 95);
-            this.comboBox13.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(116, 24);
-            this.comboBox13.TabIndex = 43;
+            this.cmbPasifMi.FormattingEnabled = true;
+            this.cmbPasifMi.Location = new System.Drawing.Point(1161, 95);
+            this.cmbPasifMi.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbPasifMi.Name = "cmbPasifMi";
+            this.cmbPasifMi.Size = new System.Drawing.Size(116, 24);
+            this.cmbPasifMi.TabIndex = 43;
             // 
             // cmbSilindiMi
             // 
@@ -250,15 +250,15 @@
             this.label20.TabIndex = 31;
             this.label20.Text = "Malzeme Uzun Açıklaması";
             // 
-            // cmbPasifMi
+            // lblPasifMi
             // 
-            this.cmbPasifMi.AutoSize = true;
-            this.cmbPasifMi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.cmbPasifMi.Location = new System.Drawing.Point(1068, 95);
-            this.cmbPasifMi.Name = "cmbPasifMi";
-            this.cmbPasifMi.Size = new System.Drawing.Size(79, 20);
-            this.cmbPasifMi.TabIndex = 30;
-            this.cmbPasifMi.Text = "Pasif Mi?";
+            this.lblPasifMi.AutoSize = true;
+            this.lblPasifMi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblPasifMi.Location = new System.Drawing.Point(1068, 95);
+            this.lblPasifMi.Name = "lblPasifMi";
+            this.lblPasifMi.Size = new System.Drawing.Size(79, 20);
+            this.lblPasifMi.TabIndex = 30;
+            this.lblPasifMi.Text = "Pasif Mi?";
             // 
             // label18
             // 
@@ -585,7 +585,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label cmbPasifMi;
+        private System.Windows.Forms.Label lblPasifMi;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label dtp;
@@ -607,7 +607,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DateTimePicker dtpGecerlilikBitisTarihi;
         private System.Windows.Forms.DateTimePicker dtpGecerlilikBaslangicTarihi;
-        private System.Windows.Forms.ComboBox comboBox13;
+        private System.Windows.Forms.ComboBox cmbPasifMi;
         private System.Windows.Forms.ComboBox cmbSilindiMi;
         private System.Windows.Forms.ComboBox cmbDilKodu;
         private System.Windows.Forms.ComboBox cmbMalzemeStokBirimi;
