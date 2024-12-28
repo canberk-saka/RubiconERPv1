@@ -200,5 +200,10 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
         {
             
         }
+
+        private void txtMalzemeUzunAciklama_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -281,6 +281,7 @@
             this.txtMalzemeUzunAciklama.Name = "txtMalzemeUzunAciklama";
             this.txtMalzemeUzunAciklama.Size = new System.Drawing.Size(595, 22);
             this.txtMalzemeUzunAciklama.TabIndex = 64;
+            this.txtMalzemeUzunAciklama.TextChanged += new System.EventHandler(this.txtMalzemeUzunAciklama_TextChanged);
             // 
             // cmbTedarikTipi
             // 
