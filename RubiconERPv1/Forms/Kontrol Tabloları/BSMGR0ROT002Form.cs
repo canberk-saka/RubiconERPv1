@@ -23,12 +23,10 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             _dataAccessLayer = new BSMGR0ROT002DAL(_connectionString);
 
             // Verileri yükle
-<<<<<<< Updated upstream
-            LoadData();
-=======
+
             LoadData(); 
             CustomizeDataGridView();
->>>>>>> Stashed changes
+
 
             // DataGridView'e satır seçme olayı ekle
             dgvCenters.CellClick += dgvCenters_CellClick;
