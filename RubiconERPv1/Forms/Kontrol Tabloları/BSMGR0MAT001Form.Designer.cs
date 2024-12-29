@@ -40,11 +40,11 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             this.cbIsPassive = new System.Windows.Forms.ComboBox();
             this.txtDocTypeText = new System.Windows.Forms.TextBox();
             this.txtDocType = new System.Windows.Forms.TextBox();
-            this.txtComCode = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaterials)).BeginInit();
             this.grpMaterialDetails.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             // 
             // grpMaterialDetails
             // 
+            this.grpMaterialDetails.Controls.Add(this.comboBox1);
             this.grpMaterialDetails.Controls.Add(this.label4);
             this.grpMaterialDetails.Controls.Add(this.label3);
             this.grpMaterialDetails.Controls.Add(this.label2);
@@ -68,7 +69,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             this.grpMaterialDetails.Controls.Add(this.cbIsPassive);
             this.grpMaterialDetails.Controls.Add(this.txtDocTypeText);
             this.grpMaterialDetails.Controls.Add(this.txtDocType);
-            this.grpMaterialDetails.Controls.Add(this.txtComCode);
             this.grpMaterialDetails.Location = new System.Drawing.Point(226, 476);
             this.grpMaterialDetails.Name = "grpMaterialDetails";
             this.grpMaterialDetails.Size = new System.Drawing.Size(650, 145);
@@ -134,13 +134,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             this.txtDocType.Size = new System.Drawing.Size(100, 22);
             this.txtDocType.TabIndex = 1;
             // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(109, 31);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(100, 22);
-            this.txtComCode.TabIndex = 0;
-            // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(309, 647);
@@ -159,7 +152,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click_1);
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -180,6 +173,15 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             this.btnClear.Text = "Temizle";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.AccessibleName = "comboBox1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(91, 31);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 8;
             // 
             // BSMGR0MAT001Form
             // 
@@ -213,10 +215,10 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
         private ComboBox cbIsPassive;
         private TextBox txtDocTypeText;
         private TextBox txtDocType;
-        private TextBox txtComCode;
         private Button btnSave;
         private Button btnUpdate;
         private Button btnDelete;
         private Button btnClear;
+        private ComboBox comboBox1;
     }
 }

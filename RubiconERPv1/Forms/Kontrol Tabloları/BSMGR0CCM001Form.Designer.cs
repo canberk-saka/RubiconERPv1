@@ -4,7 +4,6 @@
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.DataGridView dgvCostCenters;
-        private System.Windows.Forms.TextBox txtComCode;
         private System.Windows.Forms.TextBox txtDocType;
         private System.Windows.Forms.TextBox txtDocTypeText;
         private System.Windows.Forms.CheckBox chkIsPassive;
@@ -29,7 +28,6 @@
         private void InitializeComponent()
         {
             this.dgvCostCenters = new System.Windows.Forms.DataGridView();
-            this.txtComCode = new System.Windows.Forms.TextBox();
             this.txtDocType = new System.Windows.Forms.TextBox();
             this.txtDocTypeText = new System.Windows.Forms.TextBox();
             this.chkIsPassive = new System.Windows.Forms.CheckBox();
@@ -41,6 +39,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCostCenters)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,13 +52,6 @@
             this.dgvCostCenters.Size = new System.Drawing.Size(1056, 255);
             this.dgvCostCenters.TabIndex = 0;
             this.dgvCostCenters.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCostCenters_CellClick);
-            // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(352, 300);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(200, 22);
-            this.txtComCode.TabIndex = 1;
             // 
             // txtDocType
             // 
@@ -154,12 +146,21 @@
             this.btnClear.Text = "Temizle";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AccessibleName = "comboBox1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(302, 306);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 9;
+            // 
             // BSMGR0CCM001Form
             // 
             this.ClientSize = new System.Drawing.Size(1080, 577);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dgvCostCenters);
             this.Controls.Add(this.lblComCode);
-            this.Controls.Add(this.txtComCode);
             this.Controls.Add(this.lblDocType);
             this.Controls.Add(this.txtDocType);
             this.Controls.Add(this.lblDocTypeText);
@@ -178,5 +179,7 @@
             this.PerformLayout();
 
         }
+
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

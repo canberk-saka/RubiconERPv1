@@ -22,6 +22,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             // Data Access Layer başlatma
             _dataAccessLayer = new BSMGR0ROT003DAL(connectionString);
 
+            // Firma kodlarını ComboBox'a yükle
+            LoadCompanyCodes();
+
             // Verileri yükle
             LoadData();
             CustomizeDataGridView();
@@ -29,11 +32,12 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             // DataGridView'e satır seçme olayı ekle
             dgvOperations.CellClick += dgvOperations_CellClick;
         }
+
         private void CustomizeDataGridView()
         {
-            dgvOperations.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            dgvOperations.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
             dgvOperations.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvOperations.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F);
+            dgvOperations.DefaultCellStyle.Font = new Font("Arial", 10F);
             dgvOperations.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvOperations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvOperations.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -42,43 +46,26 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvOperations.AllowUserToDeleteRows = false;
             dgvOperations.ReadOnly = true;
 
-            // Alternating Row Colors
             dgvOperations.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
             dgvOperations.RowsDefaultCellStyle.BackColor = Color.White;
             dgvOperations.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
             dgvOperations.RowsDefaultCellStyle.SelectionForeColor = Color.White;
 
-            // Header Style
             dgvOperations.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold);
             dgvOperations.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
             dgvOperations.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvOperations.EnableHeadersVisualStyles = false;
 
-            // Cell Alignment
-            foreach (DataGridViewColumn column in dgvOperations.Columns)
-            {
-                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-
-            // Grid Lines
             dgvOperations.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvOperations.GridColor = Color.DarkGray;
 
-            // Column Auto Resize
             dgvOperations.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Row Height
             dgvOperations.RowTemplate.Height = 30;
-
-            // Background Color
             dgvOperations.BackgroundColor = Color.LightSteelBlue;
 
-            // Docking for full resize
             dgvOperations.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
         }
 
-
-        // Bağlantıyı test et
         private void TestConnection()
         {
             try
@@ -95,7 +82,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Verileri yükle
         private void LoadData()
         {
             try
@@ -109,16 +95,30 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Alanları temizle
+        private void LoadCompanyCodes()
+        {
+            try
+            {
+                DataTable companyCodes = _dataAccessLayer.GetCompanyCodes();
+                comboBox1.DataSource = companyCodes;
+                comboBox1.DisplayMember = "COMCODE";
+                comboBox1.ValueMember = "COMCODE";
+                comboBox1.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Firma kodları yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void ClearFields()
         {
-            txtComCode.Clear();
+            comboBox1.SelectedIndex = -1;
             txtDocType.Clear();
             txtDocTypeText.Clear();
             chkIsPassive.Checked = false;
         }
 
-        // DataGridView'den satır seçme
         private void dgvOperations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || dgvOperations.Rows.Count <= e.RowIndex)
@@ -129,9 +129,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             try
             {
-                txtComCode.Text = dgvOperations.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
-                txtDocType.Text = dgvOperations.Rows[e.RowIndex].Cells["DOCTYPE"].Value?.ToString() ?? string.Empty;
-                txtDocTypeText.Text = dgvOperations.Rows[e.RowIndex].Cells["DOCTYPETEXT"].Value?.ToString() ?? string.Empty;
+                comboBox1.SelectedValue = dgvOperations.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString();
+                txtDocType.Text = dgvOperations.Rows[e.RowIndex].Cells["DOCTYPE"].Value?.ToString();
+                txtDocTypeText.Text = dgvOperations.Rows[e.RowIndex].Cells["DOCTYPETEXT"].Value?.ToString();
                 chkIsPassive.Checked = dgvOperations.Rows[e.RowIndex].Cells["ISPASSIVE"].Value?.ToString() == "1";
             }
             catch (Exception ex)
@@ -140,10 +140,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Kaydet butonu
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString();
             string docType = txtDocType.Text.Trim();
             string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
@@ -167,7 +166,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Güncelle butonu
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvOperations.SelectedRows.Count == 0)
@@ -178,7 +176,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             string oldComCode = dgvOperations.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
             string oldDocType = dgvOperations.SelectedRows[0].Cells["DOCTYPE"].Value?.ToString();
-            string comCode = txtComCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString();
             string docType = txtDocType.Text.Trim();
             string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
@@ -203,7 +201,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Sil butonu
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvOperations.SelectedRows.Count == 0)
@@ -227,7 +224,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Temizle butonu
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();

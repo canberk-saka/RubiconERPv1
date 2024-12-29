@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
@@ -16,9 +15,34 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             InitializeComponent();
             string connectionString = DbConnection.GetConnectionString();
             _dataAccessLayer = new BSMGR0GEN003DAL(connectionString);
+
             dgvCountries.CellClick += dgvCountries_CellClick;
+            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+
+            LoadComboBox();
             CustomizeDataGridView();
             LoadData();
+        }
+
+        private void LoadComboBox()
+        {
+            try
+            {
+                DataTable dtCompanies = _dataAccessLayer.GetCompanyCodes();
+                comboBox1.DataSource = dtCompanies;
+                comboBox1.DisplayMember = "COMCODE"; // Görüntülenecek sütun
+                comboBox1.ValueMember = "COMCODE";   // Değer olarak kullanılacak sütun
+                comboBox1.SelectedIndex = -1; // Başlangıçta seçili bir değer olmasın
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Firma kodları yüklenirken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Firma kodu ComboBox'tan seçildiğinde yapılacak işlemler
         }
 
         private void CustomizeDataGridView()
@@ -58,33 +82,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvCountries.Location = new Point(20, 20); // Formdaki konumu ayarla
         }
 
-        private void dgvCountries_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || dgvCountries.Rows.Count <= e.RowIndex)
-            {
-                MessageBox.Show("Geçersiz satır seçimi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                txtComCode.Text = dgvCountries.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
-                txtCountryCode.Text = dgvCountries.Rows[e.RowIndex].Cells["COUNTRYCODE"].Value?.ToString() ?? string.Empty;
-                txtCountryText.Text = dgvCountries.Rows[e.RowIndex].Cells["COUNTRYTEXT"].Value?.ToString() ?? string.Empty;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Satır verileri yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ClearFields()
-        {
-            txtComCode.Clear();
-            txtCountryCode.Clear();
-            txtCountryText.Clear();
-        }
-
         private void LoadData()
         {
             try
@@ -98,9 +95,36 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
+        private void ClearFields()
+        {
+            comboBox1.SelectedIndex = -1; // ComboBox'u temizle
+            txtCountryCode.Clear();
+            txtCountryText.Clear();
+        }
+
+        private void dgvCountries_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || dgvCountries.Rows.Count <= e.RowIndex)
+            {
+                MessageBox.Show("Geçersiz satır seçimi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                comboBox1.Text = dgvCountries.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
+                txtCountryCode.Text = dgvCountries.Rows[e.RowIndex].Cells["COUNTRYCODE"].Value?.ToString() ?? string.Empty;
+                txtCountryText.Text = dgvCountries.Rows[e.RowIndex].Cells["COUNTRYTEXT"].Value?.ToString() ?? string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Satır verileri yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text;
+            string comCode = comboBox1.SelectedValue?.ToString();
             string countryCode = txtCountryCode.Text;
             string countryText = txtCountryText.Text;
 
@@ -110,10 +134,17 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 return;
             }
 
-            _dataAccessLayer.AddRecord(comCode, countryCode, countryText);
-            MessageBox.Show("Kayıt başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadData();
-            ClearFields();
+            try
+            {
+                _dataAccessLayer.AddRecord(comCode, countryCode, countryText);
+                MessageBox.Show("Kayıt başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
+                ClearFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kayıt ekleme sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -134,7 +165,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             {
                 string oldCountryCode = dgvCountries.SelectedRows[0].Cells["COUNTRYCODE"].Value?.ToString();
                 string oldComCode = dgvCountries.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
-                string newComCode = txtComCode.Text;
+                string newComCode = comboBox1.SelectedValue?.ToString();
                 string newCountryCode = txtCountryCode.Text;
                 string countryText = txtCountryText.Text;
 
@@ -148,7 +179,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 }
                 else
                 {
-                    MessageBox.Show("Güncelleme işlemi başarısız oldu. Kayıt bulunamamış olabilir.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Güncelleme işlemi başarısız oldu.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -170,17 +201,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 string comCode = dgvCountries.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
                 string countryCode = dgvCountries.SelectedRows[0].Cells["COUNTRYCODE"].Value?.ToString();
 
-                if (!string.IsNullOrEmpty(comCode) && !string.IsNullOrEmpty(countryCode))
-                {
-                    _dataAccessLayer.DeleteRecord(comCode, countryCode);
-                    MessageBox.Show("Kayıt başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show("Geçersiz kayıt seçildi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
+                _dataAccessLayer.DeleteRecord(comCode, countryCode);
+                MessageBox.Show("Kayıt başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
             }
             catch (Exception ex)
             {

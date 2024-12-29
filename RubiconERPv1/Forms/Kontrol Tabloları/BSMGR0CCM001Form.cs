@@ -16,12 +16,32 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             string connectionString = DbConnection.GetConnectionString();
             _dataAccessLayer = new BSMGR0CCM001DAL(connectionString);
 
-            // Verileri yükle ve DataGridView'i özelleştir
+            // Verileri yükle
             LoadData();
+            LoadComboBoxData(); // comboBox1'i doldurmak için
+
+            // DataGridView ve görünüm ayarları
             CustomizeDataGridView();
 
             // DataGridView'e olay ekle
             dgvCostCenters.CellClick += dgvCostCenters_CellClick;
+        }
+
+        private void LoadComboBoxData()
+        {
+            try
+            {
+                // comboBox1'i doldurmak için veritabanından firma kodlarını al
+                DataTable dtCompanies = _dataAccessLayer.GetCompanyCodes();
+                comboBox1.DataSource = dtCompanies;
+                comboBox1.DisplayMember = "COMCODE"; // Gösterilecek sütun
+                comboBox1.ValueMember = "COMCODE";   // Seçilen değeri temsil edecek sütun
+                comboBox1.SelectedIndex = -1;        // Varsayılan olarak seçimi kaldır
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Firma kodları yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadData()
@@ -62,12 +82,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvCostCenters.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvCostCenters.EnableHeadersVisualStyles = false;
 
-            // Cell Alignment
-            foreach (DataGridViewColumn column in dgvCostCenters.Columns)
-            {
-                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-
             // Grid Lines
             dgvCostCenters.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvCostCenters.GridColor = Color.DarkGray;
@@ -77,21 +91,24 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             // Background Color
             dgvCostCenters.BackgroundColor = Color.LightSteelBlue;
-
-            
         }
 
         private void ClearFields()
         {
-            txtComCode.Clear();
+            comboBox1.SelectedIndex = -1; // comboBox1'i temizle
             txtDocType.Clear();
             txtDocTypeText.Clear();
             chkIsPassive.Checked = false;
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearFields(); // Temizleme işlemi
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString(); // comboBox1'den alınan değer
             string docType = txtDocType.Text.Trim();
             string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
@@ -131,7 +148,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             string oldComCode = dgvCostCenters.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
             string oldDocType = dgvCostCenters.SelectedRows[0].Cells["DOCTYPE"].Value?.ToString();
-            string comCode = txtComCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString();
             string docType = txtDocType.Text.Trim();
             string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
@@ -179,11 +196,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearFields();
-        }
-
         private void dgvCostCenters_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || dgvCostCenters.Rows.Count <= e.RowIndex)
@@ -192,7 +204,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 return;
             }
 
-            txtComCode.Text = dgvCostCenters.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
+            comboBox1.SelectedValue = dgvCostCenters.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString();
             txtDocType.Text = dgvCostCenters.Rows[e.RowIndex].Cells["DOCTYPE"].Value?.ToString() ?? string.Empty;
             txtDocTypeText.Text = dgvCostCenters.Rows[e.RowIndex].Cells["DOCTYPETEXT"].Value?.ToString() ?? string.Empty;
             chkIsPassive.Checked = dgvCostCenters.Rows[e.RowIndex].Cells["ISPASSIVE"].Value?.ToString() == "1";

@@ -4,7 +4,6 @@
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.DataGridView dgvUnits;
-        private System.Windows.Forms.TextBox txtComCode;
         private System.Windows.Forms.TextBox txtUnitCode;
         private System.Windows.Forms.TextBox txtUnitText;
         private System.Windows.Forms.CheckBox chkIsMainUnit;
@@ -31,7 +30,6 @@
         private void InitializeComponent()
         {
             this.dgvUnits = new System.Windows.Forms.DataGridView();
-            this.txtComCode = new System.Windows.Forms.TextBox();
             this.txtUnitCode = new System.Windows.Forms.TextBox();
             this.txtUnitText = new System.Windows.Forms.TextBox();
             this.chkIsMainUnit = new System.Windows.Forms.CheckBox();
@@ -45,6 +43,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnits)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,13 +55,6 @@
             this.dgvUnits.RowHeadersWidth = 51;
             this.dgvUnits.Size = new System.Drawing.Size(1043, 244);
             this.dgvUnits.TabIndex = 0;
-            // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(222, 520);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(200, 22);
-            this.txtComCode.TabIndex = 1;
             // 
             // txtUnitCode
             // 
@@ -173,12 +165,21 @@
             this.btnClear.Text = "Temizle";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AccessibleName = "comboBox1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(222, 523);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 10;
+            // 
             // BSMGR0GEN005Form
             // 
             this.ClientSize = new System.Drawing.Size(1067, 645);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dgvUnits);
             this.Controls.Add(this.lblComCode);
-            this.Controls.Add(this.txtComCode);
             this.Controls.Add(this.lblUnitCode);
             this.Controls.Add(this.txtUnitCode);
             this.Controls.Add(this.lblUnitText);
@@ -199,5 +200,7 @@
             this.PerformLayout();
 
         }
+
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

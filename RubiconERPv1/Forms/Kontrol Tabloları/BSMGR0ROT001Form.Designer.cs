@@ -16,7 +16,6 @@
         private void InitializeComponent()
         {
             this.dgvRoutes = new System.Windows.Forms.DataGridView();
-            this.txtComCode = new System.Windows.Forms.TextBox();
             this.txtDocType = new System.Windows.Forms.TextBox();
             this.txtDocTypeText = new System.Windows.Forms.TextBox();
             this.chkIsPassive = new System.Windows.Forms.CheckBox();
@@ -28,6 +27,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRoutes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,19 +40,13 @@
             this.dgvRoutes.Size = new System.Drawing.Size(980, 233);
             this.dgvRoutes.TabIndex = 0;
             // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(299, 429);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(150, 22);
-            this.txtComCode.TabIndex = 1;
-            // 
             // txtDocType
             // 
-            this.txtDocType.Location = new System.Drawing.Point(580, 429);
+            this.txtDocType.Location = new System.Drawing.Point(580, 435);
             this.txtDocType.Name = "txtDocType";
             this.txtDocType.Size = new System.Drawing.Size(150, 22);
             this.txtDocType.TabIndex = 2;
+            
             // 
             // txtDocTypeText
             // 
@@ -81,7 +75,7 @@
             // lblDocType
             // 
             this.lblDocType.AutoSize = true;
-            this.lblDocType.Location = new System.Drawing.Point(483, 432);
+            this.lblDocType.Location = new System.Drawing.Point(503, 435);
             this.lblDocType.Name = "lblDocType";
             this.lblDocType.Size = new System.Drawing.Size(65, 16);
             this.lblDocType.TabIndex = 6;
@@ -145,11 +139,21 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AccessibleName = "comboBox1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(299, 427);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 13;
+            // 
             // BSMGR0ROT001Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 627);
+            this.ClientSize = new System.Drawing.Size(999, 627);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -161,7 +165,6 @@
             this.Controls.Add(this.chkIsPassive);
             this.Controls.Add(this.txtDocTypeText);
             this.Controls.Add(this.txtDocType);
-            this.Controls.Add(this.txtComCode);
             this.Controls.Add(this.dgvRoutes);
             this.Name = "BSMGR0ROT001Form";
             this.Text = "BSMGR0ROT001 - Rota Yönetimi";
@@ -172,7 +175,6 @@
         }
 
         private System.Windows.Forms.DataGridView dgvRoutes;
-        private System.Windows.Forms.TextBox txtComCode;
         private System.Windows.Forms.TextBox txtDocType;
         private System.Windows.Forms.TextBox txtDocTypeText;
         private System.Windows.Forms.CheckBox chkIsPassive;
@@ -184,5 +186,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

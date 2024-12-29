@@ -16,7 +16,6 @@
         private void InitializeComponent()
         {
             this.dgvCountries = new System.Windows.Forms.DataGridView();
-            this.txtComCode = new System.Windows.Forms.TextBox();
             this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.txtCountryText = new System.Windows.Forms.TextBox();
             this.lblComCode = new System.Windows.Forms.Label();
@@ -26,6 +25,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCountries)).BeginInit();
             this.SuspendLayout();
             // 
@@ -37,13 +37,6 @@
             this.dgvCountries.RowHeadersWidth = 51;
             this.dgvCountries.Size = new System.Drawing.Size(968, 270);
             this.dgvCountries.TabIndex = 0;
-            // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(134, 463);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(150, 22);
-            this.txtComCode.TabIndex = 1;
             // 
             // txtCountryCode
             // 
@@ -126,11 +119,21 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AccessibleName = "comboBox1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(134, 458);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 11;
+            // 
             // BSMGR0GEN003Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(992, 618);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -140,7 +143,6 @@
             this.Controls.Add(this.lblComCode);
             this.Controls.Add(this.txtCountryText);
             this.Controls.Add(this.txtCountryCode);
-            this.Controls.Add(this.txtComCode);
             this.Controls.Add(this.dgvCountries);
             this.Name = "BSMGR0GEN003Form";
             this.Text = "BSMGR0GEN003 - Ülke Yönetimi";
@@ -151,7 +153,6 @@
         }
 
         private System.Windows.Forms.DataGridView dgvCountries;
-        private System.Windows.Forms.TextBox txtComCode;
         private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.TextBox txtCountryText;
         private System.Windows.Forms.Label lblComCode;
@@ -161,5 +162,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

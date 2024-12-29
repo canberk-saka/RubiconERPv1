@@ -16,11 +16,13 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             string connectionString = DbConnection.GetConnectionString();
             _dataAccessLayer = new BSMGR0GEN001DAL(connectionString);
 
+            // Olay tanımlamaları
             dgvCompanies.CellClick += dgvCompanies_CellClick;
 
+            // Verileri yükle
             LoadData();
+            LoadComboBoxData();
             CustomizeDataGridView();
-            
         }
 
         private void LoadData()
@@ -33,6 +35,28 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             catch (Exception ex)
             {
                 MessageBox.Show($"Veriler yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadComboBoxData()
+        {
+            try
+            {
+                // Şehir kodlarını comboBox1'e yükle
+                DataTable cityCodes = _dataAccessLayer.GetCityCodes();
+                comboBox1.DataSource = cityCodes;
+                comboBox1.DisplayMember = "CITYCODE";
+                comboBox1.ValueMember = "CITYCODE";
+
+                // Ülke kodlarını comboBox2'ye yükle
+                DataTable countryCodes = _dataAccessLayer.GetCountryCodes();
+                comboBox2.DataSource = countryCodes;
+                comboBox2.DisplayMember = "COUNTRYCODE";
+                comboBox2.ValueMember = "COUNTRYCODE";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ComboBox verileri yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -72,7 +96,108 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvCompanies.BackgroundColor = Color.LightSteelBlue;
         }
 
-      
+        private void ClearFields()
+        {
+            txtComCode.Clear();
+            txtComText.Clear();
+            txtAddress1.Clear();
+            txtAddress2.Clear();
+            comboBox1.SelectedIndex = -1; // Şehir kodu temizle
+            comboBox2.SelectedIndex = -1; // Ülke kodu temizle
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string comCode = txtComCode.Text.Trim();
+            string comText = txtComText.Text.Trim();
+            string address1 = txtAddress1.Text.Trim();
+            string address2 = txtAddress2.Text.Trim();
+            string cityCode = comboBox1.SelectedValue?.ToString();
+            string countryCode = comboBox2.SelectedValue?.ToString();
+
+            if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(comText))
+            {
+                MessageBox.Show("Firma Kodu ve Firma Adı zorunludur!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                _dataAccessLayer.AddRecord(comCode, comText, address1, address2, cityCode, countryCode);
+                MessageBox.Show("Kayıt başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
+                ClearFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Kayıt ekleme sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dgvCompanies.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Lütfen güncellemek için bir kayıt seçin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string oldComCode = dgvCompanies.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
+            string comCode = txtComCode.Text.Trim();
+            string comText = txtComText.Text.Trim();
+            string address1 = txtAddress1.Text.Trim();
+            string address2 = txtAddress2.Text.Trim();
+            string cityCode = comboBox1.SelectedValue?.ToString();
+            string countryCode = comboBox2.SelectedValue?.ToString();
+
+            try
+            {
+                bool result = _dataAccessLayer.UpdateRecord(oldComCode, comCode, comText, address1, address2, cityCode, countryCode);
+
+                if (result)
+                {
+                    MessageBox.Show("Kayıt başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                    ClearFields();
+                }
+                else
+                {
+                    MessageBox.Show("Güncelleme işlemi başarısız oldu.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Güncelleme sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvCompanies.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Lütfen silmek için bir kayıt seçin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string comCode = dgvCompanies.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
+
+            try
+            {
+                _dataAccessLayer.DeleteRecord(comCode);
+                MessageBox.Show("Kayıt başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
+                ClearFields();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Silme işlemi sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearFields();
+        }
 
         private void dgvCompanies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -82,67 +207,17 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 return;
             }
 
-            try
-            {
-                txtComCode.Text = dgvCompanies.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
-                txtComText.Text = dgvCompanies.Rows[e.RowIndex].Cells["COMTEXT"].Value?.ToString() ?? string.Empty;
-                txtAddress1.Text = dgvCompanies.Rows[e.RowIndex].Cells["ADDRESS1"].Value?.ToString() ?? string.Empty;
-                txtAddress2.Text = dgvCompanies.Rows[e.RowIndex].Cells["ADDRESS2"].Value?.ToString() ?? string.Empty;
-                txtCityCode.Text = dgvCompanies.Rows[e.RowIndex].Cells["CITYCODE"].Value?.ToString() ?? string.Empty;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Satır verileri yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ClearFields()
-        {
-            txtComCode.Clear();
-            txtComText.Clear();
-            txtAddress1.Clear();
-            txtAddress2.Clear();
-            txtCityCode.Clear();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            string comCode = txtComCode.Text;
-            string comText = txtComText.Text;
-            string address1 = txtAddress1.Text;
-            string address2 = txtAddress2.Text;
-            string cityCode = txtCityCode.Text;
-
-            if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(comText))
-            {
-                MessageBox.Show("Firma Kodu ve Firma Adı zorunludur!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            _dataAccessLayer.AddRecord(comCode, comText, address1, address2, cityCode);
-            MessageBox.Show("Kıyayt başarıyla eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            LoadData();
-            ClearFields();
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            // Güncelleme işlemleri
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            // Silme işlemleri
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearFields();
+            txtComCode.Text = dgvCompanies.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
+            txtComText.Text = dgvCompanies.Rows[e.RowIndex].Cells["COMTEXT"].Value?.ToString() ?? string.Empty;
+            txtAddress1.Text = dgvCompanies.Rows[e.RowIndex].Cells["ADDRESS1"].Value?.ToString() ?? string.Empty;
+            txtAddress2.Text = dgvCompanies.Rows[e.RowIndex].Cells["ADDRESS2"].Value?.ToString() ?? string.Empty;
+            comboBox1.SelectedValue = dgvCompanies.Rows[e.RowIndex].Cells["CITYCODE"].Value?.ToString();
+            comboBox2.SelectedValue = dgvCompanies.Rows[e.RowIndex].Cells["COUNTRYCODE"].Value?.ToString();
         }
 
         private void txtComText_TextChanged(object sender, EventArgs e)
         {
-
+            // Firma adı değiştiğinde yapılacak işlemler
         }
     }
 }

@@ -18,9 +18,65 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             dgvCities.CellClick += dgvCities_CellClick;
 
+            // ComboBox'ları yükle
+            LoadComboBoxes();
+
             // Verileri yükle ve DataGridView'i özelleştir
             LoadData();
             CustomizeDataGridView();
+        }
+
+        private void LoadComboBoxes()
+        {
+            try
+            {
+                // Firma kodlarını yükle
+                DataTable dtCompanies = _dataAccessLayer.GetCompanyCodes();
+                comboBox1.DataSource = dtCompanies;
+                comboBox1.DisplayMember = "COMCODE";
+                comboBox1.ValueMember = "COMCODE";
+                comboBox1.SelectedIndex = -1;
+
+                // Ülke kodlarını yükle
+                DataTable dtCountries = _dataAccessLayer.GetCountryCodes();
+                comboBox2.DataSource = dtCountries;
+                comboBox2.DisplayMember = "COUNTRYCODE";
+                comboBox2.ValueMember = "COUNTRYCODE";
+                comboBox2.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ComboBox'lar yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCities_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || dgvCities.Rows.Count <= e.RowIndex)
+            {
+                MessageBox.Show("Geçersiz satır seçimi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                comboBox1.SelectedValue = dgvCities.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
+                comboBox2.SelectedValue = dgvCities.Rows[e.RowIndex].Cells["COUNTRYCODE"].Value?.ToString() ?? string.Empty;
+                txtCityCode.Text = dgvCities.Rows[e.RowIndex].Cells["CITYCODE"].Value?.ToString() ?? string.Empty;
+                txtCityText.Text = dgvCities.Rows[e.RowIndex].Cells["CITYTEXT"].Value?.ToString() ?? string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Satır verileri yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ClearFields()
+        {
+            comboBox1.SelectedIndex = -1;
+            comboBox2.SelectedIndex = -1;
+            txtCityCode.Clear();
+            txtCityText.Clear();
         }
 
         private void LoadData()
@@ -38,9 +94,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
         private void CustomizeDataGridView()
         {
-            dgvCities.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            dgvCities.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Bold);
             dgvCities.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvCities.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F);
+            dgvCities.DefaultCellStyle.Font = new Font("Arial", 10F);
             dgvCities.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvCities.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -49,82 +105,35 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvCities.AllowUserToDeleteRows = false;
             dgvCities.ReadOnly = true;
 
-            // Alternating Row Colors
             dgvCities.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
             dgvCities.RowsDefaultCellStyle.BackColor = Color.White;
             dgvCities.RowsDefaultCellStyle.SelectionBackColor = Color.DarkSlateGray;
             dgvCities.RowsDefaultCellStyle.SelectionForeColor = Color.White;
 
-            // Header Style
             dgvCities.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold);
             dgvCities.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkGray;
             dgvCities.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvCities.EnableHeadersVisualStyles = false;
 
-            // Cell Alignment
             foreach (DataGridViewColumn column in dgvCities.Columns)
             {
                 column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
-            // Grid Lines
             dgvCities.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvCities.GridColor = Color.DarkGray;
-
-            // Column Auto Resize
             dgvCities.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Row Height
             dgvCities.RowTemplate.Height = 30;
-
-            // Selection Mode
             dgvCities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCities.MultiSelect = false;
-
             dgvCities.BackgroundColor = Color.LightSteelBlue;
-
             dgvCities.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-             // DataGridView tüm formu kaplayacak şekilde genişler.
-                                             // Diğer kontroller ekranın alt kısmına sabitlenecek
-            
-
-
-
-        }
-
-        private void dgvCities_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 || dgvCities.Rows.Count <= e.RowIndex)
-            {
-                MessageBox.Show("Geçersiz satır seçimi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                txtComCode.Text = dgvCities.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
-                txtCountryCode.Text = dgvCities.Rows[e.RowIndex].Cells["COUNTRYCODE"].Value?.ToString() ?? string.Empty;
-                txtCityCode.Text = dgvCities.Rows[e.RowIndex].Cells["CITYCODE"].Value?.ToString() ?? string.Empty;
-                txtCityText.Text = dgvCities.Rows[e.RowIndex].Cells["CITYTEXT"].Value?.ToString() ?? string.Empty;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Satır verileri yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ClearFields()
-        {
-            txtComCode.Clear();
-            txtCountryCode.Clear();
-            txtCityCode.Clear();
-            txtCityText.Clear();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text.Trim();
-            string countryCode = txtCountryCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString();
+            string countryCode = comboBox2.SelectedValue?.ToString();
             string cityCode = txtCityCode.Text.Trim();
             string cityText = txtCityText.Text.Trim();
 
@@ -157,8 +166,8 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             string oldComCode = dgvCities.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
             string oldCityCode = dgvCities.SelectedRows[0].Cells["CITYCODE"].Value?.ToString();
-            string newComCode = txtComCode.Text.Trim();
-            string newCountryCode = txtCountryCode.Text.Trim();
+            string newComCode = comboBox1.SelectedValue?.ToString();
+            string newCountryCode = comboBox2.SelectedValue?.ToString();
             string newCityCode = txtCityCode.Text.Trim();
             string cityText = txtCityText.Text.Trim();
 

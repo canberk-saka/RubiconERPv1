@@ -16,7 +16,6 @@
         private void InitializeComponent()
         {
             this.dgvCities = new System.Windows.Forms.DataGridView();
-            this.txtComCode = new System.Windows.Forms.TextBox();
             this.txtCityCode = new System.Windows.Forms.TextBox();
             this.txtCityText = new System.Windows.Forms.TextBox();
             this.lblComCode = new System.Windows.Forms.Label();
@@ -26,8 +25,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.txtCountryCode = new System.Windows.Forms.TextBox();
             this.lblCountryCode = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCities)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,13 +39,6 @@
             this.dgvCities.RowHeadersWidth = 51;
             this.dgvCities.Size = new System.Drawing.Size(1055, 364);
             this.dgvCities.TabIndex = 0;
-            // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(155, 446);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(150, 22);
-            this.txtComCode.TabIndex = 1;
             // 
             // txtCityCode
             // 
@@ -128,13 +121,6 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // txtCountryCode
-            // 
-            this.txtCountryCode.Location = new System.Drawing.Point(155, 483);
-            this.txtCountryCode.Name = "txtCountryCode";
-            this.txtCountryCode.Size = new System.Drawing.Size(150, 22);
-            this.txtCountryCode.TabIndex = 2;
-            // 
             // lblCountryCode
             // 
             this.lblCountryCode.AutoSize = true;
@@ -144,11 +130,31 @@
             this.lblCountryCode.TabIndex = 6;
             this.lblCountryCode.Text = "Ülke Kodu:";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AccessibleName = "comboBox1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(165, 441);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 13;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.AccessibleName = "comboBox2";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(165, 486);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 24);
+            this.comboBox2.TabIndex = 14;
+            // 
             // BSMGR0GEN004Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1079, 598);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -159,8 +165,6 @@
             this.Controls.Add(this.lblComCode);
             this.Controls.Add(this.txtCityText);
             this.Controls.Add(this.txtCityCode);
-            this.Controls.Add(this.txtCountryCode);
-            this.Controls.Add(this.txtComCode);
             this.Controls.Add(this.dgvCities);
             this.Name = "BSMGR0GEN004Form";
             this.Text = "BSMGR0GEN004 - Şehir Yönetimi";
@@ -171,7 +175,6 @@
         }
 
         private System.Windows.Forms.DataGridView dgvCities;
-        private System.Windows.Forms.TextBox txtComCode;
         private System.Windows.Forms.TextBox txtCityCode;
         private System.Windows.Forms.TextBox txtCityText;
         private System.Windows.Forms.Label lblComCode;
@@ -181,7 +184,8 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.TextBox txtCountryCode;
         private System.Windows.Forms.Label lblCountryCode;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

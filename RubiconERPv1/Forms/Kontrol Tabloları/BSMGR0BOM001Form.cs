@@ -22,6 +22,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             // Data Access Layer başlatma
             _dataAccessLayer = new BSMGR0BOM001DAL(connectionString);
 
+            // Firma kodlarını yükle
+            LoadCompanyCodes();
+
             // Verileri yükle ve DataGridView'i özelleştir
             LoadData();
             CustomizeDataGridView();
@@ -43,6 +46,22 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             catch (Exception ex)
             {
                 MessageBox.Show($"Bağlantı sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadCompanyCodes()
+        {
+            try
+            {
+                DataTable dtCompanies = _dataAccessLayer.GetCompanyCodes();
+                comboBox1.DataSource = dtCompanies;
+                comboBox1.DisplayMember = "COMCODE"; // Firma kodlarını görüntüler
+                comboBox1.ValueMember = "COMCODE";   // Seçilen değeri döner
+                comboBox1.SelectedIndex = -1;        // Varsayılan boş seçili olur
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Firma kodları yüklenirken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -84,35 +103,14 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvBomTypes.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dgvBomTypes.EnableHeadersVisualStyles = false;
 
-            // Cell Alignment
-            foreach (DataGridViewColumn column in dgvBomTypes.Columns)
-            {
-                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-
-            // Grid Lines
-            dgvBomTypes.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvBomTypes.GridColor = Color.DarkGray;
-
-            // Column Auto Resize
-            dgvBomTypes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Row Height
             dgvBomTypes.RowTemplate.Height = 30;
-
-            // Selection Mode
-            dgvBomTypes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBomTypes.MultiSelect = false;
-
             dgvBomTypes.BackgroundColor = Color.LightSteelBlue;
-
             dgvBomTypes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-             // DataGridView tüm formu kaplayacak şekilde genişler.
         }
 
         private void ClearFields()
         {
-            txtComCode.Clear();
+            comboBox1.SelectedIndex = -1;
             txtDocType.Clear();
             txtDocTypeText.Clear();
             chkIsPassive.Checked = false;
@@ -128,7 +126,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             try
             {
-                txtComCode.Text = dgvBomTypes.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
+                comboBox1.SelectedValue = dgvBomTypes.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString();
                 txtDocType.Text = dgvBomTypes.Rows[e.RowIndex].Cells["DOCTYPE"].Value?.ToString() ?? string.Empty;
                 txtDocTypeText.Text = dgvBomTypes.Rows[e.RowIndex].Cells["DOCTYPETEXT"].Value?.ToString() ?? string.Empty;
                 chkIsPassive.Checked = dgvBomTypes.Rows[e.RowIndex].Cells["ISPASSIVE"].Value?.ToString() == "1";
@@ -141,7 +139,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString();
             string docType = txtDocType.Text.Trim();
             string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
@@ -175,7 +173,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             string oldComCode = dgvBomTypes.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
             string oldDocType = dgvBomTypes.SelectedRows[0].Cells["DOCTYPE"].Value?.ToString();
-            string comCode = txtComCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString();
             string docType = txtDocType.Text.Trim();
             string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;

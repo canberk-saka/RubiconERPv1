@@ -15,9 +15,34 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             InitializeComponent();
             string connectionString = DbConnection.GetConnectionString();
             _dataAccessLayer = new BSMGR0GEN002DAL(connectionString);
+
             dgvLanguages.CellClick += dgvLanguages_CellClick;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+
+            LoadComboBox();
             LoadData();
             CustomizeDataGridView();
+        }
+
+        private void LoadComboBox()
+        {
+            try
+            {
+                DataTable dtCompanies = _dataAccessLayer.GetCompanyCodes();
+                comboBox1.DataSource = dtCompanies;
+                comboBox1.DisplayMember = "COMCODE"; // Görüntülenecek sütun
+                comboBox1.ValueMember = "COMCODE";   // Değer olarak kullanılacak sütun
+                comboBox1.SelectedIndex = -1; // Başlangıçta seçili bir değer olmasın
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Firma kodları yüklenirken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Firma kodu combobox'tan seçildiğinde işlem yapabilirsiniz
         }
 
         private void LoadData()
@@ -60,9 +85,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvLanguages.BackgroundColor = Color.LightSteelBlue;
 
             dgvLanguages.RowTemplate.Height = 30;
-
             dgvLanguages.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            
         }
 
         private void dgvLanguages_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -75,7 +98,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             try
             {
-                txtComCode.Text = dgvLanguages.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
+                comboBox1.Text = dgvLanguages.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
                 txtLanCode.Text = dgvLanguages.Rows[e.RowIndex].Cells["LANCODE"].Value?.ToString() ?? string.Empty;
                 txtLanText.Text = dgvLanguages.Rows[e.RowIndex].Cells["LANTEXT"].Value?.ToString() ?? string.Empty;
             }
@@ -87,14 +110,14 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
         private void ClearFields()
         {
-            txtComCode.Clear();
+            comboBox1.SelectedIndex = -1; // Combobox'u temizle
             txtLanCode.Clear();
             txtLanText.Clear();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text;
+            string comCode = comboBox1.SelectedValue?.ToString(); // Combobox'tan firma kodu alınıyor
             string lanCode = txtLanCode.Text;
             string lanText = txtLanText.Text;
 
@@ -119,28 +142,27 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtLanCode.Text) || string.IsNullOrEmpty(txtLanText.Text))
-            {
-                MessageBox.Show("Dil Kodu ve Dil Metni zorunludur!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             if (dgvLanguages.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Lütfen güncellemek için bir kayıt seçin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            string oldComCode = dgvLanguages.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
+            string oldLanCode = dgvLanguages.SelectedRows[0].Cells["LANCODE"].Value?.ToString();
+            string comCode = comboBox1.SelectedValue?.ToString();
+            string lanCode = txtLanCode.Text;
+            string lanText = txtLanText.Text;
+
+            if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(lanCode))
+            {
+                MessageBox.Show("Firma Kodu ve Dil Kodu zorunludur!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
-                string oldLanCode = dgvLanguages.SelectedRows[0].Cells["LANCODE"].Value?.ToString();
-                string oldComCode = dgvLanguages.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
-                string newComCode = txtComCode.Text;
-                string newLanCode = txtLanCode.Text;
-                string lanText = txtLanText.Text;
-
-                bool result = _dataAccessLayer.UpdateRecord(oldComCode, oldLanCode, newComCode, newLanCode, lanText);
-
+                bool result = _dataAccessLayer.UpdateRecord(oldComCode, oldLanCode, comCode, lanCode, lanText);
                 if (result)
                 {
                     MessageBox.Show("Kayıt başarıyla güncellendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -166,21 +188,14 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 return;
             }
 
+            string comCode = dgvLanguages.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
+            string lanCode = dgvLanguages.SelectedRows[0].Cells["LANCODE"].Value?.ToString();
+
             try
             {
-                string comCode = dgvLanguages.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
-                string lanCode = dgvLanguages.SelectedRows[0].Cells["LANCODE"].Value?.ToString();
-
-                if (!string.IsNullOrEmpty(comCode) && !string.IsNullOrEmpty(lanCode))
-                {
-                    _dataAccessLayer.DeleteRecord(comCode, lanCode);
-                    MessageBox.Show("Kayıt başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
-                }
-                else
-                {
-                    MessageBox.Show("Geçersiz kayıt seçildi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                _dataAccessLayer.DeleteRecord(comCode, lanCode);
+                MessageBox.Show("Kayıt başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadData();
             }
             catch (Exception ex)
             {
@@ -191,12 +206,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
-        }
-
-        private void lblLanCode_Click(object sender, EventArgs e)
-        {
-            // Bu alana etiket tıklandığında yapılacak işlemleri yazabilirsiniz.
-            MessageBox.Show("Dil Kodu etiketi tıklandı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
