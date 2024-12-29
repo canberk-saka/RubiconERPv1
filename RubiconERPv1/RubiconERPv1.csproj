@@ -400,11 +400,17 @@
     <EmbeddedResource Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.resx">
       <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\UrunAgaclariTumBilgilerForm.resx">
+      <DependentUpon>UrunAgaclariTumBilgilerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ana Tablolar\MaliyetMerkezleriForm.resx">
       <DependentUpon>MaliyetMerkezleriForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ana Tablolar\MalzemeBilgileriForm.resx">
       <DependentUpon>MalzemeBilgileriForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ana Tablolar\UrunAgaciForm.resx">
+      <DependentUpon>UrunAgaciForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\deneme.resx">
       <DependentUpon>deneme.cs</DependentUpon>
