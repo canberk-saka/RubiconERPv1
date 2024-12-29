@@ -7,7 +7,6 @@
         private System.Windows.Forms.TextBox txtComText;
         private System.Windows.Forms.TextBox txtAddress1;
         private System.Windows.Forms.TextBox txtAddress2;
-        private System.Windows.Forms.TextBox txtCityCode;
         private System.Windows.Forms.Label lblComCode;
         private System.Windows.Forms.Label lblComText;
         private System.Windows.Forms.Label lblAddress1;
@@ -25,7 +24,6 @@
             this.txtComText = new System.Windows.Forms.TextBox();
             this.txtAddress1 = new System.Windows.Forms.TextBox();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
-            this.txtCityCode = new System.Windows.Forms.TextBox();
             this.lblComCode = new System.Windows.Forms.Label();
             this.lblComText = new System.Windows.Forms.Label();
             this.lblAddress1 = new System.Windows.Forms.Label();
@@ -35,6 +33,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompanies)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             // 
             this.dgvCompanies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCompanies.Location = new System.Drawing.Point(1, 0);
-            this.dgvCompanies.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCompanies.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCompanies.Name = "dgvCompanies";
             this.dgvCompanies.RowHeadersWidth = 51;
             this.dgvCompanies.Size = new System.Drawing.Size(1013, 246);
@@ -51,7 +52,7 @@
             // txtComCode
             // 
             this.txtComCode.Location = new System.Drawing.Point(609, 295);
-            this.txtComCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtComCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtComCode.Name = "txtComCode";
             this.txtComCode.Size = new System.Drawing.Size(265, 22);
             this.txtComCode.TabIndex = 1;
@@ -59,7 +60,7 @@
             // txtComText
             // 
             this.txtComText.Location = new System.Drawing.Point(144, 295);
-            this.txtComText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtComText.Margin = new System.Windows.Forms.Padding(4);
             this.txtComText.Name = "txtComText";
             this.txtComText.Size = new System.Drawing.Size(265, 22);
             this.txtComText.TabIndex = 2;
@@ -68,7 +69,7 @@
             // txtAddress1
             // 
             this.txtAddress1.Location = new System.Drawing.Point(144, 399);
-            this.txtAddress1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress1.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(265, 22);
             this.txtAddress1.TabIndex = 3;
@@ -76,18 +77,10 @@
             // txtAddress2
             // 
             this.txtAddress2.Location = new System.Drawing.Point(144, 349);
-            this.txtAddress2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress2.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(265, 22);
             this.txtAddress2.TabIndex = 4;
-            // 
-            // txtCityCode
-            // 
-            this.txtCityCode.Location = new System.Drawing.Point(609, 349);
-            this.txtCityCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtCityCode.Name = "txtCityCode";
-            this.txtCityCode.Size = new System.Drawing.Size(265, 22);
-            this.txtCityCode.TabIndex = 5;
             // 
             // lblComCode
             // 
@@ -142,7 +135,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(42, 473);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(133, 37);
             this.btnSave.TabIndex = 11;
@@ -153,7 +146,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Location = new System.Drawing.Point(218, 473);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(133, 37);
             this.btnUpdate.TabIndex = 12;
@@ -164,7 +157,7 @@
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(409, 473);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(133, 37);
             this.btnDelete.TabIndex = 13;
@@ -175,7 +168,7 @@
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(609, 473);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(133, 37);
             this.btnClear.TabIndex = 14;
@@ -183,11 +176,39 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(609, 343);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 15;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(609, 399);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 24);
+            this.comboBox2.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(502, 401);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Ülke kodu:";
+            // 
             // BSMGR0GEN001Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 567);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -197,13 +218,12 @@
             this.Controls.Add(this.lblAddress1);
             this.Controls.Add(this.lblComText);
             this.Controls.Add(this.lblComCode);
-            this.Controls.Add(this.txtCityCode);
             this.Controls.Add(this.txtAddress2);
             this.Controls.Add(this.txtAddress1);
             this.Controls.Add(this.txtComText);
             this.Controls.Add(this.txtComCode);
             this.Controls.Add(this.dgvCompanies);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BSMGR0GEN001Form";
             this.Text = "BSMGR0GEN001Form";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompanies)).EndInit();
@@ -211,5 +231,9 @@
             this.PerformLayout();
 
         }
+
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label1;
     }
 }

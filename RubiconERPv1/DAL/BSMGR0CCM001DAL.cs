@@ -114,6 +114,20 @@ namespace DataAccessLayer
             }
         }
 
+        // Firma Kodlarını Getirme (comboBox1 için)
+        public DataTable GetCompanyCodes()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT COMCODE FROM BSMGR0GEN001"; // Firma kodlarının bulunduğu tablo
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+
+                adapter.Fill(dataTable);
+                return dataTable;
+            }
+        }
+
         // Maliyet Merkezi Tipinin Geçerliliğini Kontrol Et
         public bool IsDocTypeValid(string docType)
         {

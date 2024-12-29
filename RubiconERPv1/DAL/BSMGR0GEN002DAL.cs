@@ -35,16 +35,14 @@ namespace DataAccessLayer
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ComCode", comCode);
                 cmd.Parameters.AddWithValue("@LanCode", lanCode);
-                cmd.Parameters.AddWithValue("@LanText", lanText ?? (object)DBNull.Value); 
+                cmd.Parameters.AddWithValue("@LanText", lanText ?? (object)DBNull.Value);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
 
-
         // Kayıt güncelle
-        // UpdateRecord metodunu düzenledik
         public bool UpdateRecord(string oldComCode, string oldLanCode, string newComCode, string newLanCode, string lanText)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
@@ -75,6 +73,19 @@ namespace DataAccessLayer
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        // Firma kodlarının listesini getir
+        public DataTable GetCompanyCodes()
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT COMCODE FROM BSMGR0GEN001";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
             }
         }
 

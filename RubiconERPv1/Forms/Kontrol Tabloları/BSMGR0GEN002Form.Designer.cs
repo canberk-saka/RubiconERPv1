@@ -18,7 +18,6 @@
         private void InitializeComponent()
         {
             this.dgvLanguages = new System.Windows.Forms.DataGridView();
-            this.txtComCode = new System.Windows.Forms.TextBox();
             this.txtLanCode = new System.Windows.Forms.TextBox();
             this.txtLanText = new System.Windows.Forms.TextBox();
             this.lblComCode = new System.Windows.Forms.Label();
@@ -28,6 +27,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLanguages)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,13 +39,6 @@
             this.dgvLanguages.RowHeadersWidth = 51;
             this.dgvLanguages.Size = new System.Drawing.Size(913, 223);
             this.dgvLanguages.TabIndex = 0;
-            // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(110, 265);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(200, 22);
-            this.txtComCode.TabIndex = 1;
             // 
             // txtLanCode
             // 
@@ -78,7 +71,6 @@
             this.lblLanCode.Size = new System.Drawing.Size(60, 16);
             this.lblLanCode.TabIndex = 5;
             this.lblLanCode.Text = "Dil Kodu:";
-            this.lblLanCode.Click += new System.EventHandler(this.lblLanCode_Click);
             // 
             // lblLanText
             // 
@@ -129,9 +121,19 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AccessibleName = "comboBox1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(133, 263);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 11;
+            // 
             // BSMGR0GEN002Form
             // 
             this.ClientSize = new System.Drawing.Size(937, 566);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -141,7 +143,6 @@
             this.Controls.Add(this.lblComCode);
             this.Controls.Add(this.txtLanText);
             this.Controls.Add(this.txtLanCode);
-            this.Controls.Add(this.txtComCode);
             this.Controls.Add(this.dgvLanguages);
             this.Name = "BSMGR0GEN002Form";
             this.Text = "BSMGR0GEN002Form";
@@ -154,7 +155,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvLanguages;
-        private System.Windows.Forms.TextBox txtComCode;
         private System.Windows.Forms.TextBox txtLanCode;
         private System.Windows.Forms.TextBox txtLanText;
         private System.Windows.Forms.Label lblComCode;
@@ -164,5 +164,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
+        public System.Windows.Forms.ComboBox comboBox1;
     }
 }

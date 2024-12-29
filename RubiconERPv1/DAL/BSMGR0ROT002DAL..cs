@@ -10,7 +10,7 @@ namespace DataAccessLayer
 
         public BSMGR0ROT002DAL(string connectionString)
         {
-            _connectionString = connectionString; // Bağlantı dizesi başlatılır.
+            _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString), "Bağlantı dizesi boş olamaz.");
         }
 
         // CREATE - Yeni Kayıt Ekleme
@@ -102,6 +102,22 @@ namespace DataAccessLayer
                 connection.Open();
                 int count = (int)command.ExecuteScalar();
                 return count > 0;
+            }
+        }
+
+        // Firma Kodlarını Getir (ComboBox için)
+        public DataTable GetCompanyCodes()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT COMCODE FROM BSMGR0GEN001";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+
+                connection.Open();
+                adapter.Fill(dataTable);
+
+                return dataTable;
             }
         }
     }

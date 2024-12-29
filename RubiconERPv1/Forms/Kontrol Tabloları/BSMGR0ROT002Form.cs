@@ -22,17 +22,33 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             // Data Access Layer başlatma
             _dataAccessLayer = new BSMGR0ROT002DAL(connectionString);
 
+            // ComboBox verilerini yükle
+            LoadComboBox();
+
             // Verileri yükle
-
-
-            LoadData(); 
+            LoadData();
             CustomizeDataGridView();
-
-
 
             // DataGridView'e satır seçme olayı ekle
             dgvCenters.CellClick += dgvCenters_CellClick;
         }
+
+        private void LoadComboBox()
+        {
+            try
+            {
+                DataTable companyCodes = _dataAccessLayer.GetCompanyCodes();
+                comboBox1.DataSource = companyCodes;
+                comboBox1.DisplayMember = "COMCODE"; // Görüntülenecek sütun
+                comboBox1.ValueMember = "COMCODE";   // Değer olarak kullanılacak sütun
+                comboBox1.SelectedIndex = -1;        // Varsayılan seçim yok
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Firma kodları yüklenirken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void CustomizeDataGridView()
         {
             dgvCenters.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
@@ -81,9 +97,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             dgvCenters.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
         }
 
-
-
-        // Bağlantıyı test et
         private void TestConnection()
         {
             try
@@ -100,7 +113,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Verileri yükle
         private void LoadData()
         {
             try
@@ -114,16 +126,14 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Alanları temizle
         private void ClearFields()
         {
-            txtComCode.Clear();
+            comboBox1.SelectedIndex = -1;
             txtDocType.Clear();
             txtDocTypeText.Clear();
             chkIsPassive.Checked = false;
         }
 
-        // DataGridView'den satır seçme
         private void dgvCenters_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || dgvCenters.Rows.Count <= e.RowIndex)
@@ -134,7 +144,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             try
             {
-                txtComCode.Text = dgvCenters.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString() ?? string.Empty;
+                comboBox1.SelectedValue = dgvCenters.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString();
                 txtDocType.Text = dgvCenters.Rows[e.RowIndex].Cells["DOCTYPE"].Value?.ToString() ?? string.Empty;
                 txtDocTypeText.Text = dgvCenters.Rows[e.RowIndex].Cells["DOCTYPETEXT"].Value?.ToString() ?? string.Empty;
                 chkIsPassive.Checked = dgvCenters.Rows[e.RowIndex].Cells["ISPASSIVE"].Value?.ToString() == "1";
@@ -145,10 +155,9 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Kaydet butonu
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = txtComCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString();
             string docType = txtDocType.Text.Trim();
             string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
@@ -172,7 +181,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Güncelle butonu
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvCenters.SelectedRows.Count == 0)
@@ -183,7 +191,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
             string oldComCode = dgvCenters.SelectedRows[0].Cells["COMCODE"].Value?.ToString();
             string oldDocType = dgvCenters.SelectedRows[0].Cells["DOCTYPE"].Value?.ToString();
-            string comCode = txtComCode.Text.Trim();
+            string comCode = comboBox1.SelectedValue?.ToString();
             string docType = txtDocType.Text.Trim();
             string docTypeText = txtDocTypeText.Text.Trim();
             bool isPassive = chkIsPassive.Checked;
@@ -208,7 +216,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Sil butonu
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (dgvCenters.SelectedRows.Count == 0)
@@ -232,7 +239,6 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             }
         }
 
-        // Temizle butonu
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();

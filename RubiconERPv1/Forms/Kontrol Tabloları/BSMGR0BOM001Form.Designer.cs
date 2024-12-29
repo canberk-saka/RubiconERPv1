@@ -16,7 +16,6 @@
         private void InitializeComponent()
         {
             this.dgvBomTypes = new System.Windows.Forms.DataGridView();
-            this.txtComCode = new System.Windows.Forms.TextBox();
             this.txtDocType = new System.Windows.Forms.TextBox();
             this.txtDocTypeText = new System.Windows.Forms.TextBox();
             this.chkIsPassive = new System.Windows.Forms.CheckBox();
@@ -28,6 +27,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBomTypes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,13 +39,6 @@
             this.dgvBomTypes.RowHeadersWidth = 51;
             this.dgvBomTypes.Size = new System.Drawing.Size(1055, 364);
             this.dgvBomTypes.TabIndex = 0;
-            // 
-            // txtComCode
-            // 
-            this.txtComCode.Location = new System.Drawing.Point(362, 401);
-            this.txtComCode.Name = "txtComCode";
-            this.txtComCode.Size = new System.Drawing.Size(150, 22);
-            this.txtComCode.TabIndex = 1;
             // 
             // txtDocType
             // 
@@ -66,9 +59,8 @@
             this.chkIsPassive.AutoSize = true;
             this.chkIsPassive.Location = new System.Drawing.Point(641, 392);
             this.chkIsPassive.Name = "chkIsPassive";
-            this.chkIsPassive.Size = new System.Drawing.Size(83, 20);
+            this.chkIsPassive.Size = new System.Drawing.Size(18, 17);
             this.chkIsPassive.TabIndex = 4;
-            this.chkIsPassive.Text = "";
             this.chkIsPassive.UseVisualStyleBackColor = true;
             // 
             // lblComCode
@@ -147,11 +139,21 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.AccessibleName = "comboBox1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(339, 407);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 13;
+            // 
             // BSMGR0BOM001Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1073, 613);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -163,7 +165,6 @@
             this.Controls.Add(this.chkIsPassive);
             this.Controls.Add(this.txtDocTypeText);
             this.Controls.Add(this.txtDocType);
-            this.Controls.Add(this.txtComCode);
             this.Controls.Add(this.dgvBomTypes);
             this.Name = "BSMGR0BOM001Form";
             this.Text = "BSMGR0BOM001 - Ürün Ağacı Tipi Yönetimi";
@@ -174,7 +175,6 @@
         }
 
         private System.Windows.Forms.DataGridView dgvBomTypes;
-        private System.Windows.Forms.TextBox txtComCode;
         private System.Windows.Forms.TextBox txtDocType;
         private System.Windows.Forms.TextBox txtDocTypeText;
         private System.Windows.Forms.CheckBox chkIsPassive;
@@ -186,5 +186,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

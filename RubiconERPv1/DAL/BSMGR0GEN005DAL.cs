@@ -26,6 +26,19 @@ namespace DataAccessLayer
             }
         }
 
+        // Firma kodlarını getir
+        public DataTable GetCompanyCodes()
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT DISTINCT COMCODE FROM BSMGR0GEN001"; // Firma kodlarını getir
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+
         // Yeni kayıt ekle
         public void AddRecord(string comCode, string unitCode, string unitText, int isMainUnit, string mainUnitCode)
         {
