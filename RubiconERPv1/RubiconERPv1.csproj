@@ -263,6 +263,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ERPModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Alt Tablolar\IsMerkezleriOperasyonEklemeEkraniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\IsMerkezleriOperasyonEklemeEkraniForm.Designer.cs">
+      <DependentUpon>IsMerkezleriOperasyonEklemeEkraniForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\IsMerkezleriOperasyonListeEkraniForm.cs" />
+    <Compile Include="Forms\Alt Tablolar\IsMerkezleriOperasyonListeEkraniForm.Designer.cs">
+      <DependentUpon>IsMerkezleriOperasyonListeEkraniForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Alt Tablolar\IsMerkezleriTumBilgilerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,6 +416,12 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Alt Tablolar\IsMerkezleriOperasyonEklemeEkraniForm.resx">
+      <DependentUpon>IsMerkezleriOperasyonEklemeEkraniForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\IsMerkezleriOperasyonListeEkraniForm.resx">
+      <DependentUpon>IsMerkezleriOperasyonListeEkraniForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alt Tablolar\IsMerkezleriTumBilgilerForm.resx">
       <DependentUpon>IsMerkezleriTumBilgilerForm.cs</DependentUpon>
     </EmbeddedResource>
