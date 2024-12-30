@@ -25,6 +25,7 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@docTypeText", docTypeText ?? (object)DBNull.Value);
                 command.Parameters.AddWithValue("@isPassive", isPassive ? 1 : 0);
 
+                //canberk
                 connection.Open();
                 command.ExecuteNonQuery();
             }
