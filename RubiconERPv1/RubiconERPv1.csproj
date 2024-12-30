@@ -293,6 +293,36 @@
     <Compile Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.Designer.cs">
       <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotaEklemeEkraniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotaEklemeEkraniForm.Designer.cs">
+      <DependentUpon>RotaEklemeEkraniForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotalarOperasyonEklemeEkraniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotalarOperasyonEklemeEkraniForm.Designer.cs">
+      <DependentUpon>RotalarOperasyonEklemeEkraniForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotalarOperasyonListeEkraniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotalarOperasyonListeEkraniForm.Designer.cs">
+      <DependentUpon>RotalarOperasyonListeEkraniForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotaOperasyonBomEklemeEkraniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotaOperasyonBomEklemeEkraniForm.Designer.cs">
+      <DependentUpon>RotaOperasyonBomEklemeEkraniForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotaOperasyonBomListelemeEkraniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\RotaOperasyonBomListelemeEkraniForm.Designer.cs">
+      <DependentUpon>RotaOperasyonBomListelemeEkraniForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Alt Tablolar\UrunAgaclariComponentEklemeEkraniForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -438,6 +468,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.resx">
       <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\RotaEklemeEkraniForm.resx">
+      <DependentUpon>RotaEklemeEkraniForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\RotalarOperasyonEklemeEkraniForm.resx">
+      <DependentUpon>RotalarOperasyonEklemeEkraniForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\RotalarOperasyonListeEkraniForm.resx">
+      <DependentUpon>RotalarOperasyonListeEkraniForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\RotaOperasyonBomEklemeEkraniForm.resx">
+      <DependentUpon>RotaOperasyonBomEklemeEkraniForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\RotaOperasyonBomListelemeEkraniForm.resx">
+      <DependentUpon>RotaOperasyonBomListelemeEkraniForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alt Tablolar\UrunAgaclariComponentEklemeEkraniForm.resx">
       <DependentUpon>UrunAgaclariComponentEklemeEkraniForm.cs</DependentUpon>
