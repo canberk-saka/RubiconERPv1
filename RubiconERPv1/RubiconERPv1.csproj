@@ -281,6 +281,12 @@
     <Compile Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.Designer.cs">
       <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Alt Tablolar\UrunAgaclariComponentEkraniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\UrunAgaclariComponentEkraniForm.Designer.cs">
+      <DependentUpon>UrunAgaclariComponentEkraniForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Alt Tablolar\UrunAgaclariTumBilgilerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,17 +406,56 @@
     <EmbeddedResource Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.resx">
       <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\UrunAgaclariComponentEkraniForm.resx">
+      <DependentUpon>UrunAgaclariComponentEkraniForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\UrunAgaclariTumBilgilerForm.resx">
+      <DependentUpon>UrunAgaclariTumBilgilerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ana Tablolar\MaliyetMerkezleriForm.resx">
       <DependentUpon>MaliyetMerkezleriForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ana Tablolar\MalzemeBilgileriForm.resx">
       <DependentUpon>MalzemeBilgileriForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ana Tablolar\UrunAgaciForm.resx">
+      <DependentUpon>UrunAgaciForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\deneme.resx">
       <DependentUpon>deneme.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0BOM001Form.resx">
+      <DependentUpon>BSMGR0BOM001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0CCM001Form.resx">
+      <DependentUpon>BSMGR0CCM001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN001Form.resx">
+      <DependentUpon>BSMGR0GEN001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN002Form.resx">
+      <DependentUpon>BSMGR0GEN002Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN003Form.resx">
+      <DependentUpon>BSMGR0GEN003Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN004Form.resx">
+      <DependentUpon>BSMGR0GEN004Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0GEN005Form.resx">
+      <DependentUpon>BSMGR0GEN005Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0MAT001Form.resx">
       <DependentUpon>BSMGR0MAT001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0ROT001Form.resx">
+      <DependentUpon>BSMGR0ROT001Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0ROT002Form.resx">
+      <DependentUpon>BSMGR0ROT002Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Kontrol Tabloları\BSMGR0ROT003Form.resx">
+      <DependentUpon>BSMGR0ROT003Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

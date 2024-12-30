@@ -1,4 +1,5 @@
 ﻿using RubiconERPv1.Forms;
+using RubiconERPv1.Forms.Alt_Tablolar;
 using RubiconERPv1.Forms.Ana_Tablolar;
 using RubiconERPv1.Forms.Kontrol_Tabloları;
 using System;
@@ -34,11 +35,11 @@ namespace RubiconERPv1
             // 
             this.lstKontrolTablolari.ItemHeight = 16;
             this.lstKontrolTablolari.Items.AddRange(new object[] {
-            "Kontrol Tablo 1",
+            "Firma Kontrol",
             "Dil Kontrol",
             "Ülke Kontrol",
             "Şehir Kontrol",
-            "Unit Kontrol",
+            "Birim Kontrol",
             "Maliyet Merkezi Kontrol",
             "Rota Kontrol",
             "İş Merkezi Kontrol",
@@ -79,6 +80,7 @@ namespace RubiconERPv1
             this.btnAnaTablo2.TabIndex = 1;
             this.btnAnaTablo2.Text = "Ana Tablo 2";
             this.btnAnaTablo2.UseVisualStyleBackColor = true;
+            this.btnAnaTablo2.Click += new System.EventHandler(this.btnAnaTablo2_Click_1);
             // 
             // MainForm
             // 
@@ -105,7 +107,7 @@ namespace RubiconERPv1
 
             switch (selectedItem)
             {
-                case "Kontrol Tablo 1":
+                case "Firma Kontrol":
                     var form001 = new BSMGR0GEN001Form();
                     form001.Show();
                     break;
@@ -125,7 +127,7 @@ namespace RubiconERPv1
                     form004.Show();
                     break;
 
-                case "Unit Kontrol":
+                case "Birim Kontrol":
                     var form005 = new BSMGR0GEN005Form();
                     form005.Show();
                     break;
@@ -171,6 +173,12 @@ namespace RubiconERPv1
             // Ana Tablo 1'e tıklandığında MalzemeBilgileriForm'u aç
             var malzemeBilgileriForm = new MalzemeBilgileriForm();
             malzemeBilgileriForm.Show();
+        }
+
+        private void btnAnaTablo2_Click_1(object sender, EventArgs e)
+        {
+            var UrunAgaclariComponentForm = new UrunAgaclariComponentEkraniForm();
+            UrunAgaclariComponentForm.Show();
         }
     }
 }

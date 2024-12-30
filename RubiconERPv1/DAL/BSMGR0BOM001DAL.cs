@@ -105,5 +105,21 @@ namespace DataAccessLayer
                 return count > 0;
             }
         }
+
+        // Firma Kodlarını Getir
+        public DataTable GetCompanyCodes()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT COMCODE FROM BSMGR0GEN001";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable companyCodes = new DataTable();
+
+                connection.Open();
+                adapter.Fill(companyCodes);
+
+                return companyCodes;
+            }
+        }
     }
 }

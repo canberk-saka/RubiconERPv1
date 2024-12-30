@@ -5,8 +5,10 @@ namespace DataAccessLayer
 {
     public class DbConnection
     {
+
         // Veritabanı bağlantı dizesi
-        private static readonly string _connectionString = "Data Source=DESKTOP-BAP4RDU\\SQLEXPRESS02;Initial Catalog=RubiconDB;Integrated Security=True;";
+        private static readonly string _connectionString = "Data Source=EMINPC;Initial Catalog=RubiconDB;Integrated Security=True;";
+
 
         // SqlConnection döndüren bir metot
         public static SqlConnection GetConnection()

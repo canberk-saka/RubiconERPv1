@@ -13,6 +13,19 @@ namespace DataAccessLayer
             _connectionString = connectionString;
         }
 
+        // Tüm firma kodlarını getir (ComboBox için)
+        public DataTable GetCompanyCodes()
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT COMCODE FROM BSMGR0GEN001"; // Firma kodlarını getirir
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+
         // Tüm kayıtları getir
         public DataTable GetAllRecords()
         {
@@ -47,7 +60,11 @@ namespace DataAccessLayer
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE BSMGR0GEN003 SET COMCODE = @NewComCode, COUNTRYCODE = @NewCountryCode, COUNTRYTEXT = @CountryText WHERE COMCODE = @OldComCode AND COUNTRYCODE = @OldCountryCode";
+                string query = @"
+                    UPDATE BSMGR0GEN003
+                    SET COMCODE = @NewComCode, COUNTRYCODE = @NewCountryCode, COUNTRYTEXT = @CountryText
+                    WHERE COMCODE = @OldComCode AND COUNTRYCODE = @OldCountryCode";
+
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@NewComCode", newComCode);
                 cmd.Parameters.AddWithValue("@NewCountryCode", newCountryCode);
@@ -94,7 +111,7 @@ namespace DataAccessLayer
         // Ülke kodunun geçerliliğini kontrol et
         public bool IsCountryCodeValid(string countryCode)
         {
-            string[] validCodes = { "TR", "EN", "DE" }; // Türkiye, İngiltere, Almanya
+            string[] validCodes = { "TR", "EN", "DE", "FR", "IT" }; // Geçerli ülke kodları
             return Array.Exists(validCodes, code => code == countryCode);
         }
     }

@@ -18,7 +18,33 @@ namespace DataAccessLayer
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                string query = "SELECT COMCODE, CITYCODE, CITYTEXT FROM BSMGR0GEN004";
+                string query = "SELECT COMCODE, COUNTRYCODE, CITYCODE, CITYTEXT FROM BSMGR0GEN004"; // COUNTRYCODE sütunu eklendi
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+
+        // Firma kodlarını getir
+        public DataTable GetCompanyCodes()
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT DISTINCT COMCODE FROM BSMGR0GEN001"; // Firma kodlarını getirir
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+
+        // Ülke kodlarını getir
+        public DataTable GetCountryCodes()
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT DISTINCT COUNTRYCODE FROM BSMGR0GEN003"; // Ülke kodlarını getirir
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -34,7 +60,6 @@ namespace DataAccessLayer
                 string query = "INSERT INTO BSMGR0GEN004 (COMCODE, COUNTRYCODE, CITYCODE, CITYTEXT) VALUES (@ComCode, @CountryCode, @CityCode, @CityText)";
                 SqlCommand cmd = new SqlCommand(query, conn);
 
-                // Parametrelerin doğru şekilde eklendiğinden emin olun
                 cmd.Parameters.AddWithValue("@ComCode", comCode);
                 cmd.Parameters.AddWithValue("@CountryCode", countryCode ?? throw new ArgumentNullException(nameof(countryCode), "Ülke Kodu boş olamaz."));
                 cmd.Parameters.AddWithValue("@CityCode", cityCode ?? throw new ArgumentNullException(nameof(cityCode), "Şehir Kodu boş olamaz."));
@@ -45,16 +70,22 @@ namespace DataAccessLayer
             }
         }
 
-
-
         // Kayıt güncelle
-        public bool UpdateRecord(string oldComCode, string oldCityCode, string newComCode, string newCityCode, string cityText)
+        public bool UpdateRecord(string oldComCode, string oldCityCode, string newComCode, string newCountryCode, string newCityCode, string cityText)
         {
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                string query = "UPDATE BSMGR0GEN004 SET COMCODE = @NewComCode, CITYCODE = @NewCityCode, CITYTEXT = @CityText WHERE COMCODE = @OldComCode AND CITYCODE = @OldCityCode";
+                string query = @"
+                    UPDATE BSMGR0GEN004 
+                    SET COMCODE = @NewComCode, 
+                        COUNTRYCODE = @NewCountryCode, 
+                        CITYCODE = @NewCityCode, 
+                        CITYTEXT = @CityText 
+                    WHERE COMCODE = @OldComCode AND CITYCODE = @OldCityCode";
+
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@NewComCode", newComCode);
+                cmd.Parameters.AddWithValue("@NewCountryCode", newCountryCode);
                 cmd.Parameters.AddWithValue("@NewCityCode", newCityCode);
                 cmd.Parameters.AddWithValue("@CityText", cityText ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@OldComCode", oldComCode);

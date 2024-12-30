@@ -13,7 +13,6 @@ namespace DataAccessLayer
             _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString), "Bağlantı dizesi boş olamaz.");
         }
 
-
         // CREATE - Yeni Kayıt Ekleme
         public void AddRecord(string comCode, string docType, string docTypeText, bool isPassive)
         {
@@ -88,6 +87,22 @@ namespace DataAccessLayer
 
                 connection.Open();
                 command.ExecuteNonQuery();
+            }
+        }
+
+        // Firma Kodlarını Getir - ComboBox için
+        public DataTable GetCompanyCodes()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT DISTINCT COMCODE FROM BSMGR0GEN001"; // Firma kodlarının olduğu tablo
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+
+                connection.Open();
+                adapter.Fill(dataTable);
+
+                return dataTable;
             }
         }
     }
