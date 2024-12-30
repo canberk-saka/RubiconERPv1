@@ -329,6 +329,12 @@
     <Compile Include="Forms\Ana Tablolar\MalzemeBilgileriForm.Designer.cs">
       <DependentUpon>MalzemeBilgileriForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Ana Tablolar\RotalarEkraniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ana Tablolar\RotalarEkraniForm.Designer.cs">
+      <DependentUpon>RotalarEkraniForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Ana Tablolar\UrunAgaciForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,6 +456,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ana Tablolar\MalzemeBilgileriForm.resx">
       <DependentUpon>MalzemeBilgileriForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ana Tablolar\RotalarEkraniForm.resx">
+      <DependentUpon>RotalarEkraniForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ana Tablolar\UrunAgaciForm.resx">
       <DependentUpon>UrunAgaciForm.cs</DependentUpon>
