@@ -103,6 +103,22 @@ namespace DataAccessLayer
                 return count > 0;
             }
         }
+        public bool CheckIfLanCodeExists(string comCode, string lanCode)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = "SELECT COUNT(*) FROM BSMGR0GEN002 WHERE COMCODE = @comCode AND LANCODE = @lanCode";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@comCode", comCode);
+                command.Parameters.AddWithValue("@lanCode", lanCode);
+
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+
 
         // Dil kodunun geçerliliğini kontrol et
         public bool IsLanguageCodeValid(string lanCode)
