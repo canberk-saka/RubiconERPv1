@@ -21,5 +21,10 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
         {
           
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
