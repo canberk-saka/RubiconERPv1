@@ -195,6 +195,7 @@
             this.Name = "BSMGR0GEN005Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Birim Kontrol Formu";
+            this.Load += new System.EventHandler(this.BSMGR0GEN005Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUnits)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

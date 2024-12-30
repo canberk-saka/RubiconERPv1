@@ -104,7 +104,7 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    MessageBox.Show("Bağlantı başarılı!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                 }
             }
             catch (Exception ex)
