@@ -69,7 +69,7 @@
             // cbOperasyonKodu
             // 
             this.cbOperasyonKodu.FormattingEnabled = true;
-            this.cbOperasyonKodu.Location = new System.Drawing.Point(745, 250);
+            this.cbOperasyonKodu.Location = new System.Drawing.Point(668, 250);
             this.cbOperasyonKodu.Margin = new System.Windows.Forms.Padding(4);
             this.cbOperasyonKodu.Name = "cbOperasyonKodu";
             this.cbOperasyonKodu.Size = new System.Drawing.Size(143, 24);
@@ -79,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(603, 250);
+            this.label3.Location = new System.Drawing.Point(509, 254);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 20);
