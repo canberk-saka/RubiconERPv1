@@ -126,6 +126,8 @@ namespace DataAccessLayer
                 return count > 0;
             }
         }
+       
+
 
         // Şehir kodunun geçerliliğini kontrol et
         public bool IsCityCodeValid(string cityCode)

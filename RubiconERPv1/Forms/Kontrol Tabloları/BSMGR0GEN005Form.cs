@@ -22,6 +22,8 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
             LoadData();
             CustomizeDataGridView();
         }
+        
+
 
         private void CustomizeDataGridView()
         {
@@ -167,6 +169,27 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
                 MessageBox.Show($"Güncelleme sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void dgvUnits_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || dgvUnits.Rows.Count <= e.RowIndex)
+            {
+                MessageBox.Show("Geçersiz satır seçimi!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                comboBox1.SelectedValue = dgvUnits.Rows[e.RowIndex].Cells["COMCODE"].Value?.ToString();
+                txtUnitCode.Text = dgvUnits.Rows[e.RowIndex].Cells["UNITCODE"].Value?.ToString() ?? string.Empty;
+                txtUnitText.Text = dgvUnits.Rows[e.RowIndex].Cells["UNITTEXT"].Value?.ToString() ?? string.Empty;
+                txtMainUnitCode.Text = dgvUnits.Rows[e.RowIndex].Cells["MAINUNITCODE"].Value?.ToString() ?? string.Empty;
+                chkIsMainUnit.Checked = dgvUnits.Rows[e.RowIndex].Cells["ISMAINUNIT"].Value?.ToString() == "1";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Satır verileri yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -194,6 +217,11 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
         private void btnClear_Click(object sender, EventArgs e)
         {
             ClearFields();
+        }
+
+        private void BSMGR0GEN005Form_Load(object sender, EventArgs e)
+        {
+            dgvUnits.CellClick += dgvUnits_CellClick; // DataGridView'e tıklama olayı ekle
         }
     }
 }

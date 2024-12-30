@@ -117,13 +117,20 @@ namespace RubiconERPv1.Forms.Kontrol_Tabloları
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string comCode = comboBox1.SelectedValue?.ToString(); // Combobox'tan firma kodu alınıyor
-            string lanCode = txtLanCode.Text;
-            string lanText = txtLanText.Text;
+            string comCode = comboBox1.SelectedValue?.ToString();
+            string lanCode = txtLanCode.Text.Trim();
+            string lanText = txtLanText.Text.Trim();
 
             if (string.IsNullOrEmpty(comCode) || string.IsNullOrEmpty(lanCode))
             {
-                MessageBox.Show("Firma Kodu ve Dil Kodu zorunludur!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Firma Kodu ve Dil Kodu doldurulmalıdır!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Mevcut kaydı kontrol et
+            if (_dataAccessLayer.CheckIfLanCodeExists(comCode, lanCode))
+            {
+                MessageBox.Show("Bu firma için belirtilen Dil Kodu zaten mevcut.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
