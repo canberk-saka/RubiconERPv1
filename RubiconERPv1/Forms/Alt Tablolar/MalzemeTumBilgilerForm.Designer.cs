@@ -74,6 +74,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnKaydet = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -115,7 +117,6 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Malzeme Temel Bilgileri";
-            //this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // dtpGecerlilikBitisTarihi
             // 
@@ -560,11 +561,33 @@
             this.label8.TabIndex = 17;
             this.label8.Text = "Net Ağırlık";
             // 
+            // btnKaydet
+            // 
+            this.btnKaydet.Location = new System.Drawing.Point(1555, 742);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(109, 49);
+            this.btnKaydet.TabIndex = 24;
+            this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click_1);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(1375, 742);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(128, 42);
+            this.btnSave.TabIndex = 25;
+            this.btnSave.Text = "Kaydet";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // MalzemeTumBilgilerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 846);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -627,5 +650,7 @@
         private System.Windows.Forms.ComboBox cmbNetAgirlikBirimi;
         private System.Windows.Forms.TextBox txtRotaNumarasi;
         private System.Windows.Forms.TextBox txtUrunAgaciKodu;
+        private System.Windows.Forms.Button btnKaydet;
+        private System.Windows.Forms.Button btnSave;
     }
 }
