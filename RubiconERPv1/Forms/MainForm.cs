@@ -177,8 +177,8 @@ namespace RubiconERPv1
 
         private void btnAnaTablo2_Click_1(object sender, EventArgs e)
         {
-            var UrunAgaclariComponentForm = new UrunAgaclariComponentEkraniForm();
-            UrunAgaclariComponentForm.Show();
+            var MaliyetMerkezleriForm = new MaliyetMerkezleriForm();
+            MaliyetMerkezleriForm.Show();
         }
     }
 }
