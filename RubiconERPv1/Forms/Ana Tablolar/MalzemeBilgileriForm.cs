@@ -52,7 +52,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                 DataTable newData = data.Copy();
                 DataRow newRow = newData.NewRow();
                 newRow[displayMember] = "Seçiniz";
-                newRow[valueMember] = "";
+                newRow[valueMember] = "Seçiniz";
                 newData.Rows.InsertAt(newRow, 0);
 
                 comboBox.DataSource = newData;
@@ -212,6 +212,17 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             
 
         }
+       
+
+
+
+
+        
+
+
+
+
+
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
@@ -224,6 +235,56 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             tumBilgilerForm.SetFormMode(true);
             tumBilgilerForm.SetFormModeInsert(true);
             tumBilgilerForm.Show();
+        }
+
+        private void button_sil_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                // DataGridView'den seçilen satırdaki Maliyet Merkezi Kodu
+                if (dgvMalzemeBilgileri.SelectedRows.Count > 0)
+                {
+                    // Seçilen satırdaki Maliyet Merkezi Kodu
+                    string malzemeKodu = dgvMalzemeBilgileri.SelectedRows[0].Cells["Malzeme Kodu"].Value.ToString();
+
+                    if (string.IsNullOrWhiteSpace(malzemeKodu))
+                    {
+                        MessageBox.Show("Lütfen silinecek maliyet merkezi kodunu seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Silme işlemi için onay isteği
+                    var confirmResult = MessageBox.Show("Bu maliyet merkezi kaydını silmek istediğinizden emin misiniz?",
+                                                         "Silme Onayı",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Question);
+
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        // Veritabanı üzerinden silme işlemi
+                        bool isDeleted = _dataAccessLayer.DeleteMaterial(malzemeKodu);
+
+                        if (isDeleted)
+                        {
+                            MessageBox.Show("Maliyet merkezi başarıyla silindi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Silme işleminden sonra listeyi güncelleyebilirsiniz
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Silme işlemi başarısız oldu.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen silinecek bir maliyet merkezi seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Silme işlemi sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
