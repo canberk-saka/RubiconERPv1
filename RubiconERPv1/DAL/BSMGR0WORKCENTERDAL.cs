@@ -39,6 +39,82 @@ namespace DataAccessLayer
             }
         }
 
+        public bool InsertOperasyon(
+    string firmaKodu,
+    string isMerkeziTipi,
+    string isMerkeziKodu,
+    DateTime gecerlilikBaslangic,
+    DateTime gecerlilikBitis,
+    string operasyonKodu)
+        {
+            try
+            {
+                string query = @"
+            INSERT INTO BSMGR0WCMOPR
+            (COMCODE, WCMDOCTYPE, WCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, OPRDOCTYPE)
+            VALUES
+            (@firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @gecerlilikBaslangic, @gecerlilikBitis, @operasyonKodu)";
+
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+                    command.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
+                    command.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+                    command.Parameters.AddWithValue("@gecerlilikBaslangic", gecerlilikBaslangic);
+                    command.Parameters.AddWithValue("@gecerlilikBitis", gecerlilikBitis);
+                    command.Parameters.AddWithValue("@operasyonKodu", operasyonKodu);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Veri eklerken hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
+        public bool UpdateOperasyon(string firmaKodu, string isMerkeziTipi, string isMerkeziKodu, DateTime gecerlilikBaslangic, DateTime gecerlilikBitis, string operasyonKodu)
+        {
+            string updateQuery = @"
+        UPDATE BSMGR0WCMOPR
+        SET 
+            COMCODE = @firmaKodu,
+            WCMDOCTYPE = @isMerkeziTipi,
+            WCMDOCNUM = @isMerkeziKodu,
+            WCMDOCFROM = @gecerlilikBaslangic,
+            WCMDOCUNTIL = @gecerlilikBitis,
+            OPRDOCTYPE = @operasyonKodu
+        WHERE OPRDOCTYPE = @operasyonKodu"; // Burada İş Merkezi Kodu'nu eşitliyoruz.
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = new SqlCommand(updateQuery, connection);
+                command.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+                command.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
+                command.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+                command.Parameters.AddWithValue("@gecerlilikBaslangic", gecerlilikBaslangic);
+                command.Parameters.AddWithValue("@gecerlilikBitis", gecerlilikBitis);
+                command.Parameters.AddWithValue("@operasyonKodu", operasyonKodu);
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery(); // Veritabanındaki satırı günceller
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Operasyon güncellenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+        }
 
         // İş Merkezi Detaylarını Getir
         public DataTable GetWCMDetails(string isMerkeziKodu)
@@ -265,6 +341,48 @@ namespace DataAccessLayer
             }
         }
 
+        // İş Merkezi Kodu'na göre verileri getir
+        public DataTable GetWCMDetailsByCode(string isMerkeziKodu)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"
+           SELECT 
+    w.COMCODE AS 'Firma Kodu',
+    w.WCMDOCTYPE AS 'İş Merkezi Tipi',
+    w.WCMDOCNUM AS 'İş Merkezi Kodu',
+    w.WCMDOCFROM AS 'Geçerlilik Başlangıç',
+    w.WCMDOCUNTIL AS 'Geçerlilik Bitiş',
+    w.OPRDOCTYPE AS 'Operasyon Kodu',
+    r.DOCTYPETEXT AS 'İş Merkezi Tipi Açıklaması'
+FROM 
+    BSMGR0WCMOPR w
+LEFT JOIN 
+    BSMGR0ROT003 r ON w.OPRDOCTYPE = r.DOCTYPE
+WHERE 
+    w.WCMDOCNUM = @isMerkeziKodu
+    AND r.DOCTYPETEXT IS NOT NULL;";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+
+                try
+                {
+                    connection.Open();
+                    adapter.Fill(dataTable);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Veri çekme sırasında hata oluştu: {ex.Message}");
+                }
+
+                return dataTable;
+            }
+        }
+
 
         // İş Merkezi Güncelleme
         public bool UpdateWCM(string isMerkeziKodu, string firmaKodu, string isMerkeziTipi,
@@ -355,68 +473,40 @@ namespace DataAccessLayer
         }
 
 
+        public bool DeleteOperasyon(string firmaKodu, string isMerkeziKodu, string operasyonKodu)
+        {
+            try
+            {
+                // SQL sorgusu ile BSMGR0WCMOPR tablosundan belirtilen operasyonu sil
+                string deleteQuery = @"
+            DELETE FROM BSMGR0WCMOPR
+            WHERE 
+               OPRDOCTYPE = @operasyonKodu;
+        ";
+
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    SqlCommand command = new SqlCommand(deleteQuery, connection);
+                    command.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+                    command.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+                    command.Parameters.AddWithValue("@operasyonKodu", operasyonKodu);
+
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    // Eğer silme işlemi başarılıysa, rowsAffected > 0 olur
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Hata durumunda exception fırlat
+                MessageBox.Show($"Silme işlemi sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
 
-        //        public bool InsertWorkCenter(string firmaKodu, string isMerkeziTipi, string isMerkeziKodu,
-        //    DateTime? baslangicTarihi, DateTime? bitisTarihi, string gunlukCalismaSuresi, string kisaAciklama,
-        //    string uzunAciklama, string silindiMi, string pasifMi, string dilKodu)
-        //        {
-        //            try
-        //            {
-        //                using (SqlConnection connection = new SqlConnection(_connectionString))
-        //                {
-        //                    string query = @"
-        //INSERT INTO BSMGR0WCMHEAD
-        //(
-        //    COMCODE, WCMDOCTYPE, WCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, MAINWCMDOCTYPE, MAINWCMDOCNUM, 
-        //    ISDELETED, ISPASSIVE, WCMDOCFROM
-        //)
-        //VALUES
-        //(
-        //    @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi, 
-        //    @anaIsMerkeziTipi, @anaIsMerkeziKodu, @silindiMi, @pasifMi, @gunlukCalismaSuresi
-        //);
-
-        //INSERT INTO BSMGR0WCMTEXT
-        //(
-        //    COMCODE, WCMDOCTYPE, WCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, LANCODE, WCMSTEXT, WCMLTEXT
-        //)
-        //VALUES
-        //(
-        //    @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi, 
-        //    @dilKodu, @kisaAciklama, @uzunAciklama
-        //)";
-
-        //                    SqlCommand command = new SqlCommand(query, connection);
-
-        //                    // Parametreleri ekle
-        //                    command.Parameters.AddWithValue("@firmaKodu", firmaKodu);
-        //                    command.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
-        //                    command.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
-        //                    command.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
-        //                    command.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
-        //                    command.Parameters.AddWithValue("@gunlukCalismaSuresi", gunlukCalismaSuresi);
-        //                    command.Parameters.AddWithValue("@kisaAciklama", kisaAciklama);
-        //                    command.Parameters.AddWithValue("@uzunAciklama", uzunAciklama);
-        //                    command.Parameters.AddWithValue("@dilKodu", dilKodu);
-        //                    command.Parameters.AddWithValue("@silindiMi", silindiMi);
-        //                    command.Parameters.AddWithValue("@pasifMi", pasifMi);
-        //                    command.Parameters.AddWithValue("@anaIsMerkeziTipi", IsMerkeziTipi);
-        //                    command.Parameters.AddWithValue("@anaIsMerkeziKodu", IsMerkeziKodu);
-
-        //                    connection.Open();
-        //                    int rowsAffected = command.ExecuteNonQuery();
-        //                    return rowsAffected > 0; // Eğer ekleme başarılıysa true döner
-
-
-        //                }
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                // Hata mesajı döndür
-        //                throw new Exception("Yeni iş merkezi eklenirken bir hata oluştu: " + ex.Message);
-        //            }
-        //        }
 
 
         public bool DeleteWCM(string isMerkeziKodu)

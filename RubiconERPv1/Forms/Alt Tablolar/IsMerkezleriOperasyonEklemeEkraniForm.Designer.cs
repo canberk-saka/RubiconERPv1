@@ -35,13 +35,14 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtIsMerkeziKodu = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbIsMerkeziTipi = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbFirmaKodu = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnKaydet = new System.Windows.Forms.Button();
+            this.btnGuncelle = new System.Windows.Forms.Button();
             this.OperasyonTanimlamaEkrani.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             this.OperasyonTanimlamaEkrani.Controls.Add(this.dateTimePicker1);
             this.OperasyonTanimlamaEkrani.Controls.Add(this.label5);
             this.OperasyonTanimlamaEkrani.Controls.Add(this.label4);
-            this.OperasyonTanimlamaEkrani.Controls.Add(this.textBox2);
+            this.OperasyonTanimlamaEkrani.Controls.Add(this.txtIsMerkeziKodu);
             this.OperasyonTanimlamaEkrani.Controls.Add(this.label7);
             this.OperasyonTanimlamaEkrani.Controls.Add(this.cbIsMerkeziTipi);
             this.OperasyonTanimlamaEkrani.Controls.Add(this.label2);
@@ -124,13 +125,13 @@
             this.label4.TabIndex = 54;
             this.label4.Text = "Geçerlilik Başlangıç Tarihi";
             // 
-            // textBox2
+            // txtIsMerkeziKodu
             // 
-            this.textBox2.Location = new System.Drawing.Point(745, 174);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 22);
-            this.textBox2.TabIndex = 53;
+            this.txtIsMerkeziKodu.Location = new System.Drawing.Point(745, 174);
+            this.txtIsMerkeziKodu.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIsMerkeziKodu.Name = "txtIsMerkeziKodu";
+            this.txtIsMerkeziKodu.Size = new System.Drawing.Size(143, 22);
+            this.txtIsMerkeziKodu.TabIndex = 53;
             // 
             // label7
             // 
@@ -165,6 +166,7 @@
             // 
             // cbFirmaKodu
             // 
+            this.cbFirmaKodu.Enabled = false;
             this.cbFirmaKodu.FormattingEnabled = true;
             this.cbFirmaKodu.Location = new System.Drawing.Point(290, 100);
             this.cbFirmaKodu.Margin = new System.Windows.Forms.Padding(4);
@@ -191,12 +193,24 @@
             this.btnKaydet.TabIndex = 49;
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click_1);
+            // 
+            // btnGuncelle
+            // 
+            this.btnGuncelle.Location = new System.Drawing.Point(1535, 494);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(123, 46);
+            this.btnGuncelle.TabIndex = 50;
+            this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.UseVisualStyleBackColor = true;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGüncelle_Click);
             // 
             // IsMerkezleriOperasyonEklemeEkraniForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.btnGuncelle);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.OperasyonTanimlamaEkrani);
             this.Name = "IsMerkezleriOperasyonEklemeEkraniForm";
@@ -217,12 +231,13 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtIsMerkeziKodu;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbIsMerkeziTipi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbFirmaKodu;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnKaydet;
+        private System.Windows.Forms.Button btnGuncelle;
     }
 }
