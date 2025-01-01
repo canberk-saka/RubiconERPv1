@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using DataAccessLayer;
@@ -26,6 +27,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             int x = (this.ClientSize.Width - dgvMalzemeBilgileri.Width) / 2;
             int y = ((this.ClientSize.Height - dgvMalzemeBilgileri.Height) / 2) + 100;
             dgvMalzemeBilgileri.Location = new Point(x, y);
+            
 
             // ComboBox verilerini yükle
             LoadComboBoxData(cbFirmaKodu, "BSMGR0GEN001", "COMCODE", "COMCODE");
@@ -38,6 +40,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             dtpGecerlilikBitisTarihi.Checked = false;
         }
 
+        
         private void LoadComboBoxData(ComboBox comboBox, string tableName, string displayMember, string valueMember)
         {
             try
@@ -195,6 +198,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
 
         private void btnTumunuGoster_Click_1(object sender, EventArgs e)
         {
+            
             try
             {
                 DataTable allData = _dataAccessLayer.GetAllData();
@@ -213,13 +217,6 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
 
         }
        
-
-
-
-
-        
-
-
 
 
 
