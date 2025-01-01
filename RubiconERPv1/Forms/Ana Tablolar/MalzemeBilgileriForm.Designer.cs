@@ -59,6 +59,7 @@
             this.btnDuzenle = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
             this.btnTumunuGoster = new System.Windows.Forms.Button();
+            this.button_sil = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMalzemeBilgileri)).BeginInit();
             this.SuspendLayout();
@@ -327,6 +328,7 @@
             this.cbFirmaKodu.Name = "cbFirmaKodu";
             this.cbFirmaKodu.Size = new System.Drawing.Size(175, 24);
             this.cbFirmaKodu.TabIndex = 56;
+            this.cbFirmaKodu.Text = "Seçiniz";
             // 
             // lblGecerlilikBaslangicTarihi
             // 
@@ -444,11 +446,23 @@
             this.btnTumunuGoster.UseVisualStyleBackColor = true;
             this.btnTumunuGoster.Click += new System.EventHandler(this.btnTumunuGoster_Click_1);
             // 
+            // button_sil
+            // 
+            this.button_sil.Location = new System.Drawing.Point(776, 292);
+            this.button_sil.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_sil.Name = "button_sil";
+            this.button_sil.Size = new System.Drawing.Size(75, 23);
+            this.button_sil.TabIndex = 84;
+            this.button_sil.Text = "Sil";
+            this.button_sil.UseVisualStyleBackColor = true;
+            this.button_sil.Click += new System.EventHandler(this.button_sil_Click_1);
+            // 
             // MalzemeBilgileriForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 753);
+            this.Controls.Add(this.button_sil);
             this.Controls.Add(this.btnTumunuGoster);
             this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.btnDuzenle);
@@ -500,5 +514,6 @@
         private System.Windows.Forms.ComboBox cmbPasifMi;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cmbSilindiMi;
+        private System.Windows.Forms.Button button_sil;
     }
 }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using RubiconERPv1;
+using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace DataAccessLayer
 {
@@ -12,6 +14,36 @@ namespace DataAccessLayer
         {
             _connectionString = connectionString;
         }
+
+        public bool DeleteMaterial(string malzemeKodu)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                string query = @"
+            DELETE FROM BSMGR0MATHEAD WHERE MATDOCNUM = @malzemeKodu;
+            DELETE FROM BSMGR0MATTEXT WHERE MATDOCNUM = @malzemeKodu;
+        ";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@malzemeKodu", malzemeKodu);
+
+                try
+                {
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0; // Eğer silme işlemi başarılı olduysa true döner
+                }
+                catch (Exception ex)
+                {
+                    // Hata durumunda false döner
+                    throw new Exception("Maliyet merkezi silinirken bir hata oluştu: " + ex.Message);
+                }
+            }
+        }
+
+
+
+
 
 
 
@@ -281,12 +313,13 @@ WHERE
         }
 
         public bool InsertMaterial(string malzemeKodu, string firmaKodu, string malzemeTipi, string malzemeKisaAciklama,
-     string malzemeUzunAciklama, string dilKodu, string tedarikTipi, string malzemeStokBirimi,
-     string netAgirlik, string netAgirlikBirimi, string brutAgirlik, string brutAgirlikBirimi,
-     string urunAgaciVarMi, string urunAgaciTipi, string urunAgaciKodu, string rotaVarMi,
-     string rotaTipi, string rotaNumarasi, string silindiMi, string pasifMi,
-     DateTime? baslangicTarihi, DateTime? bitisTarihi)
+    string malzemeUzunAciklama, string dilKodu, string tedarikTipi, string malzemeStokBirimi,
+    string netAgirlik, string netAgirlikBirimi, string brutAgirlik, string brutAgirlikBirimi,
+    string urunAgaciVarMi, string urunAgaciTipi, string urunAgaciKodu, string rotaVarMi,
+    string rotaTipi, string rotaNumarasi, string silindiMi, string pasifMi,
+    DateTime? baslangicTarihi, DateTime? bitisTarihi)
         {
+            // MatHead için SQL sorgusu
             string insertMatHeadQuery = @"
     INSERT INTO BSMGR0MATHEAD
     (
@@ -302,72 +335,70 @@ WHERE
         @baslangicTarihi, @bitisTarihi
     )";
 
-            string insertMatTextQuery = @"
-    INSERT INTO BSMGR0MATTEXT
-    (
-        COMCODE, MATDOCTYPE, MATDOCNUM, MATDOCFROM, MATDOCUNTIL, LANCODE, MATSTEXT, MATLTEXT
-    )
-    VALUES
-    (
-        @firmaKodu, @malzemeTipi, @malzemeKodu, @baslangicTarihi, @bitisTarihi, @dilKodu, 
-        @malzemeKisaAciklama, @malzemeUzunAciklama
-    )";
+            // Aynı kaydın olup olmadığını kontrol etmek için SQL sorgusu
+            string checkQuery = @"
+    SELECT COUNT(*) FROM BSMGR0MATHEAD 
+    WHERE MATDOCNUM = @malzemeKodu AND COMCODE = @firmaKodu AND MATDOCTYPE = @malzemeTipi";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                using (SqlCommand commandMatHead = new SqlCommand(insertMatHeadQuery, connection))
+                try
                 {
-                    // Parametreleri ekle
-                    commandMatHead.Parameters.AddWithValue("@malzemeKodu", malzemeKodu);
-                    commandMatHead.Parameters.AddWithValue("@firmaKodu", firmaKodu);
-                    commandMatHead.Parameters.AddWithValue("@malzemeTipi", malzemeTipi);
-                    commandMatHead.Parameters.AddWithValue("@tedarikTipi", tedarikTipi);
-                    commandMatHead.Parameters.AddWithValue("@malzemeStokBirimi", malzemeStokBirimi);
-                    commandMatHead.Parameters.AddWithValue("@netAgirlik", netAgirlik);
-                    commandMatHead.Parameters.AddWithValue("@netAgirlikBirimi", netAgirlikBirimi);
-                    commandMatHead.Parameters.AddWithValue("@brutAgirlik", brutAgirlik);
-                    commandMatHead.Parameters.AddWithValue("@brutAgirlikBirimi", brutAgirlikBirimi);
-                    commandMatHead.Parameters.AddWithValue("@urunAgaciVarMi", urunAgaciVarMi);
-                    commandMatHead.Parameters.AddWithValue("@urunAgaciTipi", urunAgaciTipi);
-                    commandMatHead.Parameters.AddWithValue("@urunAgaciKodu", urunAgaciKodu);
-                    commandMatHead.Parameters.AddWithValue("@rotaVarMi", rotaVarMi);
-                    commandMatHead.Parameters.AddWithValue("@rotaTipi", rotaTipi);
-                    commandMatHead.Parameters.AddWithValue("@rotaNumarasi", rotaNumarasi);
-                    commandMatHead.Parameters.AddWithValue("@silindiMi", silindiMi);
-                    commandMatHead.Parameters.AddWithValue("@pasifMi", pasifMi);
-                    commandMatHead.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
-                    commandMatHead.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
+                    connection.Open();
 
-                    using (SqlCommand commandMatText = new SqlCommand(insertMatTextQuery, connection))
+                    // Kayıt kontrolü
+                    using (SqlCommand checkCommand = new SqlCommand(checkQuery, connection))
                     {
-                        // Parametreleri ekle
-                        commandMatText.Parameters.AddWithValue("@firmaKodu", firmaKodu);
-                        commandMatText.Parameters.AddWithValue("@malzemeKodu", malzemeKodu);
-                        commandMatText.Parameters.AddWithValue("@malzemeTipi", malzemeTipi);  // Burada malzemeTipi parametresi kullanılıyor
-                        commandMatText.Parameters.AddWithValue("@malzemeKisaAciklama", malzemeKisaAciklama);
-                        commandMatText.Parameters.AddWithValue("@malzemeUzunAciklama", malzemeUzunAciklama);
-                        commandMatText.Parameters.AddWithValue("@dilKodu", dilKodu);
-                        commandMatText.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
-                        commandMatText.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
+                        checkCommand.Parameters.AddWithValue("@malzemeKodu", malzemeKodu);
+                        checkCommand.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+                        checkCommand.Parameters.AddWithValue("@malzemeTipi", malzemeTipi);
 
-                        try
-                        {
-                            connection.Open();
-                            // MatHead ve MatText yeni kayıtları ekle
-                            int rowsAffectedMatHead = commandMatHead.ExecuteNonQuery();
-                            int rowsAffectedMatText = commandMatText.ExecuteNonQuery();
+                        int existingCount = (int)checkCommand.ExecuteScalar();
 
-                            // Eğer her iki ekleme başarılıysa, true döner
-                            return rowsAffectedMatHead > 0 && rowsAffectedMatText > 0;
-                        }
-                        catch (Exception ex)
+                        if (existingCount > 0)
                         {
-                            throw new Exception("Yeni kayıt eklenirken bir hata oluştu: " + ex.Message);
+                            MessageBox.Show("Bu kayıt zaten mevcut!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
                         }
                     }
+
+                    // Kayıt ekleme
+                    using (SqlCommand commandMatHead = new SqlCommand(insertMatHeadQuery, connection))
+                    {
+                        // Parametreler
+                        commandMatHead.Parameters.AddWithValue("@malzemeKodu", malzemeKodu);
+                        commandMatHead.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+                        commandMatHead.Parameters.AddWithValue("@malzemeTipi", malzemeTipi);
+                        commandMatHead.Parameters.AddWithValue("@tedarikTipi", tedarikTipi);
+                        commandMatHead.Parameters.AddWithValue("@malzemeStokBirimi", malzemeStokBirimi);
+                        commandMatHead.Parameters.AddWithValue("@netAgirlik", netAgirlik);
+                        commandMatHead.Parameters.AddWithValue("@netAgirlikBirimi", netAgirlikBirimi);
+                        commandMatHead.Parameters.AddWithValue("@brutAgirlik", brutAgirlik);
+                        commandMatHead.Parameters.AddWithValue("@brutAgirlikBirimi", brutAgirlikBirimi);
+                        commandMatHead.Parameters.AddWithValue("@urunAgaciVarMi", urunAgaciVarMi);
+                        commandMatHead.Parameters.AddWithValue("@urunAgaciTipi", urunAgaciTipi);
+                        commandMatHead.Parameters.AddWithValue("@urunAgaciKodu", urunAgaciKodu);
+                        commandMatHead.Parameters.AddWithValue("@rotaVarMi", rotaVarMi);
+                        commandMatHead.Parameters.AddWithValue("@rotaTipi", rotaTipi);
+                        commandMatHead.Parameters.AddWithValue("@rotaNumarasi", rotaNumarasi);
+                        commandMatHead.Parameters.AddWithValue("@silindiMi", silindiMi);
+                        commandMatHead.Parameters.AddWithValue("@pasifMi", pasifMi);
+                        commandMatHead.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
+                        commandMatHead.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
+
+                        int rowsAffected = commandMatHead.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ekleme işlemi sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
             }
         }
+
+
 
 
 
