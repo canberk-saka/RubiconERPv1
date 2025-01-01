@@ -235,6 +235,7 @@
     </Compile>
     <Compile Include="DAL\BSMGR0BOM001DAL.cs" />
     <Compile Include="DAL\BSMGR0CCM001DAL.cs" />
+    <Compile Include="DAL\BSMGR0CCMDAL.cs" />
     <Compile Include="DAL\BSMGR0GEN001DAL.cs" />
     <Compile Include="DAL\BSMGR0GEN002DAL.cs" />
     <Compile Include="DAL\BSMGR0GEN003DAL.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="DAL\BSMGR0ROT001DAL.cs" />
     <Compile Include="DAL\BSMGR0ROT002DAL..cs" />
     <Compile Include="DAL\BSMGR0ROT003DAL.cs" />
+    <Compile Include="DAL\BSMGR0WORKCENTERDAL.cs" />
     <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="ERPModel.Context.cs">
       <AutoGen>True</AutoGen>

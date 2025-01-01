@@ -17,7 +17,7 @@
         {
             this.groupBoxMaliyetMerkezi = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbDilKodu = new System.Windows.Forms.ComboBox();
             this.lblFirmaKodu = new System.Windows.Forms.Label();
             this.cbFirmaKodu = new System.Windows.Forms.ComboBox();
             this.lblMaliyetMerkeziTipi = new System.Windows.Forms.Label();
@@ -42,15 +42,15 @@
             this.btnDuzenle = new System.Windows.Forms.Button();
             this.btnIncele = new System.Windows.Forms.Button();
             this.btnBul = new System.Windows.Forms.Button();
-            this.dgwMaliyetMerkezi = new System.Windows.Forms.DataGridView();
+            this.dgvMaliyetMerkezi = new System.Windows.Forms.DataGridView();
             this.groupBoxMaliyetMerkezi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgwMaliyetMerkezi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaliyetMerkezi)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMaliyetMerkezi
             // 
             this.groupBoxMaliyetMerkezi.Controls.Add(this.label1);
-            this.groupBoxMaliyetMerkezi.Controls.Add(this.comboBox1);
+            this.groupBoxMaliyetMerkezi.Controls.Add(this.cmbDilKodu);
             this.groupBoxMaliyetMerkezi.Controls.Add(this.lblFirmaKodu);
             this.groupBoxMaliyetMerkezi.Controls.Add(this.cbFirmaKodu);
             this.groupBoxMaliyetMerkezi.Controls.Add(this.lblMaliyetMerkeziTipi);
@@ -75,7 +75,6 @@
             this.groupBoxMaliyetMerkezi.TabIndex = 0;
             this.groupBoxMaliyetMerkezi.TabStop = false;
             this.groupBoxMaliyetMerkezi.Text = "Maliyet Merkezi Bilgileri";
-            this.groupBoxMaliyetMerkezi.Enter += new System.EventHandler(this.groupBoxMaliyetMerkezi_Enter);
             // 
             // label1
             // 
@@ -86,16 +85,16 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Dil Kodu";
             // 
-            // comboBox1
+            // cmbDilKodu
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbDilKodu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDilKodu.Items.AddRange(new object[] {
             "0",
             "1"});
-            this.comboBox1.Location = new System.Drawing.Point(685, 48);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(77, 24);
-            this.comboBox1.TabIndex = 24;
+            this.cmbDilKodu.Location = new System.Drawing.Point(685, 48);
+            this.cmbDilKodu.Name = "cmbDilKodu";
+            this.cmbDilKodu.Size = new System.Drawing.Size(77, 24);
+            this.cmbDilKodu.TabIndex = 24;
             // 
             // lblFirmaKodu
             // 
@@ -259,6 +258,7 @@
             this.btnSil.TabIndex = 31;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnEkle
             // 
@@ -268,6 +268,7 @@
             this.btnEkle.TabIndex = 30;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // btnTumunuGoster
             // 
@@ -277,6 +278,7 @@
             this.btnTumunuGoster.TabIndex = 29;
             this.btnTumunuGoster.Text = "Tümünü Göster";
             this.btnTumunuGoster.UseVisualStyleBackColor = true;
+            this.btnTumunuGoster.Click += new System.EventHandler(this.btnTumunuGoster_Click);
             // 
             // btnDuzenle
             // 
@@ -286,6 +288,7 @@
             this.btnDuzenle.TabIndex = 28;
             this.btnDuzenle.Text = "Düzenle";
             this.btnDuzenle.UseVisualStyleBackColor = true;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
             // btnIncele
             // 
@@ -295,6 +298,7 @@
             this.btnIncele.TabIndex = 27;
             this.btnIncele.Text = "İncele";
             this.btnIncele.UseVisualStyleBackColor = true;
+            this.btnIncele.Click += new System.EventHandler(this.btnIncele_Click);
             // 
             // btnBul
             // 
@@ -304,20 +308,21 @@
             this.btnBul.TabIndex = 26;
             this.btnBul.Text = "Bul";
             this.btnBul.UseVisualStyleBackColor = true;
+            this.btnBul.Click += new System.EventHandler(this.btnBul_Click);
             // 
-            // dgwMaliyetMerkezi
+            // dgvMaliyetMerkezi
             // 
-            this.dgwMaliyetMerkezi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMaliyetMerkezi.Location = new System.Drawing.Point(125, 388);
-            this.dgwMaliyetMerkezi.Name = "dgwMaliyetMerkezi";
-            this.dgwMaliyetMerkezi.RowHeadersWidth = 51;
-            this.dgwMaliyetMerkezi.Size = new System.Drawing.Size(1282, 286);
-            this.dgwMaliyetMerkezi.TabIndex = 32;
+            this.dgvMaliyetMerkezi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMaliyetMerkezi.Location = new System.Drawing.Point(125, 388);
+            this.dgvMaliyetMerkezi.Name = "dgvMaliyetMerkezi";
+            this.dgvMaliyetMerkezi.RowHeadersWidth = 51;
+            this.dgvMaliyetMerkezi.Size = new System.Drawing.Size(1282, 286);
+            this.dgvMaliyetMerkezi.TabIndex = 32;
             // 
             // MaliyetMerkezleriForm
             // 
             this.ClientSize = new System.Drawing.Size(1540, 845);
-            this.Controls.Add(this.dgwMaliyetMerkezi);
+            this.Controls.Add(this.dgvMaliyetMerkezi);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.btnTumunuGoster);
@@ -330,7 +335,7 @@
             this.Load += new System.EventHandler(this.MaliyetMerkezleriForm_Load_1);
             this.groupBoxMaliyetMerkezi.ResumeLayout(false);
             this.groupBoxMaliyetMerkezi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgwMaliyetMerkezi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaliyetMerkezi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -355,13 +360,13 @@
         private System.Windows.Forms.Label lblPasifMi;
         private System.Windows.Forms.ComboBox cbPasifMi;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbDilKodu;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.Button btnTumunuGoster;
         private System.Windows.Forms.Button btnDuzenle;
         private System.Windows.Forms.Button btnIncele;
         private System.Windows.Forms.Button btnBul;
-        private System.Windows.Forms.DataGridView dgwMaliyetMerkezi;
+        private System.Windows.Forms.DataGridView dgvMaliyetMerkezi;
     }
 }

@@ -7,7 +7,9 @@ namespace DataAccessLayer
     {
 
         // Veritabanı bağlantı dizesi
+
         private static readonly string _connectionString = "Data Source=EMINPC;Initial Catalog=RubiconDB;Integrated Security=True;";
+
 
 
         // SqlConnection döndüren bir metot

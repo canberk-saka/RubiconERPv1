@@ -281,7 +281,6 @@
             this.txtMalzemeUzunAciklama.Name = "txtMalzemeUzunAciklama";
             this.txtMalzemeUzunAciklama.Size = new System.Drawing.Size(595, 22);
             this.txtMalzemeUzunAciklama.TabIndex = 64;
-            this.txtMalzemeUzunAciklama.TextChanged += new System.EventHandler(this.txtMalzemeUzunAciklama_TextChanged);
             // 
             // cmbTedarikTipi
             // 
@@ -388,6 +387,7 @@
             this.dgvMalzemeBilgileri.RowTemplate.Height = 24;
             this.dgvMalzemeBilgileri.Size = new System.Drawing.Size(1443, 322);
             this.dgvMalzemeBilgileri.TabIndex = 78;
+            this.dgvMalzemeBilgileri.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMalzemeBilgileri_CellClick);
             // 
             // btnBul
             // 
@@ -398,7 +398,7 @@
             this.btnBul.TabIndex = 79;
             this.btnBul.Text = "Bul";
             this.btnBul.UseVisualStyleBackColor = true;
-            this.btnBul.Click += new System.EventHandler(this.btnBul_Click_1);
+            this.btnBul.Click += new System.EventHandler(this.btnBul_Click);
             // 
             // btnIncele
             // 
@@ -420,6 +420,7 @@
             this.btnDuzenle.TabIndex = 81;
             this.btnDuzenle.Text = "Düzenle";
             this.btnDuzenle.UseVisualStyleBackColor = true;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click);
             // 
             // btnEkle
             // 
@@ -430,6 +431,7 @@
             this.btnEkle.TabIndex = 82;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // btnTumunuGoster
             // 
@@ -440,7 +442,7 @@
             this.btnTumunuGoster.TabIndex = 83;
             this.btnTumunuGoster.Text = "Tümünü Göster";
             this.btnTumunuGoster.UseVisualStyleBackColor = true;
-            this.btnTumunuGoster.Click += new System.EventHandler(this.btnTumunuGoster_Click);
+            this.btnTumunuGoster.Click += new System.EventHandler(this.btnTumunuGoster_Click_1);
             // 
             // MalzemeBilgileriForm
             // 
