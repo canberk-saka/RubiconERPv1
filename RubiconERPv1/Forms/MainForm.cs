@@ -28,6 +28,7 @@ namespace RubiconERPv1
             this.pnlAnaTablolar = new System.Windows.Forms.Panel();
             this.btnAnaTablo1 = new System.Windows.Forms.Button();
             this.btnAnaTablo2 = new System.Windows.Forms.Button();
+            this.btnAnaTablo3 = new System.Windows.Forms.Button();
             this.pnlAnaTablolar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@ namespace RubiconERPv1
             // pnlAnaTablolar
             // 
             this.pnlAnaTablolar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAnaTablolar.Controls.Add(this.btnAnaTablo3);
             this.pnlAnaTablolar.Controls.Add(this.btnAnaTablo1);
             this.pnlAnaTablolar.Controls.Add(this.btnAnaTablo2);
             this.pnlAnaTablolar.Location = new System.Drawing.Point(280, 10);
@@ -68,7 +70,7 @@ namespace RubiconERPv1
             this.btnAnaTablo1.Name = "btnAnaTablo1";
             this.btnAnaTablo1.Size = new System.Drawing.Size(150, 40);
             this.btnAnaTablo1.TabIndex = 0;
-            this.btnAnaTablo1.Text = "Ana Tablo 1";
+            this.btnAnaTablo1.Text = "Malzeme Ana tablosu";
             this.btnAnaTablo1.UseVisualStyleBackColor = true;
             this.btnAnaTablo1.Click += new System.EventHandler(this.btnAnaTablo1_Click_1);
             // 
@@ -78,9 +80,19 @@ namespace RubiconERPv1
             this.btnAnaTablo2.Name = "btnAnaTablo2";
             this.btnAnaTablo2.Size = new System.Drawing.Size(150, 40);
             this.btnAnaTablo2.TabIndex = 1;
-            this.btnAnaTablo2.Text = "Ana Tablo 2";
+            this.btnAnaTablo2.Text = "İş Merkezleri Ana Tablosu";
             this.btnAnaTablo2.UseVisualStyleBackColor = true;
             this.btnAnaTablo2.Click += new System.EventHandler(this.btnAnaTablo2_Click_1);
+            // 
+            // btnAnaTablo3
+            // 
+            this.btnAnaTablo3.Location = new System.Drawing.Point(20, 142);
+            this.btnAnaTablo3.Name = "btnAnaTablo3";
+            this.btnAnaTablo3.Size = new System.Drawing.Size(150, 40);
+            this.btnAnaTablo3.TabIndex = 2;
+            this.btnAnaTablo3.Text = "Maliyet Merkezleri Ana Tablosu";
+            this.btnAnaTablo3.UseVisualStyleBackColor = true;
+            this.btnAnaTablo3.Click += new System.EventHandler(this.btnAnaTablo3_Click);
             // 
             // MainForm
             // 
@@ -179,6 +191,12 @@ namespace RubiconERPv1
         {
             var IsMerkezleriForm = new IsMerkezleriForm();
             IsMerkezleriForm.Show();
+        }
+
+        private void btnAnaTablo3_Click(object sender, EventArgs e)
+        {
+            var MaliyetMerkezleriForm=new MaliyetMerkezleriForm();
+            MaliyetMerkezleriForm.Show();
         }
     }
 }
