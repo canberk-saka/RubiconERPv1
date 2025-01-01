@@ -248,6 +248,7 @@
     <Compile Include="DAL\BSMGR0ROT001DAL.cs" />
     <Compile Include="DAL\BSMGR0ROT002DAL..cs" />
     <Compile Include="DAL\BSMGR0ROT003DAL.cs" />
+    <Compile Include="DAL\BSMGR0WORKCENTERDAL.cs" />
     <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="ERPModel.Context.cs">
       <AutoGen>True</AutoGen>
