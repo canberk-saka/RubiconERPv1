@@ -30,7 +30,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             // ComboBox verilerini yükle
             LoadComboBoxData(cmbFirma, "BSMGR0GEN001", "COMCODE", "COMCODE");
             LoadComboBoxData(cmbDilKodu, "BSMGR0GEN002", "LANCODE", "LANCODE");
-            LoadComboBoxData(cmbIsMerkeziTipi, "BSMGR0WORKCENTER001", "DOCTYPE", "DOCTYPE");
+            LoadComboBoxData(cmbIsMerkeziTipi, "BSMGR0WCM001", "DOCTYPE", "DOCTYPE");
 
             // ComboBoxları başlat
             InitializeComboBoxes();
@@ -91,39 +91,13 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             // CellClick olayını burada kullanabilirsiniz
         }
 
-        private void btnIncele_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvIsMerkezi.SelectedRows.Count > 0)
-                {
-                    DataGridViewRow selectedRow = dgvIsMerkezi.SelectedRows[0];
-                    string isMerkeziKodu = selectedRow.Cells["İş Merkezi Kodu"].Value.ToString();
-
-                    DataTable workCenterDetails = _dataAccessLayer.GetWorkCenterDetails(isMerkeziKodu);
-                    IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
-                    tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
-                    tumBilgilerForm.SetFormMode(false);
-                    tumBilgilerForm.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Lütfen bir iş merkezi seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-       
+        
 
 
-      
-       
 
-       
+
+
+
         private void btnBul_Click_1(object sender, EventArgs e)
         {
             try
@@ -164,7 +138,28 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
 
         private void btnIncele_Click_1(object sender, EventArgs e)
         {
+            try
+            {
+                if (dgvIsMerkezi.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dgvIsMerkezi.SelectedRows[0];
+                    string isMerkeziKodu = selectedRow.Cells["İş Merkezi Kodu"].Value.ToString();
 
+                    DataTable workCenterDetails = _dataAccessLayer.GetWCMDetails(isMerkeziKodu);
+                    IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
+                    tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
+                    tumBilgilerForm.SetFormMode(false);
+                    tumBilgilerForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir iş merkezi seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDuzenle_Click_1(object sender, EventArgs e)
@@ -176,7 +171,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     DataGridViewRow selectedRow = dgvIsMerkezi.SelectedRows[0];
                     string isMerkeziKodu = selectedRow.Cells["İş Merkezi Kodu"].Value.ToString();
 
-                    DataTable workCenterDetails = _dataAccessLayer.GetWorkCenterDetails(isMerkeziKodu);
+                    DataTable workCenterDetails = _dataAccessLayer.GetWCMDetails(isMerkeziKodu);
                     IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
                     tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
                     tumBilgilerForm.SetFormMode(true);
@@ -202,7 +197,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     DataGridViewRow selectedRow = dgvIsMerkezi.SelectedRows[0];
                     string isMerkeziKodu = selectedRow.Cells["İş Merkezi Kodu"].Value.ToString();
 
-                    DataTable workCenterDetails = _dataAccessLayer.GetWorkCenterDetails(isMerkeziKodu);
+                    DataTable workCenterDetails = _dataAccessLayer.GetWCMDetails(isMerkeziKodu);
                     IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
 
                     tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
@@ -246,7 +241,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     if (confirmResult == DialogResult.Yes)
                     {
                         // Veritabanı üzerinden silme işlemi
-                        bool isDeleted = _dataAccessLayer.DeleteWorkCenter(isMerkeziKodu);
+                        bool isDeleted = _dataAccessLayer.DeleteWCM(isMerkeziKodu);
 
                         if (isDeleted)
                         {

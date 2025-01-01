@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace DataAccessLayer
 {
@@ -40,30 +41,32 @@ namespace DataAccessLayer
 
 
         // İş Merkezi Detaylarını Getir
-        public DataTable GetWorkCenterDetails(string isMerkeziKodu)
+        public DataTable GetWCMDetails(string isMerkeziKodu)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string query = @"
                     SELECT 
                         h.COMCODE AS 'Firma Kodu',
-                        h.WORKCENTERDOCTYPE AS 'İş Merkezi Tipi',
-                        h.WORKCENTERDOCNUM AS 'İş Merkezi Kodu',
-                        h.WORKCENTERDOCFROM AS 'Geçerlilik Başlangıç',
-                        h.WORKCENTERDOCUNTIL AS 'Geçerlilik Bitiş',
-                        t.WORKCENTERSTEXT AS 'Kısa Açıklama',
-                        t.WORKCENTERLTEXT AS 'Uzun Açıklama',
+                        h.WCMDOCTYPE AS 'İş Merkezi Tipi',
+                        h.WCMDOCNUM AS 'İş Merkezi Kodu',
+                        h.WCMDOCFROM AS 'Geçerlilik Başlangıç',
+                        h.WCMDOCUNTIL AS 'Geçerlilik Bitiş',
+                        h.CCMDOCNUM AS 'Maliyet Merkezi Kodu',
+                        h.WORKTIME AS 'Günlük Çalışma Süresi',
+                        t.WCMSTEXT AS 'Kısa Açıklama',
+                        t.WCMLTEXT AS 'Uzun Açıklama',
                         t.LANCODE AS 'Dil Kodu',
-                        h.MAINWORKCENTERDOCTYPE AS 'Ana İş Merkezi Tipi',
-                        h.MAINWORKCENTERDOCNUM AS 'Ana İş Merkezi Kodu',
+                        h.MAINWCMDOCTYPE AS 'Ana İş Merkezi Tipi',
+                        h.MAINWCMDOCNUM AS 'Ana İş Merkezi Kodu',
                         h.ISDELETED AS 'Silindi Mi?',
                         h.ISPASSIVE AS 'Pasif Mi?'
                     FROM 
-                        BSMGR0WORKCENTERHEAD h
+                        BSMGR0WCMHEAD h
                     INNER JOIN 
-                        BSMGR0WORKCENTERTEXT t ON h.WORKCENTERDOCNUM = t.WORKCENTERDOCNUM
+                        BSMGR0WCMTEXT t ON h.WCMDOCNUM = t.WCMDOCNUM
                     WHERE 
-                        h.WORKCENTERDOCNUM = @isMerkeziKodu";
+                        h.WCMDOCNUM = @isMerkeziKodu";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
@@ -81,39 +84,40 @@ namespace DataAccessLayer
 
         // İş Merkezi Verilerini Getir (Filtreli)
         public DataTable GetFilteredData(string firma, string isMerkeziTipi, string isMerkeziKodu,
-            string silindiMi, string pasifMi, DateTime? baslangicTarihi, DateTime? bitisTarihi)
+       string silindiMi, string pasifMi, DateTime? baslangicTarihi, DateTime? bitisTarihi)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string query = @"
-                    SELECT 
-                        h.COMCODE AS 'Firma Kodu',
-                        h.WORKCENTERDOCTYPE AS 'İş Merkezi Tipi',
-                        h.WORKCENTERDOCNUM AS 'İş Merkezi Kodu',
-                        h.WORKCENTERDOCFROM AS 'Geçerlilik Başlangıç',
-                        h.WORKCENTERDOCUNTIL AS 'Geçerlilik Bitiş',
-                        t.WORKCENTERSTEXT AS 'Kısa Açıklama',
-                        t.WORKCENTERLTEXT AS 'Uzun Açıklama',
-                        t.LANCODE AS 'Dil Kodu',
-                        h.MAINWORKCENTERDOCTYPE AS 'Ana İş Merkezi Tipi',
-                        h.MAINWORKCENTERDOCNUM AS 'Ana İş Merkezi Kodu',
-                        h.ISDELETED AS 'Silindi Mi?',
-                        h.ISPASSIVE AS 'Pasif Mi?'
-                    FROM 
-                        BSMGR0WORKCENTERHEAD h
-                    INNER JOIN 
-                        BSMGR0WORKCENTERTEXT t ON h.WORKCENTERDOCNUM = t.WORKCENTERDOCNUM
-                    WHERE 
-                        1 = 1"; // Başlangıçta her şey geçerli, filtreler eklenebilir
+            SELECT 
+                h.COMCODE AS 'Firma Kodu',
+                h.WCMDOCTYPE AS 'İş Merkezi Tipi',
+                h.WCMDOCNUM AS 'İş Merkezi Kodu',
+                h.WCMDOCFROM AS 'Geçerlilik Başlangıç',
+                h.WCMDOCUNTIL AS 'Geçerlilik Bitiş',
+                h.CCMDOCTYPE AS 'Maliyet Merkezi Tipi', -- Maliyet Merkezi Tipi eklendi
+                h.CCMDOCNUM AS 'Maliyet Merkezi Kodu', -- Maliyet Merkezi Kodu eklendi
+                t.WCMSTEXT AS 'Kısa Açıklama',
+                t.WCMLTEXT AS 'Uzun Açıklama',
+                t.LANCODE AS 'Dil Kodu',
+                
+                h.ISDELETED AS 'Silindi Mi?',
+                h.ISPASSIVE AS 'Pasif Mi?'
+            FROM 
+                BSMGR0WCMHEAD h
+            INNER JOIN 
+                BSMGR0WCMTEXT t ON h.WCMDOCNUM = t.WCMDOCNUM
+            WHERE 
+                1 = 1"; // Başlangıçta her şey geçerli, filtreler eklenebilir
 
                 // Filtrelere göre sorguya eklemeler
                 if (!string.IsNullOrEmpty(firma)) query += " AND h.COMCODE = @firma";
-                if (!string.IsNullOrEmpty(isMerkeziTipi)) query += " AND h.WORKCENTERDOCTYPE = @isMerkeziTipi";
-                if (!string.IsNullOrEmpty(isMerkeziKodu)) query += " AND h.WORKCENTERDOCNUM = @isMerkeziKodu";
+                if (!string.IsNullOrEmpty(isMerkeziTipi)) query += " AND h.WCMDOCTYPE = @isMerkeziTipi";
+                if (!string.IsNullOrEmpty(isMerkeziKodu)) query += " AND h.WCMDOCNUM = @isMerkeziKodu";
                 if (!string.IsNullOrEmpty(silindiMi)) query += " AND h.ISDELETED = @silindiMi";
                 if (!string.IsNullOrEmpty(pasifMi)) query += " AND h.ISPASSIVE = @pasifMi";
-                if (baslangicTarihi.HasValue) query += " AND h.WORKCENTERDOCFROM >= @baslangicTarihi";
-                if (bitisTarihi.HasValue) query += " AND h.WORKCENTERDOCUNTIL <= @bitisTarihi";
+                if (baslangicTarihi.HasValue) query += " AND h.WCMDOCFROM >= @baslangicTarihi";
+                if (bitisTarihi.HasValue) query += " AND h.WCMDOCUNTIL <= @bitisTarihi";
 
                 SqlCommand command = new SqlCommand(query, connection);
 
@@ -137,6 +141,7 @@ namespace DataAccessLayer
             }
         }
 
+
         // Bütün İş Merkezi Verilerini Getir
         public DataTable GetAllData()
         {
@@ -145,21 +150,21 @@ namespace DataAccessLayer
                 string query = @"
                     SELECT 
                         h.COMCODE AS 'Firma Kodu',
-                        h.WORKCENTERDOCTYPE AS 'İş Merkezi Tipi',
-                        h.WORKCENTERDOCNUM AS 'İş Merkezi Kodu',
-                        h.WORKCENTERDOCFROM AS 'Geçerlilik Başlangıç',
-                        h.WORKCENTERDOCUNTIL AS 'Geçerlilik Bitiş',
-                        t.WORKCENTERSTEXT AS 'Kısa Açıklama',
-                        t.WORKCENTERLTEXT AS 'Uzun Açıklama',
+                        h.WCMDOCTYPE AS 'İş Merkezi Tipi',
+                        h.WCMDOCNUM AS 'İş Merkezi Kodu',
+                        h.WCMDOCFROM AS 'Geçerlilik Başlangıç',
+                        h.WCMDOCUNTIL AS 'Geçerlilik Bitiş',
+                        t.WCMSTEXT AS 'Kısa Açıklama',
+                        t.WCMLTEXT AS 'Uzun Açıklama',
                         t.LANCODE AS 'Dil Kodu',
-                        h.MAINWORKCENTERDOCTYPE AS 'Ana İş Merkezi Tipi',
-                        h.MAINWORKCENTERDOCNUM AS 'Ana İş Merkezi Kodu',
+                        h.MAINWCMDOCTYPE AS 'Ana İş Merkezi Tipi',
+                        h.MAINWCMDOCNUM AS 'Ana İş Merkezi Kodu',
                         h.ISDELETED AS 'Silindi Mi?',
                         h.ISPASSIVE AS 'Pasif Mi?'
                     FROM 
-                        BSMGR0WORKCENTERHEAD h
+                        BSMGR0WCMHEAD h
                     INNER JOIN 
-                        BSMGR0WORKCENTERTEXT t ON h.WORKCENTERDOCNUM = t.WORKCENTERDOCNUM";
+                        BSMGR0WCMTEXT t ON h.WCMDOCNUM = t.WCMDOCNUM";
 
                 SqlCommand command = new SqlCommand(query, connection);
 
@@ -174,129 +179,174 @@ namespace DataAccessLayer
             }
         }
 
-        // İş Merkezi Ekleme
-        public bool InsertWorkCenter(string firmaKodu, string isMerkeziTipi, string isMerkeziKodu,
-            DateTime? baslangicTarihi, DateTime? bitisTarihi, string anaIsMerkeziTipi, string anaIsMerkeziKodu,
-            string silindiMi, string pasifMi, string kisaAciklama, string uzunAciklama, string dilKodu)
+        public bool InsertWorkCenter(
+      string firmaKodu, string isMerkeziTipi, string isMerkeziKodu, DateTime? baslangicTarihi,
+      DateTime? bitisTarihi, string gunlukCalismaSuresi, string kisaAciklama, string uzunAciklama,
+      string silindiMi, string pasifMi, string dilKodu, string anaIsMerkeziTipi, string anaIsMerkeziKodu,
+      string maliyetMerkeziKodu, string maliyetMerkeziTipi)
         {
             try
             {
+                // WCMHEAD tablosuna veri ekleme
+                string insertWCMHeadQuery = @"
+        INSERT INTO BSMGR0WCMHEAD
+        (
+            COMCODE, WCMDOCTYPE, WCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, MAINWCMDOCTYPE, MAINWCMDOCNUM,
+            ISDELETED, ISPASSIVE
+        )
+        VALUES
+        (
+            @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi,
+            @anaIsMerkeziTipi, @anaIsMerkeziKodu, @silindiMi, @pasifMi
+        )";
+
+                // WCMTEXT tablosuna veri ekleme
+                string insertWCMTextQuery = @"
+        INSERT INTO BSMGR0WCMTEXT
+        (
+            COMCODE, WCMDOCTYPE, WCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, LANCODE, WCMSTEXT, WCMLTEXT
+        )
+        VALUES
+        (
+            @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi, 
+            @dilKodu, @kisaAciklama, @uzunAciklama
+        )";
+
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
-                    string query = @"
-            INSERT INTO BSMGR0WORKCENTERHEAD
-            (
-                COMCODE, WORKCENTERDOCTYPE, WORKCENTERDOCNUM, WORKCENTERDOCFROM, WORKCENTERDOCUNTIL, MAINWORKCENTERDOCTYPE, MAINWORKCENTERDOCNUM, 
-                ISDELETED, ISPASSIVE
-            )
-            VALUES
-            (
-                @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi, 
-                @anaIsMerkeziTipi, @anaIsMerkeziKodu, @silindiMi, @pasifMi
-            );
+                    using (SqlCommand commandWCMHead = new SqlCommand(insertWCMHeadQuery, connection))
+                    {
+                        commandWCMHead.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+                        commandWCMHead.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
+                        commandWCMHead.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+                        commandWCMHead.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
+                        commandWCMHead.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
+                        commandWCMHead.Parameters.AddWithValue("@anaIsMerkeziTipi", anaIsMerkeziTipi);
+                        commandWCMHead.Parameters.AddWithValue("@anaIsMerkeziKodu", anaIsMerkeziKodu);
+                        commandWCMHead.Parameters.AddWithValue("@silindiMi", silindiMi);
+                        commandWCMHead.Parameters.AddWithValue("@pasifMi", pasifMi);
 
-            INSERT INTO BSMGR0WORKCENTERTEXT
-            (
-                COMCODE, WORKCENTERDOCTYPE, WORKCENTERDOCNUM, WORKCENTERDOCFROM, WORKCENTERDOCUNTIL, LANCODE, WORKCENTERSTEXT, WORKCENTERLTEXT
-            )
-            VALUES
-            (
-                @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi, 
-                @dilKodu, @kisaAciklama, @uzunAciklama
-            )";
+                        using (SqlCommand commandWCMText = new SqlCommand(insertWCMTextQuery, connection))
+                        {
+                            commandWCMText.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+                            commandWCMText.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
+                            commandWCMText.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+                            commandWCMText.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
+                            commandWCMText.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
+                            commandWCMText.Parameters.AddWithValue("@dilKodu", dilKodu);
+                            commandWCMText.Parameters.AddWithValue("@kisaAciklama", kisaAciklama);
+                            commandWCMText.Parameters.AddWithValue("@uzunAciklama", uzunAciklama);
 
-                    SqlCommand command = new SqlCommand(query, connection);
+                            try
+                            {
+                                connection.Open();
+                                // WCMHead verisini ekle
+                                int rowsAffectedWCMHead = commandWCMHead.ExecuteNonQuery();
+                                // WCMText verisini ekle
+                                int rowsAffectedWCMText = commandWCMText.ExecuteNonQuery();
 
-                    // Parametreleri ekle
-                    command.Parameters.AddWithValue("@firmaKodu", firmaKodu);
-                    command.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
-                    command.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
-                    command.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
-                    command.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
-                    command.Parameters.AddWithValue("@anaIsMerkeziTipi", anaIsMerkeziTipi);
-                    command.Parameters.AddWithValue("@anaIsMerkeziKodu", anaIsMerkeziKodu);
-                    command.Parameters.AddWithValue("@silindiMi", silindiMi);
-                    command.Parameters.AddWithValue("@pasifMi", pasifMi);
-                    command.Parameters.AddWithValue("@kisaAciklama", kisaAciklama);
-                    command.Parameters.AddWithValue("@uzunAciklama", uzunAciklama);
-                    command.Parameters.AddWithValue("@dilKodu", dilKodu);
-
-                    connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-
-                    return rowsAffected > 0; // Eğer ekleme başarılıysa, true döner
+                                // Eğer her iki tablonun eklenmesi başarılıysa, true döner
+                                return rowsAffectedWCMHead > 0 && rowsAffectedWCMText > 0;
+                            }
+                            catch (Exception ex)
+                            {
+                                // Hata durumunda exception fırlat
+                                throw new Exception("Ekleme işlemi sırasında bir hata oluştu: " + ex.Message);
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                // Hata mesajı döndür
-                throw new Exception("Yeni iş merkezi eklenirken bir hata oluştu: " + ex.Message);
+                // Hata durumunda false döner
+                MessageBox.Show($"Ekleme işlemi sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
+
         // İş Merkezi Güncelleme
-        public bool UpdateWorkCenter(string isMerkeziKodu, string firmaKodu, string isMerkeziTipi,
-     string anaIsMerkeziTipi, string anaIsMerkeziKodu, string silindiMi, string pasifMi,
-     DateTime? baslangicTarihi, DateTime? bitisTarihi, string kisaAciklama, string uzunAciklama, string dilKodu)
+        public bool UpdateWCM(string isMerkeziKodu, string firmaKodu, string isMerkeziTipi,
+                       string anaIsMerkeziTipi, string anaIsMerkeziKodu, string silindiMi, string pasifMi,
+                       DateTime? baslangicTarihi, DateTime? bitisTarihi, string kisaAciklama, string uzunAciklama, string dilKodu)
         {
-            string updateWorkCenterHeadQuery = @"
-    UPDATE BSMGR0WORKCENTERHEAD
+            string updateWCMHeadQuery = @"
+    UPDATE BSMGR0WCMHEAD
     SET
         COMCODE = @firmaKodu,
-        WORKCENTERDOCTYPE = @isMerkeziTipi,
-        MAINWORKCENTERDOCTYPE = @anaIsMerkeziTipi,
-        MAINWORKCENTERDOCNUM = @anaIsMerkeziKodu,
+        WCMDOCTYPE = @isMerkeziTipi,
+        MAINWCMDOCTYPE = @anaIsMerkeziTipi,
+        MAINWCMDOCNUM = @anaIsMerkeziKodu,
         ISDELETED = @silindiMi,
         ISPASSIVE = @pasifMi,
-        WORKCENTERDOCFROM = @baslangicTarihi,
-        WORKCENTERDOCUNTIL = @bitisTarihi
+        WCMDOCFROM = @baslangicTarihi,
+        WCMDOCUNTIL = @bitisTarihi
     WHERE
-        WORKCENTERDOCNUM = @isMerkeziKodu";
+        WCMDOCNUM = @isMerkeziKodu";
 
-            string updateWorkCenterTextQuery = @"
-    UPDATE BSMGR0WORKCENTERTEXT
+            string updateWCMTextQuery = @"
+    UPDATE BSMGR0WCMTEXT
     SET
-        WORKCENTERSTEXT = @kisaAciklama,
-        WORKCENTERLTEXT = @uzunAciklama,
+        WCMSTEXT = @kisaAciklama,
+        WCMLTEXT = @uzunAciklama,
         LANCODE = @dilKodu
     WHERE
-        WORKCENTERDOCNUM = @isMerkeziKodu";
+        WCMDOCNUM = @isMerkeziKodu";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                using (SqlCommand commandWorkCenterHead = new SqlCommand(updateWorkCenterHeadQuery, connection))
+                using (SqlCommand commandWCMHead = new SqlCommand(updateWCMHeadQuery, connection))
                 {
-                    commandWorkCenterHead.Parameters.AddWithValue("@firmaKodu", firmaKodu);
-                    commandWorkCenterHead.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
-                    commandWorkCenterHead.Parameters.AddWithValue("@anaIsMerkeziTipi", anaIsMerkeziTipi);
-                    commandWorkCenterHead.Parameters.AddWithValue("@anaIsMerkeziKodu", anaIsMerkeziKodu);
-                    commandWorkCenterHead.Parameters.AddWithValue("@silindiMi", silindiMi);
-                    commandWorkCenterHead.Parameters.AddWithValue("@pasifMi", pasifMi);
-                    commandWorkCenterHead.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
-                    commandWorkCenterHead.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
-                    commandWorkCenterHead.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+                    commandWCMHead.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+                    commandWCMHead.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
+                    commandWCMHead.Parameters.AddWithValue("@anaIsMerkeziTipi", anaIsMerkeziTipi);
+                    commandWCMHead.Parameters.AddWithValue("@anaIsMerkeziKodu", anaIsMerkeziKodu);
+                    commandWCMHead.Parameters.AddWithValue("@silindiMi", silindiMi);
+                    commandWCMHead.Parameters.AddWithValue("@pasifMi", pasifMi);
+                    commandWCMHead.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
+                    commandWCMHead.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
+                    commandWCMHead.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
 
-                    using (SqlCommand commandWorkCenterText = new SqlCommand(updateWorkCenterTextQuery, connection))
+                    using (SqlCommand commandWCMText = new SqlCommand(updateWCMTextQuery, connection))
                     {
-                        commandWorkCenterText.Parameters.AddWithValue("@kisaAciklama", kisaAciklama);
-                        commandWorkCenterText.Parameters.AddWithValue("@uzunAciklama", uzunAciklama);
-                        commandWorkCenterText.Parameters.AddWithValue("@dilKodu", dilKodu);
-                        commandWorkCenterText.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+                        commandWCMText.Parameters.AddWithValue("@kisaAciklama", kisaAciklama);
+                        commandWCMText.Parameters.AddWithValue("@uzunAciklama", uzunAciklama);
+                        commandWCMText.Parameters.AddWithValue("@dilKodu", dilKodu);
+                        commandWCMText.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
 
                         try
                         {
                             connection.Open();
-                            // WorkCenterHead güncellenmesi
-                            int rowsAffectedWorkCenterHead = commandWorkCenterHead.ExecuteNonQuery();
-                            // WorkCenterText güncellenmesi
-                            int rowsAffectedWorkCenterText = commandWorkCenterText.ExecuteNonQuery();
 
-                            // Eğer her iki güncelleme başarılıysa, true döner
-                            return rowsAffectedWorkCenterHead > 0 && rowsAffectedWorkCenterText > 0;
+                            // WCMHead güncellenmesi
+                            int rowsAffectedWCMHead = commandWCMHead.ExecuteNonQuery();
+                            // WCMText güncellenmesi
+                            int rowsAffectedWCMText = commandWCMText.ExecuteNonQuery();
+
+                            // Hata ayıklama için satır sayısını kontrol et
+                            if (rowsAffectedWCMHead == 0)
+                            {
+                                MessageBox.Show("İş merkezi kodu ile eşleşen bir kayıt bulunamadı (WCMHead).", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                            if (rowsAffectedWCMText == 0)
+                            {
+                                MessageBox.Show("İş merkezi kodu ile eşleşen bir kayıt bulunamadı (WCMText).", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                            if (rowsAffectedWCMHead > 0 && rowsAffectedWCMText > 0)
+                            {
+                                return true; // Başarıyla güncellendi
+                            }
+                            else
+                            {
+                                throw new Exception("Güncelleme işlemi başarısız. Hiçbir satır etkilenmedi.");
+                            }
                         }
                         catch (Exception ex)
                         {
-                            // Hata mesajı döndür
+                            // Hata mesajını döndür
                             throw new Exception("Güncelleme işlemi sırasında bir hata oluştu: " + ex.Message);
                         }
                     }
@@ -304,13 +354,78 @@ namespace DataAccessLayer
             }
         }
 
-        public bool DeleteWorkCenter(string isMerkeziKodu)
+
+
+
+        //        public bool InsertWorkCenter(string firmaKodu, string isMerkeziTipi, string isMerkeziKodu,
+        //    DateTime? baslangicTarihi, DateTime? bitisTarihi, string gunlukCalismaSuresi, string kisaAciklama,
+        //    string uzunAciklama, string silindiMi, string pasifMi, string dilKodu)
+        //        {
+        //            try
+        //            {
+        //                using (SqlConnection connection = new SqlConnection(_connectionString))
+        //                {
+        //                    string query = @"
+        //INSERT INTO BSMGR0WCMHEAD
+        //(
+        //    COMCODE, WCMDOCTYPE, WCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, MAINWCMDOCTYPE, MAINWCMDOCNUM, 
+        //    ISDELETED, ISPASSIVE, WCMDOCFROM
+        //)
+        //VALUES
+        //(
+        //    @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi, 
+        //    @anaIsMerkeziTipi, @anaIsMerkeziKodu, @silindiMi, @pasifMi, @gunlukCalismaSuresi
+        //);
+
+        //INSERT INTO BSMGR0WCMTEXT
+        //(
+        //    COMCODE, WCMDOCTYPE, WCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, LANCODE, WCMSTEXT, WCMLTEXT
+        //)
+        //VALUES
+        //(
+        //    @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi, 
+        //    @dilKodu, @kisaAciklama, @uzunAciklama
+        //)";
+
+        //                    SqlCommand command = new SqlCommand(query, connection);
+
+        //                    // Parametreleri ekle
+        //                    command.Parameters.AddWithValue("@firmaKodu", firmaKodu);
+        //                    command.Parameters.AddWithValue("@isMerkeziTipi", isMerkeziTipi);
+        //                    command.Parameters.AddWithValue("@isMerkeziKodu", isMerkeziKodu);
+        //                    command.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
+        //                    command.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
+        //                    command.Parameters.AddWithValue("@gunlukCalismaSuresi", gunlukCalismaSuresi);
+        //                    command.Parameters.AddWithValue("@kisaAciklama", kisaAciklama);
+        //                    command.Parameters.AddWithValue("@uzunAciklama", uzunAciklama);
+        //                    command.Parameters.AddWithValue("@dilKodu", dilKodu);
+        //                    command.Parameters.AddWithValue("@silindiMi", silindiMi);
+        //                    command.Parameters.AddWithValue("@pasifMi", pasifMi);
+        //                    command.Parameters.AddWithValue("@anaIsMerkeziTipi", IsMerkeziTipi);
+        //                    command.Parameters.AddWithValue("@anaIsMerkeziKodu", IsMerkeziKodu);
+
+        //                    connection.Open();
+        //                    int rowsAffected = command.ExecuteNonQuery();
+        //                    return rowsAffected > 0; // Eğer ekleme başarılıysa true döner
+
+
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                // Hata mesajı döndür
+        //                throw new Exception("Yeni iş merkezi eklenirken bir hata oluştu: " + ex.Message);
+        //            }
+        //        }
+
+
+        public bool DeleteWCM(string isMerkeziKodu)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 string query = @"
-            DELETE FROM BSMGR0WORKCENTERHEAD WHERE WORKCENTERDOCNUM = @isMerkeziKodu;
-            DELETE FROM BSMGR0WORKCENTERTEXT WHERE WORKCENTERDOCNUM = @isMerkeziKodu;
+            DELETE FROM BSMGR0WCMHEAD WHERE WCMDOCNUM = @isMerkeziKodu;
+            DELETE FROM BSMGR0WCMTEXT WHERE WCMDOCNUM = @isMerkeziKodu;
         ";
 
                 SqlCommand command = new SqlCommand(query, connection);

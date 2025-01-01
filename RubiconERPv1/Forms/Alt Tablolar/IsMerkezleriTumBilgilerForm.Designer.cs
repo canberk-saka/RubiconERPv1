@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtMaliyetMerkeziKodu = new System.Windows.Forms.TextBox();
             this.dtpGecerlilikBitisTarihi = new System.Windows.Forms.DateTimePicker();
             this.dtpGecerlilikBaslangicTarihi = new System.Windows.Forms.DateTimePicker();
             this.cmbSilindiMi = new System.Windows.Forms.ComboBox();
             this.cmbMaliyetMerkeziTipi = new System.Windows.Forms.ComboBox();
             this.txtCalismaSuresi = new System.Windows.Forms.TextBox();
-            this.txtAnaIsMerkeziKodu = new System.Windows.Forms.TextBox();
+            this.txtIsMerkeziKodu = new System.Windows.Forms.TextBox();
             this.cmbFirma = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -54,18 +54,19 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbPasifMi = new System.Windows.Forms.ComboBox();
-            this.txtAnaIsMerkeziTipi = new System.Windows.Forms.TextBox();
+            this.txtIsMerkeziTipi = new System.Windows.Forms.TextBox();
             this.btnKaydet = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox4
+            // txtMaliyetMerkeziKodu
             // 
-            this.textBox4.Location = new System.Drawing.Point(1069, 201);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(143, 22);
-            this.textBox4.TabIndex = 32;
+            this.txtMaliyetMerkeziKodu.Location = new System.Drawing.Point(1069, 201);
+            this.txtMaliyetMerkeziKodu.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaliyetMerkeziKodu.Name = "txtMaliyetMerkeziKodu";
+            this.txtMaliyetMerkeziKodu.Size = new System.Drawing.Size(143, 22);
+            this.txtMaliyetMerkeziKodu.TabIndex = 32;
             // 
             // dtpGecerlilikBitisTarihi
             // 
@@ -109,13 +110,13 @@
             this.txtCalismaSuresi.Size = new System.Drawing.Size(76, 22);
             this.txtCalismaSuresi.TabIndex = 27;
             // 
-            // txtAnaIsMerkeziKodu
+            // txtIsMerkeziKodu
             // 
-            this.txtAnaIsMerkeziKodu.Location = new System.Drawing.Point(675, 201);
-            this.txtAnaIsMerkeziKodu.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAnaIsMerkeziKodu.Name = "txtAnaIsMerkeziKodu";
-            this.txtAnaIsMerkeziKodu.Size = new System.Drawing.Size(143, 22);
-            this.txtAnaIsMerkeziKodu.TabIndex = 26;
+            this.txtIsMerkeziKodu.Location = new System.Drawing.Point(675, 201);
+            this.txtIsMerkeziKodu.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIsMerkeziKodu.Name = "txtIsMerkeziKodu";
+            this.txtIsMerkeziKodu.Size = new System.Drawing.Size(143, 22);
+            this.txtIsMerkeziKodu.TabIndex = 26;
             // 
             // cmbFirma
             // 
@@ -177,9 +178,9 @@
             this.label7.Location = new System.Drawing.Point(496, 202);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(163, 20);
+            this.label7.Size = new System.Drawing.Size(129, 20);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Ana İş Merkezi Kodu";
+            this.label7.Text = "İş Merkezi Kodu";
             // 
             // label6
             // 
@@ -188,9 +189,9 @@
             this.label6.Location = new System.Drawing.Point(496, 133);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(152, 20);
+            this.label6.Size = new System.Drawing.Size(118, 20);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Ana İş Merkezi Tipi";
+            this.label6.Text = "İş Merkezi Tipi";
             // 
             // label5
             // 
@@ -235,14 +236,14 @@
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.cmbPasifMi);
-            this.groupBox1.Controls.Add(this.txtAnaIsMerkeziTipi);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.txtIsMerkeziTipi);
+            this.groupBox1.Controls.Add(this.txtMaliyetMerkeziKodu);
             this.groupBox1.Controls.Add(this.dtpGecerlilikBitisTarihi);
             this.groupBox1.Controls.Add(this.dtpGecerlilikBaslangicTarihi);
             this.groupBox1.Controls.Add(this.cmbSilindiMi);
             this.groupBox1.Controls.Add(this.cmbMaliyetMerkeziTipi);
             this.groupBox1.Controls.Add(this.txtCalismaSuresi);
-            this.groupBox1.Controls.Add(this.txtAnaIsMerkeziKodu);
+            this.groupBox1.Controls.Add(this.txtIsMerkeziKodu);
             this.groupBox1.Controls.Add(this.cmbFirma);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
@@ -340,13 +341,13 @@
             this.cmbPasifMi.Size = new System.Drawing.Size(108, 24);
             this.cmbPasifMi.TabIndex = 34;
             // 
-            // txtAnaIsMerkeziTipi
+            // txtIsMerkeziTipi
             // 
-            this.txtAnaIsMerkeziTipi.Location = new System.Drawing.Point(675, 134);
-            this.txtAnaIsMerkeziTipi.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAnaIsMerkeziTipi.Name = "txtAnaIsMerkeziTipi";
-            this.txtAnaIsMerkeziTipi.Size = new System.Drawing.Size(143, 22);
-            this.txtAnaIsMerkeziTipi.TabIndex = 33;
+            this.txtIsMerkeziTipi.Location = new System.Drawing.Point(674, 136);
+            this.txtIsMerkeziTipi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIsMerkeziTipi.Name = "txtIsMerkeziTipi";
+            this.txtIsMerkeziTipi.Size = new System.Drawing.Size(143, 22);
+            this.txtIsMerkeziTipi.TabIndex = 33;
             // 
             // btnKaydet
             // 
@@ -355,20 +356,31 @@
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(171, 55);
             this.btnKaydet.TabIndex = 44;
-            this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.Text = "Güncelle";
             this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click_1);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(1526, 788);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(170, 55);
+            this.btnSave.TabIndex = 45;
+            this.btnSave.Text = "Kaydet";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // IsMerkezleriTumBilgilerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1040);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnKaydet);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "IsMerkezleriTumBilgilerForm";
             this.Text = "IsMerkezleriTumBilgilerForm";
-            //this.Load += new System.EventHandler(this.IsMerkezleriTumBilgilerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -376,13 +388,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtMaliyetMerkeziKodu;
         private System.Windows.Forms.DateTimePicker dtpGecerlilikBitisTarihi;
         private System.Windows.Forms.DateTimePicker dtpGecerlilikBaslangicTarihi;
         private System.Windows.Forms.ComboBox cmbSilindiMi;
         private System.Windows.Forms.ComboBox cmbMaliyetMerkeziTipi;
         private System.Windows.Forms.TextBox txtCalismaSuresi;
-        private System.Windows.Forms.TextBox txtAnaIsMerkeziKodu;
+        private System.Windows.Forms.TextBox txtIsMerkeziKodu;
         private System.Windows.Forms.ComboBox cmbFirma;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -396,7 +408,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbPasifMi;
-        private System.Windows.Forms.TextBox txtAnaIsMerkeziTipi;
+        private System.Windows.Forms.TextBox txtIsMerkeziTipi;
         private System.Windows.Forms.ComboBox cmbDilKodu;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtIsMerkeziUzunAciklama;
@@ -404,5 +416,6 @@
         private System.Windows.Forms.TextBox txtIsMerkeziKisaAciklama;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnKaydet;
+        private System.Windows.Forms.Button btnSave;
     }
 }
