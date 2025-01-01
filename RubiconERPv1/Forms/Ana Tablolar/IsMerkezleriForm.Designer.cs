@@ -102,7 +102,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "İş Merkezi Bilgileri";
-            //this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtGunlukCalismaSuresi
             // 
@@ -305,7 +304,6 @@
             this.cmbIsMerkeziTipi.Name = "cmbIsMerkeziTipi";
             this.cmbIsMerkeziTipi.Size = new System.Drawing.Size(95, 24);
             this.cmbIsMerkeziTipi.TabIndex = 3;
-           // this.cmbIsMerkeziTipi.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -315,7 +313,6 @@
             this.label2.Size = new System.Drawing.Size(96, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "İş Merkezi Tipi:";
-            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cmbFirma
             // 
@@ -334,7 +331,6 @@
             this.label1.Size = new System.Drawing.Size(78, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Firma Kodu:";
-            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnSil
             // 
@@ -345,6 +341,7 @@
             this.btnSil.TabIndex = 37;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click_1);
             // 
             // btnEkle
             // 
@@ -355,6 +352,7 @@
             this.btnEkle.TabIndex = 36;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click_1);
             // 
             // btnTumunuGoster
             // 
@@ -365,6 +363,7 @@
             this.btnTumunuGoster.TabIndex = 35;
             this.btnTumunuGoster.Text = "Tümünü Göster";
             this.btnTumunuGoster.UseVisualStyleBackColor = true;
+            this.btnTumunuGoster.Click += new System.EventHandler(this.btnTumunuGoster_Click);
             // 
             // btnDuzenle
             // 
@@ -375,6 +374,7 @@
             this.btnDuzenle.TabIndex = 34;
             this.btnDuzenle.Text = "Düzenle";
             this.btnDuzenle.UseVisualStyleBackColor = true;
+            this.btnDuzenle.Click += new System.EventHandler(this.btnDuzenle_Click_1);
             // 
             // btnIncele
             // 
@@ -385,6 +385,7 @@
             this.btnIncele.TabIndex = 33;
             this.btnIncele.Text = "İncele";
             this.btnIncele.UseVisualStyleBackColor = true;
+            this.btnIncele.Click += new System.EventHandler(this.btnIncele_Click_1);
             // 
             // btnBul
             // 
@@ -395,6 +396,7 @@
             this.btnBul.TabIndex = 32;
             this.btnBul.Text = "Bul";
             this.btnBul.UseVisualStyleBackColor = true;
+            this.btnBul.Click += new System.EventHandler(this.btnBul_Click_1);
             // 
             // dgvIsMerkezi
             // 
