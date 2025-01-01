@@ -381,6 +381,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "IsMerkezleriTumBilgilerForm";
             this.Text = "IsMerkezleriTumBilgilerForm";
+            this.Load += new System.EventHandler(this.IsMerkezleriTumBilgilerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

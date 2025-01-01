@@ -254,6 +254,10 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
             }
         }
 
-
+        private void IsMerkezleriTumBilgilerForm_Load(object sender, EventArgs e)
+        {
+            this.Size = Screen.PrimaryScreen.Bounds.Size;
+            this.Location = Screen.PrimaryScreen.Bounds.Location;
+        }
     }
 }

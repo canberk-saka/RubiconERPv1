@@ -28,32 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnOperasyonListele = new System.Windows.Forms.Button();
-            this.btnOperasyonIncele = new System.Windows.Forms.Button();
+            this.btnOperasyonSil = new System.Windows.Forms.Button();
             this.btnOperasyonDuzenle = new System.Windows.Forms.Button();
             this.btnOperasyonEkle = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtOperasyonListele = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dtOperasyonListele)).BeginInit();
+            this.dgvOperasyonListele = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOperasyonListele)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnOperasyonListele
+            // btnOperasyonSil
             // 
-            this.btnOperasyonListele.Location = new System.Drawing.Point(622, 113);
-            this.btnOperasyonListele.Name = "btnOperasyonListele";
-            this.btnOperasyonListele.Size = new System.Drawing.Size(116, 50);
-            this.btnOperasyonListele.TabIndex = 13;
-            this.btnOperasyonListele.Text = "Operasyon Listele";
-            this.btnOperasyonListele.UseVisualStyleBackColor = true;
-            // 
-            // btnOperasyonIncele
-            // 
-            this.btnOperasyonIncele.Location = new System.Drawing.Point(469, 113);
-            this.btnOperasyonIncele.Name = "btnOperasyonIncele";
-            this.btnOperasyonIncele.Size = new System.Drawing.Size(116, 50);
-            this.btnOperasyonIncele.TabIndex = 12;
-            this.btnOperasyonIncele.Text = "Operasyon İncele";
-            this.btnOperasyonIncele.UseVisualStyleBackColor = true;
+            this.btnOperasyonSil.Location = new System.Drawing.Point(469, 113);
+            this.btnOperasyonSil.Name = "btnOperasyonSil";
+            this.btnOperasyonSil.Size = new System.Drawing.Size(116, 50);
+            this.btnOperasyonSil.TabIndex = 12;
+            this.btnOperasyonSil.Text = "Operasyonu Sil";
+            this.btnOperasyonSil.UseVisualStyleBackColor = true;
+            this.btnOperasyonSil.Click += new System.EventHandler(this.btnOperasyonSil_Click);
             // 
             // btnOperasyonDuzenle
             // 
@@ -63,6 +54,7 @@
             this.btnOperasyonDuzenle.TabIndex = 11;
             this.btnOperasyonDuzenle.Text = "Operasyon Düzenle";
             this.btnOperasyonDuzenle.UseVisualStyleBackColor = true;
+            this.btnOperasyonDuzenle.Click += new System.EventHandler(this.btnOperasyonDuzenle_Click);
             // 
             // btnOperasyonEkle
             // 
@@ -72,6 +64,7 @@
             this.btnOperasyonEkle.TabIndex = 10;
             this.btnOperasyonEkle.Text = "Operasyon Ekle";
             this.btnOperasyonEkle.UseVisualStyleBackColor = true;
+            this.btnOperasyonEkle.Click += new System.EventHandler(this.btnOperasyonEkle_Click);
             // 
             // label1
             // 
@@ -83,42 +76,40 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Operasyon Liste Ekranı";
             // 
-            // dtOperasyonListele
+            // dgvOperasyonListele
             // 
-            this.dtOperasyonListele.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtOperasyonListele.Location = new System.Drawing.Point(156, 213);
-            this.dtOperasyonListele.Name = "dtOperasyonListele";
-            this.dtOperasyonListele.RowHeadersWidth = 51;
-            this.dtOperasyonListele.RowTemplate.Height = 24;
-            this.dtOperasyonListele.Size = new System.Drawing.Size(1286, 369);
-            this.dtOperasyonListele.TabIndex = 7;
+            this.dgvOperasyonListele.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOperasyonListele.Location = new System.Drawing.Point(156, 213);
+            this.dgvOperasyonListele.Name = "dgvOperasyonListele";
+            this.dgvOperasyonListele.RowHeadersWidth = 51;
+            this.dgvOperasyonListele.RowTemplate.Height = 24;
+            this.dgvOperasyonListele.Size = new System.Drawing.Size(1286, 369);
+            this.dgvOperasyonListele.TabIndex = 7;
             // 
             // IsMerkezleriOperasyonListeEkraniForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1637, 697);
-            this.Controls.Add(this.btnOperasyonListele);
-            this.Controls.Add(this.btnOperasyonIncele);
+            this.Controls.Add(this.btnOperasyonSil);
             this.Controls.Add(this.btnOperasyonDuzenle);
             this.Controls.Add(this.btnOperasyonEkle);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtOperasyonListele);
+            this.Controls.Add(this.dgvOperasyonListele);
             this.Name = "IsMerkezleriOperasyonListeEkraniForm";
             this.Text = "IsMerkezleriOperasyonListeEkraniForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dtOperasyonListele)).EndInit();
+            this.Load += new System.EventHandler(this.IsMerkezleriOperasyonListeEkraniForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOperasyonListele)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnOperasyonListele;
-        private System.Windows.Forms.Button btnOperasyonIncele;
+        private System.Windows.Forms.Button btnOperasyonSil;
         private System.Windows.Forms.Button btnOperasyonDuzenle;
         private System.Windows.Forms.Button btnOperasyonEkle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dtOperasyonListele;
+        private System.Windows.Forms.DataGridView dgvOperasyonListele;
     }
 }
