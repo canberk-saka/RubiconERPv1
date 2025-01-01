@@ -117,48 +117,14 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             }
         }
 
-        private void btnEkle_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvIsMerkezi.SelectedRows.Count > 0)
-                {
-                    DataGridViewRow selectedRow = dgvIsMerkezi.SelectedRows[0];
-                    string isMerkeziKodu = selectedRow.Cells["İş Merkezi Kodu"].Value.ToString();
+       
 
-                    DataTable workCenterDetails = _dataAccessLayer.GetWorkCenterDetails(isMerkeziKodu);
-                    IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
 
-                    tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
-                    tumBilgilerForm.SetFormMode(true);
-                    //tumBilgilerForm.SetFormModeInsert(true);
-                    tumBilgilerForm.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Lütfen bir iş merkezi seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+      
+       
 
-        private void btnTumunuGoster_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataTable allData = _dataAccessLayer.GetAllData();
-                dgvIsMerkezi.DataSource = allData;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnBul_Click(object sender, EventArgs e)
+       
+        private void btnBul_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -196,7 +162,12 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             }
         }
 
-        private void btnDuzenle_Click(object sender, EventArgs e)
+        private void btnIncele_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDuzenle_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -222,7 +193,35 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             }
         }
 
-        private void btnSil_Click(object sender, EventArgs e)
+        private void btnEkle_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvIsMerkezi.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = dgvIsMerkezi.SelectedRows[0];
+                    string isMerkeziKodu = selectedRow.Cells["İş Merkezi Kodu"].Value.ToString();
+
+                    DataTable workCenterDetails = _dataAccessLayer.GetWorkCenterDetails(isMerkeziKodu);
+                    IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
+
+                    tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
+                    tumBilgilerForm.SetFormMode(true);
+                    //tumBilgilerForm.SetFormModeInsert(true);
+                    tumBilgilerForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir iş merkezi seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSil_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -268,6 +267,19 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             catch (Exception ex)
             {
                 MessageBox.Show($"Silme işlemi sırasında bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnTumunuGoster_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable allData = _dataAccessLayer.GetAllData();
+                dgvIsMerkezi.DataSource = allData;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
