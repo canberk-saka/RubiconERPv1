@@ -35,16 +35,16 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
                     cmbDilKodu.SelectedItem = row["Dil Kodu"].ToString();
 
                     // İş Merkezi Tipi
-                    LoadComboBoxWithControlData(cmbMaliyetMerkeziTipi, "BSMGR0WCM001", "DOCTYPE", "DOCTYPE");
-                    cmbMaliyetMerkeziTipi.SelectedItem = row["İş Merkezi Tipi"].ToString();
+                    LoadComboBoxWithControlData(cmbMaliyetMerkeziTipi, "BSMGR0CCM001", "DOCTYPE", "DOCTYPE");
+                    //cmbMaliyetMerkeziTipi.SelectedItem = row["Maliyet Merkezi Tipi"].ToString();
 
                     // İş Merkezi Kodu
                     txtIsMerkeziKodu.Text = row["İş Merkezi Kodu"].ToString();
 
                     // MAINWCMDOCTYPE ve CCMDOCNUM Değerleri
-                    txtIsMerkeziTipi.Text = row["Ana İş Merkezi Tipi"] != DBNull.Value ? row["Ana İş Merkezi Tipi"].ToString() : string.Empty;
+                    txtIsMerkeziTipi.Text = row["İş Merkezi Tipi"] != DBNull.Value ? row["İş Merkezi Tipi"].ToString() : string.Empty;
 
-                    txtIsMerkeziKodu.Text = row["Ana İş Merkezi Kodu"] != DBNull.Value ? row["Ana İş Merkezi Kodu"].ToString() : string.Empty;
+                    txtIsMerkeziKodu.Text = row["İş Merkezi Kodu"] != DBNull.Value ? row["İş Merkezi Kodu"].ToString() : string.Empty;
 
                     txtMaliyetMerkeziKodu.Text = row["Maliyet Merkezi Kodu"] != DBNull.Value ? row["Maliyet Merkezi Kodu"].ToString() : string.Empty;
 
@@ -202,7 +202,7 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
             {
                 // Formdaki verileri al
                 string firmaKodu = cmbFirma.SelectedItem.ToString(); // Firma Kodu
-                string isMerkeziTipi = cmbMaliyetMerkeziTipi.SelectedItem.ToString(); // İş Merkezi Tipi
+                string isMerkeziTipi = txtIsMerkeziTipi.Text; // İş Merkezi Tipi
                 string isMerkeziKodu = txtIsMerkeziKodu.Text; // İş Merkezi Kodu
                 DateTime? baslangicTarihi = dtpGecerlilikBaslangicTarihi.Checked ? (DateTime?)dtpGecerlilikBaslangicTarihi.Value : null; // Başlangıç Tarihi
                 DateTime? bitisTarihi = dtpGecerlilikBitisTarihi.Checked ? (DateTime?)dtpGecerlilikBitisTarihi.Value : null; // Bitiş Tarihi

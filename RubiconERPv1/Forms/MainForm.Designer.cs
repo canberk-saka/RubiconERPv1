@@ -37,6 +37,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnAnaTablo3;
+        private System.Windows.Forms.Button btnAnaTablo4;
     }
 }
 

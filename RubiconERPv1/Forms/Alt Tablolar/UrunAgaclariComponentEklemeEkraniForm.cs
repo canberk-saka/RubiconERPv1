@@ -15,6 +15,7 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
         public UrunAgaclariComponentEklemeEkraniForm()
         {
             InitializeComponent();
+
         }
 
         private void UrunAgaclariComponentEklemeEkraniForm_Load(object sender, EventArgs e)

@@ -28,25 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvUrunAgaciBilesenListesi = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnEkle = new System.Windows.Forms.Button();
+            this.btnDuzenle = new System.Windows.Forms.Button();
+            this.btnIncele = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUrunAgaciBilesenListesi)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvUrunAgaciBilesenListesi
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(43, 229);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1286, 369);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvUrunAgaciBilesenListesi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUrunAgaciBilesenListesi.Location = new System.Drawing.Point(43, 229);
+            this.dgvUrunAgaciBilesenListesi.Name = "dgvUrunAgaciBilesenListesi";
+            this.dgvUrunAgaciBilesenListesi.RowHeadersWidth = 51;
+            this.dgvUrunAgaciBilesenListesi.RowTemplate.Height = 24;
+            this.dgvUrunAgaciBilesenListesi.Size = new System.Drawing.Size(1286, 369);
+            this.dgvUrunAgaciBilesenListesi.TabIndex = 0;
+            this.dgvUrunAgaciBilesenListesi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUrunAgaciBilesenListesi_CellClick);
+            this.dgvUrunAgaciBilesenListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUrunAgaciBilesenListesi_CellContentClick);
+            this.dgvUrunAgaciBilesenListesi.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUrunAgaciBilesenListesi_CellDoubleClick);
             // 
             // label1
             // 
@@ -68,58 +70,48 @@
             this.button1.Text = "Patlat";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnEkle
             // 
-            this.button2.Location = new System.Drawing.Point(43, 129);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 50);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Bileşen Ekle";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEkle.Location = new System.Drawing.Point(43, 129);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(116, 50);
+            this.btnEkle.TabIndex = 3;
+            this.btnEkle.Text = "Bileşen Ekle";
+            this.btnEkle.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDuzenle
             // 
-            this.button3.Location = new System.Drawing.Point(239, 129);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 50);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Bileşen Düzenle";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDuzenle.Location = new System.Drawing.Point(201, 129);
+            this.btnDuzenle.Name = "btnDuzenle";
+            this.btnDuzenle.Size = new System.Drawing.Size(116, 50);
+            this.btnDuzenle.TabIndex = 4;
+            this.btnDuzenle.Text = "Bileşen Düzenle";
+            this.btnDuzenle.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnIncele
             // 
-            this.button4.Location = new System.Drawing.Point(435, 129);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(116, 50);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Bileşen İncele";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(621, 129);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 50);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Bileşen Listele (Opsiyonel)";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnIncele.Location = new System.Drawing.Point(377, 129);
+            this.btnIncele.Name = "btnIncele";
+            this.btnIncele.Size = new System.Drawing.Size(116, 50);
+            this.btnIncele.TabIndex = 5;
+            this.btnIncele.Text = "Bileşen İncele";
+            this.btnIncele.UseVisualStyleBackColor = true;
             // 
             // UrunAgaclariComponentEkraniForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1380, 727);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnIncele);
+            this.Controls.Add(this.btnDuzenle);
+            this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvUrunAgaciBilesenListesi);
             this.Name = "UrunAgaclariComponentEkraniForm";
             this.Text = "UrunAgaclariComponentEkraniForm";
             this.Load += new System.EventHandler(this.UrunAgaclariComponentEkraniForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUrunAgaciBilesenListesi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,12 +119,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvUrunAgaciBilesenListesi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnEkle;
+        private System.Windows.Forms.Button btnDuzenle;
+        private System.Windows.Forms.Button btnIncele;
     }
 }
