@@ -407,8 +407,10 @@
             this.dgvIsMerkezi.RowHeadersWidth = 51;
             this.dgvIsMerkezi.Size = new System.Drawing.Size(1699, 252);
             this.dgvIsMerkezi.TabIndex = 38;
-            this.dgvIsMerkezi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIsMerkezi_CellClick_1);
-            this.dgvIsMerkezi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIsMerkezi_CellContentClick);
+            //this.dgvIsMerkezi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIsMerkezi_CellClick_1);
+            //this.dgvIsMerkezi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIsMerkezi_CellContentClick);
+            //this.dgvIsMerkezi.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIsMerkezi_CellContentDoubleClick);
+            this.dgvIsMerkezi.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIsMerkezi_CellDoubleClick);
             // 
             // IsMerkezleriForm
             // 

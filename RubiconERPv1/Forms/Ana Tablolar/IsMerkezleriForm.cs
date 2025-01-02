@@ -278,16 +278,23 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             }
         }
 
-        private void dgvIsMerkezi_CellClick_1(object sender, DataGridViewCellEventArgs e)
+       
+
+
+        
+
+       
+
+        private void dgvIsMerkezi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // Seçilen satırdaki verileri almak
             if (e.RowIndex >= 0) // Satır seçildi mi kontrolü
             {
                 // Satırdaki hücrelerden değerler alınıyor
-                
-                
+
+
                 string isMerkeziKodu = dgvIsMerkezi.Rows[e.RowIndex].Cells["İş Merkezi Kodu"].Value.ToString();
-                
+
 
                 // Verileri bir sonraki forma gönderme
                 IsMerkezleriOperasyonListeEkraniForm form = new IsMerkezleriOperasyonListeEkraniForm();
@@ -297,12 +304,6 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                 // Formu göster
                 form.Show();
             }
-        }
-
-
-        private void dgvIsMerkezi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
