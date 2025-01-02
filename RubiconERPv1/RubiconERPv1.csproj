@@ -234,6 +234,7 @@
       <DependentUpon>ERPModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\BSMGR0BOM001DAL.cs" />
+    <Compile Include="DAL\BSMGR0BOMDAL.cs" />
     <Compile Include="DAL\BSMGR0CCM001DAL.cs" />
     <Compile Include="DAL\BSMGR0CCMDAL.cs" />
     <Compile Include="DAL\BSMGR0GEN001DAL.cs" />
@@ -336,6 +337,12 @@
     </Compile>
     <Compile Include="Forms\Alt Tablolar\UrunAgaclariComponentEkraniForm.Designer.cs">
       <DependentUpon>UrunAgaclariComponentEkraniForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\UrunAgaclariComponentListelemeEkrani.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alt Tablolar\UrunAgaclariComponentListelemeEkrani.Designer.cs">
+      <DependentUpon>UrunAgaclariComponentListelemeEkrani.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Alt Tablolar\UrunAgaclariTumBilgilerForm.cs">
       <SubType>Form</SubType>
@@ -491,6 +498,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alt Tablolar\UrunAgaclariComponentEkraniForm.resx">
       <DependentUpon>UrunAgaclariComponentEkraniForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alt Tablolar\UrunAgaclariComponentListelemeEkrani.resx">
+      <DependentUpon>UrunAgaclariComponentListelemeEkrani.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alt Tablolar\UrunAgaclariTumBilgilerForm.resx">
       <DependentUpon>UrunAgaclariTumBilgilerForm.cs</DependentUpon>

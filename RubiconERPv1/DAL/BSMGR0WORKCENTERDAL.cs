@@ -233,8 +233,8 @@ namespace DataAccessLayer
                         t.WCMSTEXT AS 'Kısa Açıklama',
                         t.WCMLTEXT AS 'Uzun Açıklama',
                         t.LANCODE AS 'Dil Kodu',
-                        h.MAINWCMDOCTYPE AS 'Ana İş Merkezi Tipi',
-                        h.MAINWCMDOCNUM AS 'Ana İş Merkezi Kodu',
+                        h.CCMDOCTYPE AS 'Maliyet Merkezi Tipi', -- Maliyet Merkezi Tipi eklendi
+                        h.CCMDOCNUM AS 'Maliyet Merkezi Kodu', -- Maliyet Merkezi Kodu eklendi
                         h.ISDELETED AS 'Silindi Mi?',
                         h.ISPASSIVE AS 'Pasif Mi?'
                     FROM 
@@ -267,12 +267,12 @@ namespace DataAccessLayer
                 string insertWCMHeadQuery = @"
         INSERT INTO BSMGR0WCMHEAD
         (
-            COMCODE, WCMDOCTYPE, WCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, MAINWCMDOCTYPE, MAINWCMDOCNUM,
+            COMCODE, WCMDOCTYPE, WCMDOCNUM,CCMDOCTYPE,CCMDOCNUM, WCMDOCFROM, WCMDOCUNTIL, MAINWCMDOCTYPE, MAINWCMDOCNUM,
             ISDELETED, ISPASSIVE
         )
         VALUES
         (
-            @firmaKodu, @isMerkeziTipi, @isMerkeziKodu, @baslangicTarihi, @bitisTarihi,
+            @firmaKodu, @isMerkeziTipi, @isMerkeziKodu,@maliyetMerkeziTipi,@maliyetMerkeziKodu, @baslangicTarihi, @bitisTarihi,
             @anaIsMerkeziTipi, @anaIsMerkeziKodu, @silindiMi, @pasifMi
         )";
 
@@ -298,7 +298,9 @@ namespace DataAccessLayer
                         commandWCMHead.Parameters.AddWithValue("@baslangicTarihi", baslangicTarihi.HasValue ? (object)baslangicTarihi.Value : DBNull.Value);
                         commandWCMHead.Parameters.AddWithValue("@bitisTarihi", bitisTarihi.HasValue ? (object)bitisTarihi.Value : DBNull.Value);
                         commandWCMHead.Parameters.AddWithValue("@anaIsMerkeziTipi", anaIsMerkeziTipi);
+                        commandWCMHead.Parameters.AddWithValue("@maliyetMerkeziTipi", maliyetMerkeziTipi);
                         commandWCMHead.Parameters.AddWithValue("@anaIsMerkeziKodu", anaIsMerkeziKodu);
+                        commandWCMHead.Parameters.AddWithValue("@maliyetMerkeziKodu", maliyetMerkeziKodu);
                         commandWCMHead.Parameters.AddWithValue("@silindiMi", silindiMi);
                         commandWCMHead.Parameters.AddWithValue("@pasifMi", pasifMi);
 

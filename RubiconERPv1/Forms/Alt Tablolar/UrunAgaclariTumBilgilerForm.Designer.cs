@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtCizimNumarasi = new System.Windows.Forms.TextBox();
+            this.dtpGecerlilikBitisTarihi = new System.Windows.Forms.DateTimePicker();
+            this.dtpGecerlilikBaslangicTarihi = new System.Windows.Forms.DateTimePicker();
+            this.cmbPasifMi = new System.Windows.Forms.ComboBox();
+            this.cmbSilindiMi = new System.Windows.Forms.ComboBox();
+            this.txtTemelMiktar = new System.Windows.Forms.TextBox();
+            this.txtMalzemeKodu = new System.Windows.Forms.TextBox();
+            this.cmbMalzemeTipi = new System.Windows.Forms.ComboBox();
+            this.cmbUrunAgaciTipi = new System.Windows.Forms.ComboBox();
+            this.txtUrunAgaciKodu = new System.Windows.Forms.TextBox();
+            this.cmbFirma = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,22 +52,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnKaydet = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.comboBox5);
-            this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.txtCizimNumarasi);
+            this.groupBox1.Controls.Add(this.dtpGecerlilikBitisTarihi);
+            this.groupBox1.Controls.Add(this.dtpGecerlilikBaslangicTarihi);
+            this.groupBox1.Controls.Add(this.cmbPasifMi);
+            this.groupBox1.Controls.Add(this.cmbSilindiMi);
+            this.groupBox1.Controls.Add(this.txtTemelMiktar);
+            this.groupBox1.Controls.Add(this.txtMalzemeKodu);
+            this.groupBox1.Controls.Add(this.cmbMalzemeTipi);
+            this.groupBox1.Controls.Add(this.cmbUrunAgaciTipi);
+            this.groupBox1.Controls.Add(this.txtUrunAgaciKodu);
+            this.groupBox1.Controls.Add(this.cmbFirma);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -88,98 +89,98 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Temel Bilgiler";
             // 
-            // textBox4
+            // txtCizimNumarasi
             // 
-            this.textBox4.Location = new System.Drawing.Point(1056, 220);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(143, 22);
-            this.textBox4.TabIndex = 32;
+            this.txtCizimNumarasi.Location = new System.Drawing.Point(1056, 220);
+            this.txtCizimNumarasi.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCizimNumarasi.Name = "txtCizimNumarasi";
+            this.txtCizimNumarasi.Size = new System.Drawing.Size(143, 22);
+            this.txtCizimNumarasi.TabIndex = 32;
             // 
-            // dateTimePicker2
+            // dtpGecerlilikBitisTarihi
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1495, 145);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(233, 22);
-            this.dateTimePicker2.TabIndex = 31;
+            this.dtpGecerlilikBitisTarihi.Location = new System.Drawing.Point(1495, 145);
+            this.dtpGecerlilikBitisTarihi.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpGecerlilikBitisTarihi.Name = "dtpGecerlilikBitisTarihi";
+            this.dtpGecerlilikBitisTarihi.Size = new System.Drawing.Size(233, 22);
+            this.dtpGecerlilikBitisTarihi.TabIndex = 31;
             // 
-            // dateTimePicker1
+            // dtpGecerlilikBaslangicTarihi
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(1495, 80);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(233, 22);
-            this.dateTimePicker1.TabIndex = 30;
+            this.dtpGecerlilikBaslangicTarihi.Location = new System.Drawing.Point(1495, 80);
+            this.dtpGecerlilikBaslangicTarihi.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpGecerlilikBaslangicTarihi.Name = "dtpGecerlilikBaslangicTarihi";
+            this.dtpGecerlilikBaslangicTarihi.Size = new System.Drawing.Size(233, 22);
+            this.dtpGecerlilikBaslangicTarihi.TabIndex = 30;
             // 
-            // comboBox5
+            // cmbPasifMi
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(1039, 145);
-            this.comboBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(108, 24);
-            this.comboBox5.TabIndex = 29;
+            this.cmbPasifMi.FormattingEnabled = true;
+            this.cmbPasifMi.Location = new System.Drawing.Point(1039, 145);
+            this.cmbPasifMi.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbPasifMi.Name = "cmbPasifMi";
+            this.cmbPasifMi.Size = new System.Drawing.Size(108, 24);
+            this.cmbPasifMi.TabIndex = 29;
             // 
-            // comboBox4
+            // cmbSilindiMi
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(1039, 79);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(108, 24);
-            this.comboBox4.TabIndex = 28;
+            this.cmbSilindiMi.FormattingEnabled = true;
+            this.cmbSilindiMi.Location = new System.Drawing.Point(1039, 79);
+            this.cmbSilindiMi.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbSilindiMi.Name = "cmbSilindiMi";
+            this.cmbSilindiMi.Size = new System.Drawing.Size(108, 24);
+            this.cmbSilindiMi.TabIndex = 28;
             // 
-            // textBox3
+            // txtTemelMiktar
             // 
-            this.textBox3.Location = new System.Drawing.Point(684, 220);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(143, 22);
-            this.textBox3.TabIndex = 27;
+            this.txtTemelMiktar.Location = new System.Drawing.Point(684, 220);
+            this.txtTemelMiktar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTemelMiktar.Name = "txtTemelMiktar";
+            this.txtTemelMiktar.Size = new System.Drawing.Size(143, 22);
+            this.txtTemelMiktar.TabIndex = 27;
             // 
-            // textBox2
+            // txtMalzemeKodu
             // 
-            this.textBox2.Location = new System.Drawing.Point(684, 146);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 22);
-            this.textBox2.TabIndex = 26;
+            this.txtMalzemeKodu.Location = new System.Drawing.Point(684, 146);
+            this.txtMalzemeKodu.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMalzemeKodu.Name = "txtMalzemeKodu";
+            this.txtMalzemeKodu.Size = new System.Drawing.Size(143, 22);
+            this.txtMalzemeKodu.TabIndex = 26;
             // 
-            // comboBox3
+            // cmbMalzemeTipi
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(684, 79);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(143, 24);
-            this.comboBox3.TabIndex = 25;
+            this.cmbMalzemeTipi.FormattingEnabled = true;
+            this.cmbMalzemeTipi.Location = new System.Drawing.Point(684, 79);
+            this.cmbMalzemeTipi.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbMalzemeTipi.Name = "cmbMalzemeTipi";
+            this.cmbMalzemeTipi.Size = new System.Drawing.Size(143, 24);
+            this.cmbMalzemeTipi.TabIndex = 25;
             // 
-            // comboBox2
+            // cmbUrunAgaciTipi
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(275, 148);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(143, 24);
-            this.comboBox2.TabIndex = 24;
+            this.cmbUrunAgaciTipi.FormattingEnabled = true;
+            this.cmbUrunAgaciTipi.Location = new System.Drawing.Point(275, 148);
+            this.cmbUrunAgaciTipi.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbUrunAgaciTipi.Name = "cmbUrunAgaciTipi";
+            this.cmbUrunAgaciTipi.Size = new System.Drawing.Size(143, 24);
+            this.cmbUrunAgaciTipi.TabIndex = 24;
             // 
-            // textBox1
+            // txtUrunAgaciKodu
             // 
-            this.textBox1.Location = new System.Drawing.Point(275, 220);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 22);
-            this.textBox1.TabIndex = 23;
+            this.txtUrunAgaciKodu.Location = new System.Drawing.Point(275, 220);
+            this.txtUrunAgaciKodu.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUrunAgaciKodu.Name = "txtUrunAgaciKodu";
+            this.txtUrunAgaciKodu.Size = new System.Drawing.Size(143, 22);
+            this.txtUrunAgaciKodu.TabIndex = 23;
             // 
-            // comboBox1
+            // cmbFirma
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(275, 79);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(143, 24);
-            this.comboBox1.TabIndex = 22;
+            this.cmbFirma.FormattingEnabled = true;
+            this.cmbFirma.Location = new System.Drawing.Point(275, 79);
+            this.cmbFirma.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbFirma.Name = "cmbFirma";
+            this.cmbFirma.Size = new System.Drawing.Size(143, 24);
+            this.cmbFirma.TabIndex = 22;
             // 
             // label11
             // 
@@ -188,9 +189,9 @@
             this.label11.Location = new System.Drawing.Point(915, 222);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(129, 20);
+            this.label11.Size = new System.Drawing.Size(77, 20);
             this.label11.TabIndex = 21;
-            this.label11.Text = "Çizim Numarası";
+            this.label11.Text = "Açıklama";
             // 
             // label10
             // 
@@ -308,20 +309,32 @@
             this.BtnKaydet.Name = "BtnKaydet";
             this.BtnKaydet.Size = new System.Drawing.Size(122, 54);
             this.BtnKaydet.TabIndex = 17;
-            this.BtnKaydet.Text = "Kaydet";
+            this.BtnKaydet.Text = "Güncelle";
             this.BtnKaydet.UseVisualStyleBackColor = true;
+            this.BtnKaydet.Click += new System.EventHandler(this.BtnKaydet_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(1628, 477);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(122, 54);
+            this.btnSave.TabIndex = 18;
+            this.btnSave.Text = "Kaydet";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // UrunAgaclariTumBilgilerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1040);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.BtnKaydet);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UrunAgaclariTumBilgilerForm";
             this.Text = "UrunAgaclariTumBilgiler";
-            this.Load += new System.EventHandler(this.UrunAgaclariTumBilgiler_Load);
+            this.Load += new System.EventHandler(this.UrunAgaclariTumBilgilerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -330,15 +343,15 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dtpGecerlilikBaslangicTarihi;
+        private System.Windows.Forms.ComboBox cmbPasifMi;
+        private System.Windows.Forms.ComboBox cmbSilindiMi;
+        private System.Windows.Forms.TextBox txtTemelMiktar;
+        private System.Windows.Forms.TextBox txtMalzemeKodu;
+        private System.Windows.Forms.ComboBox cmbMalzemeTipi;
+        private System.Windows.Forms.ComboBox cmbUrunAgaciTipi;
+        private System.Windows.Forms.TextBox txtUrunAgaciKodu;
+        private System.Windows.Forms.ComboBox cmbFirma;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -350,8 +363,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.TextBox txtCizimNumarasi;
+        private System.Windows.Forms.DateTimePicker dtpGecerlilikBitisTarihi;
         private System.Windows.Forms.Button BtnKaydet;
+        private System.Windows.Forms.Button btnSave;
     }
 }
