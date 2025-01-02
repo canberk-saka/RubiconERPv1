@@ -26,10 +26,11 @@ namespace RubiconERPv1
         {
             this.lstKontrolTablolari = new System.Windows.Forms.ListBox();
             this.pnlAnaTablolar = new System.Windows.Forms.Panel();
+            this.btnAnaTablo4 = new System.Windows.Forms.Button();
             this.btnAnaTablo3 = new System.Windows.Forms.Button();
             this.btnAnaTablo1 = new System.Windows.Forms.Button();
             this.btnAnaTablo2 = new System.Windows.Forms.Button();
-            this.btnAnaTablo4 = new System.Windows.Forms.Button();
+            this.btnAnaTablo5 = new System.Windows.Forms.Button();
             this.pnlAnaTablolar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +58,7 @@ namespace RubiconERPv1
             // pnlAnaTablolar
             // 
             this.pnlAnaTablolar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAnaTablolar.Controls.Add(this.btnAnaTablo5);
             this.pnlAnaTablolar.Controls.Add(this.btnAnaTablo4);
             this.pnlAnaTablolar.Controls.Add(this.btnAnaTablo3);
             this.pnlAnaTablolar.Controls.Add(this.btnAnaTablo1);
@@ -65,6 +67,16 @@ namespace RubiconERPv1
             this.pnlAnaTablolar.Name = "pnlAnaTablolar";
             this.pnlAnaTablolar.Size = new System.Drawing.Size(500, 450);
             this.pnlAnaTablolar.TabIndex = 1;
+            // 
+            // btnAnaTablo4
+            // 
+            this.btnAnaTablo4.Location = new System.Drawing.Point(20, 205);
+            this.btnAnaTablo4.Name = "btnAnaTablo4";
+            this.btnAnaTablo4.Size = new System.Drawing.Size(150, 40);
+            this.btnAnaTablo4.TabIndex = 3;
+            this.btnAnaTablo4.Text = "Ürün Ağaçları Ana Tablosu";
+            this.btnAnaTablo4.UseVisualStyleBackColor = true;
+            this.btnAnaTablo4.Click += new System.EventHandler(this.btnAnaTablo4_Click);
             // 
             // btnAnaTablo3
             // 
@@ -96,15 +108,15 @@ namespace RubiconERPv1
             this.btnAnaTablo2.UseVisualStyleBackColor = true;
             this.btnAnaTablo2.Click += new System.EventHandler(this.btnAnaTablo2_Click_1);
             // 
-            // btnAnaTablo4
+            // btnAnaTablo5
             // 
-            this.btnAnaTablo4.Location = new System.Drawing.Point(20, 205);
-            this.btnAnaTablo4.Name = "btnAnaTablo4";
-            this.btnAnaTablo4.Size = new System.Drawing.Size(150, 40);
-            this.btnAnaTablo4.TabIndex = 3;
-            this.btnAnaTablo4.Text = "Ürün Ağaçları Ana Tablosu";
-            this.btnAnaTablo4.UseVisualStyleBackColor = true;
-            this.btnAnaTablo4.Click += new System.EventHandler(this.btnAnaTablo4_Click);
+            this.btnAnaTablo5.Location = new System.Drawing.Point(20, 270);
+            this.btnAnaTablo5.Name = "btnAnaTablo5";
+            this.btnAnaTablo5.Size = new System.Drawing.Size(150, 40);
+            this.btnAnaTablo5.TabIndex = 4;
+            this.btnAnaTablo5.Text = "Rota Ana Tablosu";
+            this.btnAnaTablo5.UseVisualStyleBackColor = true;
+            this.btnAnaTablo5.Click += new System.EventHandler(this.btnAnaTablo5_Click);
             // 
             // MainForm
             // 
@@ -215,6 +227,12 @@ namespace RubiconERPv1
         {
             var UrunAgaclariForm = new UrunAgaciForm();
             UrunAgaclariForm.Show();
+        }
+
+        private void btnAnaTablo5_Click(object sender, EventArgs e)
+        {
+            var RotalarEkraniForm = new RotalarEkraniForm();
+            RotalarEkraniForm.Show();
         }
     }
 }
