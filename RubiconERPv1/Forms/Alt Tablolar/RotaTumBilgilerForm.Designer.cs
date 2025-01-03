@@ -1,6 +1,6 @@
 ﻿namespace RubiconERPv1.Forms.Alt_Tablolar
 {
-    partial class RotaEklemeEkraniForm
+    partial class RotaTumBilgilerForm
     {
         /// <summary>
         /// Required designer variable.

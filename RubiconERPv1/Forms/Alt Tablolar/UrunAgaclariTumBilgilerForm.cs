@@ -37,7 +37,7 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
             //btnKaydet.Visible = isEditMode;
         }
 
-
+       
 
         // Urun Agaci Detaylarını Yükle
         public void LoadUrunAgaciDetails(DataTable urunAgaciDetails)
@@ -50,19 +50,20 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
 
                     // Firma Kodu
                     LoadComboBoxWithControlData(cmbFirma, "BSMGR0GEN001", "COMCODE", "COMCODE");
-                    cmbFirma.SelectedItem = row["Firma Kodu"].ToString();
+                    cmbFirma.SelectedValue = row["Firma Kodu"].ToString();
 
                     // Ürün Ağacı Tipi
                     LoadComboBoxWithControlData(cmbUrunAgaciTipi, "BSMGR0BOM001", "DOCTYPE", "DOCTYPE");
-                    cmbUrunAgaciTipi.SelectedItem = row["Ürün Ağacı Tipi"].ToString();
+                    cmbUrunAgaciTipi.SelectedValue = row["Ürün Ağacı Tipi"].ToString();
 
                     // Malzeme Tipi
                     LoadComboBoxWithControlData(cmbMalzemeTipi, "BSMGR0MAT001", "DOCTYPE", "DOCTYPE");
-                    cmbMalzemeTipi.SelectedItem = row["Malzeme Tipi"].ToString();
+                    cmbMalzemeTipi.SelectedValue = row["Malzeme Tipi"].ToString();
 
                     // Malzeme Kodu
                     txtMalzemeKodu.Text = row["Malzeme Kodu"].ToString();
 
+                    // Ürün Ağacı Kodu
                     txtUrunAgaciKodu.Text = row["Ürün Ağacı Kodu"].ToString();
 
                     // Geçerlilik Başlangıç
@@ -76,8 +77,6 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
                     // Temel Miktar
                     txtTemelMiktar.Text = row["Temel Miktar"].ToString();
 
-                    
-
                     // Kısa Açıklama
                     txtCizimNumarasi.Text = row["Açıklama"].ToString();
 
@@ -87,10 +86,7 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
                     cmbSilindiMi.Items.Add("Evet");
 
                     // Silindi Mi? '0' ise "Hayır", '1' ise "Evet"
-                    if (row["Silindi Mi?"].ToString() == "0")
-                        cmbSilindiMi.SelectedItem = "Hayır";
-                    else if (row["Silindi Mi?"].ToString() == "1")
-                        cmbSilindiMi.SelectedItem = "Evet";
+                    cmbSilindiMi.SelectedItem = row["Silindi Mi?"].ToString() == "0" ? "Hayır" : "Evet";
 
                     // Pasif Mi? ComboBox'ını sabit değerlerle doldur
                     cmbPasifMi.Items.Clear();
@@ -98,10 +94,7 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
                     cmbPasifMi.Items.Add("Evet");
 
                     // Pasif Mi? '0' ise "Hayır", '1' ise "Evet"
-                    if (row["Pasif Mi?"].ToString() == "0")
-                        cmbPasifMi.SelectedItem = "Hayır";
-                    else if (row["Pasif Mi?"].ToString() == "1")
-                        cmbPasifMi.SelectedItem = "Evet";
+                    cmbPasifMi.SelectedItem = row["Pasif Mi?"].ToString() == "0" ? "Hayır" : "Evet";
                 }
                 else
                 {
@@ -113,7 +106,6 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
                 MessageBox.Show($"Veri yüklenirken bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         // ComboBox'ı kontrol tablosuyla doldur
         private void LoadComboBoxWithControlData(ComboBox comboBox, string tableName, string displayMember, string valueMember)
         {

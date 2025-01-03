@@ -110,7 +110,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     DataTable costCenterDetails = _dataAccessLayer.GetMaterialDetails(maliyetMerkeziKodu);
                     MaliyetMerkezleriTumBilgilerForm tumBilgilerForm = new MaliyetMerkezleriTumBilgilerForm();
                     tumBilgilerForm.LoadCostCenterDetails(costCenterDetails);
-                    tumBilgilerForm.SetFormMode(false);
+                    tumBilgilerForm.SetFormModeIncele(false);
                     tumBilgilerForm.Show();
                 }
                 else

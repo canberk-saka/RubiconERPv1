@@ -121,6 +121,29 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
             btnSave.Visible = !isEditMode;
         }
 
+        public void SetFormModeIncele(bool isEditMode)
+        {
+            _isEditMode = isEditMode;
+
+            // Düzenleme modunda iken kullanıcı girişine izin ver, inceleme modunda okuma modunda olacak
+            txtMaliyetMerkeziKodu.ReadOnly = !isEditMode;
+            txtAnaMaliyetMerkeziTipi.ReadOnly = !isEditMode;
+            txtAnaMaliyetMerkeziKodu.ReadOnly = !isEditMode;
+            cbFirmaKodu.Enabled = isEditMode;
+            cbMaliyetMerkeziTipi.Enabled = isEditMode;
+            dtpGecerlilikBaslangicTarihi.Enabled = isEditMode;
+            dtpGecerlilikBitisTarihi.Enabled = isEditMode;
+            cmbDilKodu.Enabled = isEditMode;
+            cmbSilindiMi.Enabled = isEditMode;
+            cmbPasifMi.Enabled = isEditMode;
+            txtMaliyetMerkeziKisaAciklama.ReadOnly = !isEditMode;
+            txtMaliyetMerkeziUzunAciklama.ReadOnly = !isEditMode;
+
+
+            btnSave.Visible = isEditMode;
+            btnKaydet.Visible = isEditMode;
+        }
+
         // Form modunu ekleme için ayarla
         public void SetFormModeInsert(bool isInsertMode)
         {

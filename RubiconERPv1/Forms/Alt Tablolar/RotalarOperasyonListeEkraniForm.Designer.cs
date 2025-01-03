@@ -30,10 +30,10 @@
         {
             this.btnOperasyonIncele = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvRotaOperasyonListe = new System.Windows.Forms.DataGridView();
             this.btnOperasyonDuzenle = new System.Windows.Forms.Button();
             this.btnOperasyonEkle = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRotaOperasyonListe)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOperasyonIncele
@@ -56,16 +56,17 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Operasyon Listesi";
             // 
-            // dataGridView1
+            // dgvRotaOperasyonListe
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(133, 215);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1285, 369);
-            this.dataGridView1.TabIndex = 7;
+            this.dgvRotaOperasyonListe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRotaOperasyonListe.Location = new System.Drawing.Point(133, 215);
+            this.dgvRotaOperasyonListe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvRotaOperasyonListe.Name = "dgvRotaOperasyonListe";
+            this.dgvRotaOperasyonListe.RowHeadersWidth = 51;
+            this.dgvRotaOperasyonListe.RowTemplate.Height = 24;
+            this.dgvRotaOperasyonListe.Size = new System.Drawing.Size(1285, 369);
+            this.dgvRotaOperasyonListe.TabIndex = 7;
+            this.dgvRotaOperasyonListe.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRotaOperasyonListe_CellDoubleClick);
             // 
             // btnOperasyonDuzenle
             // 
@@ -96,11 +97,11 @@
             this.Controls.Add(this.btnOperasyonDuzenle);
             this.Controls.Add(this.btnOperasyonIncele);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.dgvRotaOperasyonListe);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RotalarOperasyonListeEkraniForm";
             this.Text = "RotalarOperasyonListeEkraniForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRotaOperasyonListe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,7 +111,7 @@
 
         private System.Windows.Forms.Button btnOperasyonIncele;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvRotaOperasyonListe;
         private System.Windows.Forms.Button btnOperasyonDuzenle;
         private System.Windows.Forms.Button btnOperasyonEkle;
     }

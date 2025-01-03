@@ -567,15 +567,15 @@
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(109, 49);
             this.btnKaydet.TabIndex = 24;
-            this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.Text = "Güncelle";
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click_1);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(1375, 742);
+            this.btnSave.Location = new System.Drawing.Point(1440, 742);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(128, 42);
+            this.btnSave.Size = new System.Drawing.Size(109, 49);
             this.btnSave.TabIndex = 25;
             this.btnSave.Text = "Kaydet";
             this.btnSave.UseVisualStyleBackColor = true;
