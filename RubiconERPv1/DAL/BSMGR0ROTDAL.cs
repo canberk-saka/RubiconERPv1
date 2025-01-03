@@ -21,24 +21,29 @@ namespace DataAccessLayer
             {
                 string query = @"
             SELECT 
-                r.COMCODE AS 'Firma Kodu',
-                r.ROTDOCTYPE AS 'Rota Tipi',
-                r.ROTDOCNUM AS 'Rota Numarası',
-                r.ROTDOCFROM AS 'Geçerlilik Başlangıç',
-                r.ROTDOCUNTIL AS 'Geçerlilik Bitiş',
-                r.MATDOCTYPE AS 'Malzeme Tipi',
-                r.MATDOCNUM AS 'Malzeme Kodu',
-                r.OPRNUM AS 'Operasyon Numarası',
-                r.WCMDOCTYPE AS 'İş Merkezi Tipi',
-                r.WCMDOCNUM AS 'İş Merkezi Kodu',
-                r.OPRDOCTYPE AS 'Operasyon Kodu',
-                r.SETUPTIME AS 'Operasyon Hazırlık Süresi(Saat)',
-                r.MACHINETIME AS 'Operasyon Makine Süresi(Saat)',
-                r.LABOURTIME AS 'Operasyon İşçilik Süresi(Saat)'
-            FROM 
-                BSMGR0ROTOPRCONTENT r
-            WHERE 
-                r.ROTDOCNUM = @rotaNumarasi";
+    r.COMCODE AS 'Firma Kodu',
+    r.ROTDOCTYPE AS 'Rota Tipi',
+    r.ROTDOCNUM AS 'Rota Numarası',
+    r.ROTDOCFROM AS 'Geçerlilik Başlangıç',
+    r.ROTDOCUNTIL AS 'Geçerlilik Bitiş',
+    r.MATDOCTYPE AS 'Malzeme Tipi',
+    r.MATDOCNUM AS 'Malzeme Kodu',
+    r.OPRNUM AS 'Operasyon Numarası',
+    r.WCMDOCTYPE AS 'İş Merkezi Tipi',
+    r.WCMDOCNUM AS 'İş Merkezi Kodu',
+    r.OPRDOCTYPE AS 'Operasyon Kodu',
+rt.DOCTYPETEXT AS 'Operasyon Tipi Açıklaması',  
+    r.SETUPTIME AS 'Operasyon Hazırlık Süresi(Saat)',
+    r.MACHINETIME AS 'Operasyon Makine Süresi(Saat)',
+    r.LABOURTIME AS 'Operasyon İşçilik Süresi(Saat)'
+    
+FROM 
+    BSMGR0ROTOPRCONTENT r
+LEFT JOIN 
+    BSMGR0ROT003 rt ON r.OPRDOCTYPE = rt.DOCTYPE  -- Operasyon Kodu ile Operasyon Tipi eşleşiyor
+WHERE 
+    r.ROTDOCNUM = @rotaNumarasi;"
+;
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@rotaNumarasi", rotaNumarasi);

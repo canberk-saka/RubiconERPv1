@@ -49,7 +49,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     MessageBox.Show($"Tabloda '{displayMember}' veya '{valueMember}' sütunu bulunamadı.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
+                
                 DataTable newData = data.Copy();
                 DataRow newRow = newData.NewRow();
                 newRow[displayMember] = "Seçiniz";

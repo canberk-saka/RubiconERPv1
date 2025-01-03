@@ -63,6 +63,7 @@
             this.dgvRotaBilgileri.RowHeadersWidth = 51;
             this.dgvRotaBilgileri.Size = new System.Drawing.Size(1709, 352);
             this.dgvRotaBilgileri.TabIndex = 40;
+            this.dgvRotaBilgileri.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRotaBilgileri_CellContentClick);
             this.dgvRotaBilgileri.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRotaBilgileri_CellDoubleClick);
             // 
             // btnSil

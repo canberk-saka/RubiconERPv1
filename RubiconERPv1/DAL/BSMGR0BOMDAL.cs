@@ -329,17 +329,16 @@ namespace DataAccessLayer
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                string query = @"
-            SELECT 
-                MATDOCNUM AS 'Malzeme Kodu',              
-                MATDOCTYPE AS 'Malzeme Tipi',              
-                COMPBOMDOCNUM AS 'Ürün Ağacı Kodu', 
-                COMPBOMDOCTYPE AS 'Ürün Ağacı Tipi'
-            FROM 
-                BSMGR0BOMCONTENT
-            WHERE
-                BOMDOCNUM = @urunAgaciKodu
-           ";
+                string query = @" SELECT 
+     MATDOCNUM AS 'Malzeme Kodu',              
+     MATDOCTYPE AS 'Malzeme Tipi',              
+     COMPBOMDOCNUM AS 'Ürün Ağacı Kodu', 
+     COMPBOMDOCTYPE AS 'Ürün Ağacı Tipi'
+ FROM 
+     BSMGR0BOMCONTENT
+ WHERE
+     BOMDOCNUM = @urunAgaciKodu
+";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@urunAgaciKodu", urunAgaciKodu);
@@ -378,11 +377,9 @@ namespace DataAccessLayer
                 
                 
                FROM BSMGR0BOMCONTENT
+
 WHERE 
-                BOMDOCNUM = @urunAgaciKodu;
-          
-             
-                ";  // Ürün Ağacı Kodu'na göre filtreleme yapılır.
+                BOMDOCNUM = @urunAgaciKodu;";  
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@urunAgaciKodu", urunAgaciKodu);
