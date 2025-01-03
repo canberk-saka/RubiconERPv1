@@ -10,8 +10,8 @@ namespace DataAccessLayer
 
 
         //private static readonly string _connectionString = "Data Source=EMINPC;Initial Catalog=RubiconDB;Integrated Security=True;";
-        //private static readonly string _connectionString = "Data Source=DESKTOP-BAP4RDU\\SQLEXPRESS02;Initial Catalog=RubiconDB;Integrated Security=True;";
-        private static readonly string _connectionString = "Data Source=EMRE;Initial Catalog=RubiconDB;Integrated Security=True;";
+        private static readonly string _connectionString = "Data Source=DESKTOP-BAP4RDU\\SQLEXPRESS02;Initial Catalog=RubiconDB;Integrated Security=True;";
+        //private static readonly string _connectionString = "Data Source=EMRE;Initial Catalog=RubiconDB;Integrated Security=True;";
 
 
 

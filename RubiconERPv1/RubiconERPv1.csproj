@@ -249,6 +249,7 @@
     <Compile Include="DAL\BSMGR0ROT001DAL.cs" />
     <Compile Include="DAL\BSMGR0ROT002DAL..cs" />
     <Compile Include="DAL\BSMGR0ROT003DAL.cs" />
+    <Compile Include="DAL\BSMGR0ROTDAL.cs" />
     <Compile Include="DAL\BSMGR0WORKCENTERDAL.cs" />
     <Compile Include="DAL\DbConnection.cs" />
     <Compile Include="ERPModel.Context.cs">
@@ -296,11 +297,11 @@
     <Compile Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.Designer.cs">
       <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Alt Tablolar\RotaEklemeEkraniForm.cs">
+    <Compile Include="Forms\Alt Tablolar\RotaTumBilgilerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Alt Tablolar\RotaEklemeEkraniForm.Designer.cs">
-      <DependentUpon>RotaEklemeEkraniForm.cs</DependentUpon>
+    <Compile Include="Forms\Alt Tablolar\RotaTumBilgilerForm.Designer.cs">
+      <DependentUpon>RotaTumBilgilerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Alt Tablolar\RotalarOperasyonEklemeEkraniForm.cs">
       <SubType>Form</SubType>
@@ -478,8 +479,8 @@
     <EmbeddedResource Include="Forms\Alt Tablolar\MalzemeTumBilgilerForm.resx">
       <DependentUpon>MalzemeTumBilgilerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Alt Tablolar\RotaEklemeEkraniForm.resx">
-      <DependentUpon>RotaEklemeEkraniForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Alt Tablolar\RotaTumBilgilerForm.resx">
+      <DependentUpon>RotaTumBilgilerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Alt Tablolar\RotalarOperasyonEklemeEkraniForm.resx">
       <DependentUpon>RotalarOperasyonEklemeEkraniForm.cs</DependentUpon>

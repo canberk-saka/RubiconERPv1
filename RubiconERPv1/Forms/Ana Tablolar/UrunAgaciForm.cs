@@ -346,5 +346,10 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                 MessageBox.Show($"Bir hata oluştu: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvUrunAgaci_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

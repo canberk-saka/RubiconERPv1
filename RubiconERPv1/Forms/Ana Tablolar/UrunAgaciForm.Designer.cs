@@ -321,6 +321,7 @@
             this.dgvUrunAgaci.Size = new System.Drawing.Size(1699, 299);
             this.dgvUrunAgaci.TabIndex = 44;
             this.dgvUrunAgaci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUrunAgaci_CellClick_1);
+            this.dgvUrunAgaci.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUrunAgaci_CellContentClick);
             this.dgvUrunAgaci.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUrunAgaci_CellDoubleClick);
             // 
             // UrunAgaciForm

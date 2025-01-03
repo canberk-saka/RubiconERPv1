@@ -32,8 +32,8 @@
             this.btnMalzemeDuzenle = new System.Windows.Forms.Button();
             this.btnMalzemeEkle = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtMalzemeListele = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dtMalzemeListele)).BeginInit();
+            this.dgvMalzemeListele = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMalzemeListele)).BeginInit();
             this.SuspendLayout();
             // 
             // btnMalzemeIncele
@@ -76,16 +76,18 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Tüketilen Malzeme Listeleme Ekranı";
             // 
-            // dtMalzemeListele
+            // dgvMalzemeListele
             // 
-            this.dtMalzemeListele.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtMalzemeListele.Location = new System.Drawing.Point(179, 223);
-            this.dtMalzemeListele.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtMalzemeListele.Name = "dtMalzemeListele";
-            this.dtMalzemeListele.RowHeadersWidth = 51;
-            this.dtMalzemeListele.RowTemplate.Height = 24;
-            this.dtMalzemeListele.Size = new System.Drawing.Size(1285, 369);
-            this.dtMalzemeListele.TabIndex = 14;
+            this.dgvMalzemeListele.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMalzemeListele.Location = new System.Drawing.Point(179, 223);
+            this.dgvMalzemeListele.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvMalzemeListele.Name = "dgvMalzemeListele";
+            this.dgvMalzemeListele.RowHeadersWidth = 51;
+            this.dgvMalzemeListele.RowTemplate.Height = 24;
+            this.dgvMalzemeListele.Size = new System.Drawing.Size(1285, 369);
+            this.dgvMalzemeListele.TabIndex = 14;
+            this.dgvMalzemeListele.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMalzemeListele_CellContentClick);
+            this.dgvMalzemeListele.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtMalzemeListele_CellDoubleClick);
             // 
             // RotaOperasyonBomListelemeEkraniForm
             // 
@@ -96,11 +98,11 @@
             this.Controls.Add(this.btnMalzemeDuzenle);
             this.Controls.Add(this.btnMalzemeEkle);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtMalzemeListele);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.dgvMalzemeListele);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RotaOperasyonBomListelemeEkraniForm";
             this.Text = "RotaOperasyonBomListelemeEkraniForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dtMalzemeListele)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMalzemeListele)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,6 +113,6 @@
         private System.Windows.Forms.Button btnMalzemeDuzenle;
         private System.Windows.Forms.Button btnMalzemeEkle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dtMalzemeListele;
+        private System.Windows.Forms.DataGridView dgvMalzemeListele;
     }
 }
