@@ -156,9 +156,9 @@
             this.label9.Location = new System.Drawing.Point(883, 133);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(154, 20);
+            this.label9.Size = new System.Drawing.Size(158, 20);
             this.label9.TabIndex = 19;
-            this.label9.Text = "Maliyet Merkezi Tpi";
+            this.label9.Text = "Maliyet Merkezi Tipi";
             // 
             // label8
             // 

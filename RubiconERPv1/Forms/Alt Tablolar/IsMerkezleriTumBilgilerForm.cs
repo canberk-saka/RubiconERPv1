@@ -36,7 +36,7 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
 
                     // İş Merkezi Tipi
                     LoadComboBoxWithControlData(cmbMaliyetMerkeziTipi, "BSMGR0CCM001", "DOCTYPE", "DOCTYPE");
-                    //cmbMaliyetMerkeziTipi.SelectedItem = row["Maliyet Merkezi Tipi"].ToString();
+                    cmbMaliyetMerkeziTipi.SelectedItem = "ANA";
 
                     // İş Merkezi Kodu
                     txtIsMerkeziKodu.Text = row["İş Merkezi Kodu"].ToString();
@@ -100,7 +100,7 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
         }
 
         // Form modunu ayarla
-        public void SetFormMode(bool isEditMode)
+        public void SetFormModeGuncelle(bool isEditMode)
         {
             _isEditMode = isEditMode;
 
@@ -120,8 +120,55 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
             txtIsMerkeziTipi.Enabled = isEditMode;
 
             btnKaydet.Visible = isEditMode;
+            btnSave.Visible = !isEditMode;
+        }
+
+        public void SetFormModeEkle(bool isEditMode)
+        {
+            _isEditMode = isEditMode;
+
+            // Düzenleme modunda iken kullanıcı girişine izin ver, inceleme modunda okuma modunda olacak
+            txtIsMerkeziKodu.ReadOnly = !isEditMode;
+            txtCalismaSuresi.ReadOnly = !isEditMode;
+            txtIsMerkeziKisaAciklama.ReadOnly = !isEditMode;
+            txtIsMerkeziUzunAciklama.ReadOnly = !isEditMode;
+            cmbFirma.Enabled = isEditMode;
+            cmbMaliyetMerkeziTipi.Enabled = isEditMode;
+            dtpGecerlilikBaslangicTarihi.Enabled = isEditMode;
+            dtpGecerlilikBitisTarihi.Enabled = isEditMode;
+            cmbDilKodu.Enabled = isEditMode;
+            cmbSilindiMi.Enabled = isEditMode;
+            cmbPasifMi.Enabled = isEditMode;
+            txtMaliyetMerkeziKodu.Enabled = isEditMode;
+            txtIsMerkeziTipi.Enabled = isEditMode;
+
+            btnKaydet.Visible = !isEditMode;
             btnSave.Visible = isEditMode;
         }
+
+        public void SetFormModeIncele(bool isEditMode)
+        {
+            _isEditMode = isEditMode;
+
+            // Düzenleme modunda iken kullanıcı girişine izin ver, inceleme modunda okuma modunda olacak
+            txtIsMerkeziKodu.ReadOnly = isEditMode;
+            txtCalismaSuresi.ReadOnly = isEditMode;
+            txtIsMerkeziKisaAciklama.ReadOnly = isEditMode;
+            txtIsMerkeziUzunAciklama.ReadOnly = isEditMode;
+            cmbFirma.Enabled = !isEditMode;
+            cmbMaliyetMerkeziTipi.Enabled = !isEditMode;
+            dtpGecerlilikBaslangicTarihi.Enabled = !isEditMode;
+            dtpGecerlilikBitisTarihi.Enabled = !isEditMode;
+            cmbDilKodu.Enabled = !isEditMode;
+            cmbSilindiMi.Enabled = !isEditMode;
+            cmbPasifMi.Enabled = !isEditMode;
+            txtMaliyetMerkeziKodu.Enabled = !isEditMode;
+            txtIsMerkeziTipi.Enabled = !isEditMode;
+
+            btnKaydet.Visible = !isEditMode;
+            btnSave.Visible = !isEditMode;
+        }
+
 
         // ComboBox'ı kontrol tablosuyla doldur
         private void LoadComboBoxWithControlData(ComboBox comboBox, string tableName, string displayMember, string valueMember)

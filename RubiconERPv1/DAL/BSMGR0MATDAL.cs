@@ -48,32 +48,32 @@ namespace DataAccessLayer
 
 
         public DataTable GetFilteredData(string firma, string malzemeTipi, string malzemeNo, string tedarikTipi,
-             string malzemeKisaAciklama, string malzemeUzunAciklama,
-             string urunAgaciVarMi, string dilKodu, string silindiMi, string pasifMi,
-             DateTime? baslangicTarihi, DateTime? bitisTarihi)
+      string malzemeKisaAciklama, string malzemeUzunAciklama,
+      string urunAgaciVarMi, string dilKodu, string silindiMi, string pasifMi,
+      DateTime? baslangicTarihi, DateTime? bitisTarihi)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 // Dinamik sorgu
                 string query = @"
-SELECT 
-    h.MATDOCNUM AS 'Malzeme Kodu',
-    h.COMCODE AS 'Firma Kodu',
-    h.MATDOCTYPE AS 'Malzeme Tipi',
-    h.MATDOCFROM AS 'Başlangıç Tarihi',
-    h.MATDOCUNTIL AS 'Bitiş Tarihi',
-    t.MATSTEXT AS 'Kısa Açıklama',
-    t.MATLTEXT AS 'Uzun Açıklama',
-    t.LANCODE AS 'Dil Kodu',
-    h.ISBOM AS 'Ürün Ağacı Var Mı?',
-    h.ISDELETED AS 'Silindi Mi?',
-    h.ISPASSIVE AS 'Pasif Mi?'
-FROM 
-    BSMGR0MATHEAD h
-INNER JOIN 
-    BSMGR0MATTEXT t ON h.MATDOCNUM = t.MATDOCNUM
-WHERE 
-    1 = 1";  // Başlangıçta her şey geçerli, filtreler eklenebilir
+        SELECT 
+            h.MATDOCNUM AS 'Malzeme Kodu',
+            h.COMCODE AS 'Firma Kodu',
+            h.MATDOCTYPE AS 'Malzeme Tipi',
+            h.MATDOCFROM AS 'Başlangıç Tarihi',
+            h.MATDOCUNTIL AS 'Bitiş Tarihi',
+            t.MATSTEXT AS 'Kısa Açıklama',
+            t.MATLTEXT AS 'Uzun Açıklama',
+            t.LANCODE AS 'Dil Kodu',
+            h.ISBOM AS 'Ürün Ağacı Var Mı?',
+            h.ISDELETED AS 'Silindi Mi?',
+            h.ISPASSIVE AS 'Pasif Mi?'
+        FROM 
+            BSMGR0MATHEAD h
+        INNER JOIN 
+            BSMGR0MATTEXT t ON h.MATDOCNUM = t.MATDOCNUM
+        WHERE 
+            1 = 1";  // Başlangıçta her şey geçerli, filtreler eklenebilir
 
                 // Filtrelere göre sorguya eklemeler
                 if (!string.IsNullOrEmpty(firma)) query += " AND h.COMCODE = @firma";
@@ -83,7 +83,7 @@ WHERE
                 if (!string.IsNullOrEmpty(malzemeKisaAciklama)) query += " AND t.MATSTEXT LIKE @malzemeKisaAciklama";
                 if (!string.IsNullOrEmpty(malzemeUzunAciklama)) query += " AND t.MATLTEXT LIKE @malzemeUzunAciklama";
                 if (!string.IsNullOrEmpty(urunAgaciVarMi)) query += " AND h.ISBOM = @urunAgaciVarMi";
-                if (!string.IsNullOrEmpty(dilKodu)) query += " AND t.LANCODE = @dilKodu";
+                //if (!string.IsNullOrEmpty(dilKodu)) query += " AND t.LANCODE = @dilKodu";
                 if (!string.IsNullOrEmpty(silindiMi)) query += " AND h.ISDELETED = @silindiMi";
                 if (!string.IsNullOrEmpty(pasifMi)) query += " AND h.ISPASSIVE = @pasifMi";
                 if (baslangicTarihi.HasValue) query += " AND h.MATDOCFROM >= @baslangicTarihi";
@@ -91,7 +91,7 @@ WHERE
 
                 SqlCommand command = new SqlCommand(query, connection);
 
-                // Parametre ekle
+                // Parametreler
                 if (!string.IsNullOrEmpty(firma)) command.Parameters.AddWithValue("@firma", firma);
                 if (!string.IsNullOrEmpty(malzemeTipi)) command.Parameters.AddWithValue("@malzemeTipi", malzemeTipi);
                 if (!string.IsNullOrEmpty(malzemeNo)) command.Parameters.AddWithValue("@malzemeNo", malzemeNo);
@@ -115,6 +115,7 @@ WHERE
                 return dataTable;
             }
         }
+
 
 
         public bool UpdateMaterial(string malzemeKodu, string firmaKodu, string malzemeTipi, string malzemeKisaAciklama,

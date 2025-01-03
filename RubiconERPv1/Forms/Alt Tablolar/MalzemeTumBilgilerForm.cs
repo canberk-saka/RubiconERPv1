@@ -163,7 +163,7 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
         }
 
 
-        public void SetFormMode(bool isEditMode)
+        public void SetFormModeGuncelle(bool isEditMode)
         {
             // Düzenleme modunda iken kullanıcı girişine izin ver, inceleme modunda okuma modunda olacak
             txtMalzemeKodu.ReadOnly = !isEditMode;
@@ -193,10 +193,46 @@ namespace RubiconERPv1.Forms.Alt_Tablolar
 
             // Kaydet butonunun görünürlüğünü düzenle
             btnKaydet.Visible = isEditMode;
+            btnSave.Visible = !isEditMode;
         }
+
+        public void SetFormModeIncele(bool isEditMode)
+        {
+            // Düzenleme modunda iken kullanıcı girişine izin ver, inceleme modunda okuma modunda olacak
+            txtMalzemeKodu.ReadOnly = isEditMode;
+            txtMalzemeKisaAciklamasi.ReadOnly = isEditMode;
+            txtMalzemeUzunAciklamasi.ReadOnly = isEditMode;
+            cbFirmaKodu.Enabled = !isEditMode;
+            cmbMalzemeTipi.Enabled = !isEditMode;
+            cmbDilKodu.Enabled = !isEditMode;
+            cmbTedarikTipi.Enabled = !isEditMode;
+            cmbMalzemeStokBirimi.Enabled = !isEditMode;
+            txtNetAgirlik.ReadOnly = isEditMode;
+            cmbNetAgirlikBirimi.Enabled = !isEditMode;
+            txtBrutAgirlik.ReadOnly = isEditMode;
+            cmbBrutAgirlikBirimi.Enabled = !isEditMode;
+            cmbUrunAgaciVarMi.Enabled = !isEditMode;
+            cmbUrunAgaciTipi.Enabled = !isEditMode;
+            txtUrunAgaciKodu.ReadOnly =isEditMode;
+            cmbRotaVarMi.Enabled = !isEditMode;
+            cmbRotaTipi.Enabled = !isEditMode;
+            txtRotaNumarasi.ReadOnly =isEditMode;
+            cmbSilindiMi.Enabled = !isEditMode;
+            cmbPasifMi.Enabled = !isEditMode;
+
+            // Tarih seçimlerini düzenleme modunda değiştirebilmek için enabled durumunu ayarla
+            dtpGecerlilikBaslangicTarihi.Enabled = !isEditMode;
+            dtpGecerlilikBitisTarihi.Enabled = !isEditMode;
+
+            // Kaydet butonunun görünürlüğünü düzenle
+            btnKaydet.Visible = !isEditMode;
+            btnSave.Visible = !isEditMode;
+        }
+
         public void SetFormModeInsert(bool isInsertMode)
         {
-            btnKaydet.Visible = false;
+            btnKaydet.Visible = !isInsertMode;
+            btnSave.Visible = isInsertMode;
         }
 
         private void LoadComboBoxWithControlData(ComboBox comboBox, string tableName, string displayMember, string valueMember)

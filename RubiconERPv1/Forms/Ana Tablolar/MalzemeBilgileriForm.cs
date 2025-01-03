@@ -117,7 +117,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     DataTable materialDetails = _dataAccessLayer.GetMaterialDetails(malzemeKodu);
                     MalzemeTumBilgilerForm tumBilgilerForm = new MalzemeTumBilgilerForm();
                     tumBilgilerForm.LoadMaterialDetails(materialDetails);
-                    tumBilgilerForm.SetFormMode(false);
+                    tumBilgilerForm.SetFormModeIncele(true);
                     tumBilgilerForm.Show();
                 }
                 else
@@ -143,7 +143,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     DataTable materialDetails = _dataAccessLayer.GetMaterialDetails(malzemeKodu);
                     MalzemeTumBilgilerForm tumBilgilerForm = new MalzemeTumBilgilerForm();
                     tumBilgilerForm.LoadMaterialDetails(materialDetails);
-                    tumBilgilerForm.SetFormMode(true);
+                    tumBilgilerForm.SetFormModeGuncelle(true);
                     tumBilgilerForm.Show();
                 }
                 else
@@ -175,6 +175,8 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                 string pasifMi = cmbPasifMi.SelectedValue?.ToString();
                 DateTime? baslangicTarihi = dtpGecerlilikBaslangicTarihi.Checked ? (DateTime?)dtpGecerlilikBaslangicTarihi.Value : null;
                 DateTime? bitisTarihi = dtpGecerlilikBitisTarihi.Checked ? (DateTime?)dtpGecerlilikBitisTarihi.Value : null;
+
+               
 
                 DataTable result = _dataAccessLayer.GetFilteredData(
                     firma, malzemeTipi, malzemeNo, tedarikTipi,
@@ -229,7 +231,6 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
             DataTable materialDetails = _dataAccessLayer.GetMaterialDetails(malzemeKodu);
             MalzemeTumBilgilerForm tumBilgilerForm = new MalzemeTumBilgilerForm();
             tumBilgilerForm.LoadMaterialDetails(materialDetails);
-            tumBilgilerForm.SetFormMode(true);
             tumBilgilerForm.SetFormModeInsert(true);
             tumBilgilerForm.Show();
         }

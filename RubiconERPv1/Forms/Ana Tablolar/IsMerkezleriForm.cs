@@ -148,7 +148,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     DataTable workCenterDetails = _dataAccessLayer.GetWCMDetails(isMerkeziKodu);
                     IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
                     tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
-                    tumBilgilerForm.SetFormMode(false);
+                    tumBilgilerForm.SetFormModeIncele(true);
                     tumBilgilerForm.Show();
                 }
                 else
@@ -174,7 +174,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     DataTable workCenterDetails = _dataAccessLayer.GetWCMDetails(isMerkeziKodu);
                     IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
                     tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
-                    tumBilgilerForm.SetFormMode(true);
+                    tumBilgilerForm.SetFormModeGuncelle(true);
                     tumBilgilerForm.Show();
                 }
                 else
@@ -201,7 +201,7 @@ namespace RubiconERPv1.Forms.Ana_Tablolar
                     IsMerkezleriTumBilgilerForm tumBilgilerForm = new IsMerkezleriTumBilgilerForm();
 
                     tumBilgilerForm.LoadWorkCenterDetails(workCenterDetails);
-                    tumBilgilerForm.SetFormMode(true);
+                    tumBilgilerForm.SetFormModeEkle(true);
                     //tumBilgilerForm.SetFormModeInsert(true);
                     tumBilgilerForm.Show();
                 }
